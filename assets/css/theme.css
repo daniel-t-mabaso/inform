@@ -1,0 +1,64 @@
+/* Backgrounds */
+.black-bg{
+    background-color: #000;  
+}
+.white-bg{
+    background-color: #fff;  
+}
+.primary-bg{
+    background-color: #000000;  
+}
+.secondary-bg{
+    background-color: #000000;  
+}
+.tertiary-bg{
+    background-color: #000000;  
+}
+.alt-bg{
+    background-color: #000000;  
+}
+.success-bg{
+    background-color: #000000;  
+}
+.caution-bg{
+    background-color: #000000;  
+}
+.danger-bg{
+    background-color: #000000;  
+}
+.neutral-bg{
+    background-color: #000000;  
+}
+
+/* Font Colours */
+
+.black-txt{
+    color: #000000;  
+}
+.white-txt{
+    color: #ffffff;  
+}
+.primary-txt{
+    color: #000000;  
+}
+.secondary-txt{
+    color: #000000;  
+}
+.tertiary-txt{
+    color: #000000;  
+}
+.alt-txt{
+    color: #000000;  
+}
+.success-txt{
+    color: #000000;  
+}
+.caution-txt{
+    color: #000000;  
+}
+.danger-txt{
+    color: #000000;  
+}
+.neutral-txt{
+    color: #000000;  
+}

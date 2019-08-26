@@ -1,0 +1,25 @@
+/* Applies to all screen sizes unless explicitly changed in the relevant @media tag */
+
+
+@media only screen and (max-width: 300px){
+    /*Applies only to small screen mobile phones*/
+
+}
+@media only screen and (min-width: 300px) and (max-width: 450px){
+    /*Applies only to large screen mode in mobile phones*/
+
+}
+@media only screen and (min-width: 450px) and (max-width: 736px){
+    /*Applies only to landscape mode in mobile phones*/
+
+}
+@media only screen and (min-width: 736px) and (max-width: 1200px){
+    /*Applies only to tablets*/
+
+}
+@media only screen and (min-width: 1200px){
+    /*Applies only to desktops*/
+
+}
+
+/*Code below here applies to all screen sizes unless explicitly changed in the relevant @media tag */

@@ -1,0 +1,50 @@
+/* Font style */
+.book{
+    /* normal font style */
+    font-style: normal;
+}
+.bold{
+    /* Bold font style */
+    font-style: bold;
+}
+.italic{
+    /* Italic font style */
+    font-style: italic;
+}
+.underline{
+    /* Underlined font */
+    text-decoration: underline;
+}
+.overline{
+    /* Underlined font */
+    text-decoration: overline;
+}
+.linethrough{
+    /* Underlined font */
+    text-decoration: line-through;
+}
+
+/* Font size */
+.title{
+    /* Title font size */
+    font-size: 24pt;
+    font-style: bold;
+}
+.heading{
+    /* Heading font size */
+    font-size: 18pt;
+    font-style: bold;
+}
+.subheading{
+    /* Subheading font size */
+    font-size: 16pt;
+}
+.book{
+    /* normal font size */
+    font-size: 12pt;
+}
+.footnote{
+    /* Footnote font size*/
+    font-size: 9pt;
+    font-style: italic;
+}

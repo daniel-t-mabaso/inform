@@ -23,19 +23,16 @@ if (isset($_POST['update-db'])){
         $username = $_POST['username'];
     }
 
-    if(!isset($_POST['password']) || $_POST['password'] == ''){
-        array_push($errors, "* Password field can't be empty.");
-    }
-    else{
         $password = $_POST['password'];
-    }
+
     
     if(count($errors)==0){
         //no errors so continue with update
         
         try {
             // Try Connect to the DB with mysqli_connect function - Params {hostname, userid, password, dbname}
-            @$dbc = mysqli_connect($server, $username, $password, $database);
+            $dbc = mysqli_connect($server, $username, $password, $database);
+            echo "connected!";
             $connected = "true";
         } catch (mysqli_sql_exception $e) { // Failed to connect? Lets see the exception details..
             // echo "MySQLi Error Code: " . $e->getCode() . "<br />";
@@ -44,15 +41,27 @@ if (isset($_POST['update-db'])){
         }
         if($connected == "true"){
             $file = ''. $database . '.sql';
-            @$query = file_get_contents($file);
-            @$result = mysqli_query($dbc, $query);
+            echo $file;
 
-            if(!$result){
-                array_push($errors, "* Database does not exist or incorrect details provided!");
+            $query = '';
+            $sqlScript = file($file);
+            foreach ($sqlScript as $line)	{
+                
+                $startWith = substr(trim($line), 0 ,2);
+                $endWith = substr(trim($line), -1 ,1);
+                
+                if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
+                    continue;
+                }
+                    
+                $query = $query . $line;
+                if ($endWith == ';') {
+                    mysqli_query($dbc,$query) or die('<div class="error-response sql-import-response">Problem in executing the SQL query <b>' . $query. '</b></div>');
+                    $query= '';		
+                }
             }
-            else{
                 header("Location: updated.php");
-            }
+            
         }
     }
 }

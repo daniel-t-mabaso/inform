@@ -7,8 +7,10 @@
     <body>
         <div style="background-color: skyblue; text-align: center">
                 <!--This is where the picture goes-->
-                
+                <img src="image.png" class="profilePicture" style="background-color: white" >
+               
         </div>
+       
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <form method="post" action="./" class="center-txt vertical-padding-10">
                 Full Name:<br>

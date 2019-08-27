@@ -1,5 +1,4 @@
 <?php
-    include './assets/php/class_lib.php';
     include './assets/php/connect.php';
 
     ?>
@@ -49,10 +48,3 @@
 
 
 <!--Scripts-->
-
-<script type="text/javascript" src="./assets/js/behavior.js"></script>
-
-<script type="text/javascript" src="./assets/js/server.js"></script>
-
-<script type="text/javascript" src="./assets/js/cms.js"></script>
-

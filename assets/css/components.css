@@ -71,9 +71,10 @@
     border: 2px grey;
     box-shadow: 5px 5px 5px grey;
     border-radius: 180px;
-    padding: 50px;
-    height: 60px;
-    width: 60px;
+    padding: 10px;
+    height: 30px;
+    width: 30px;
+    background-color: white;
 }
 
 .media{

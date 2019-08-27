@@ -69,11 +69,11 @@
 
 .profilePicture{
     border: 2px grey;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 10px 10px 10px grey;
     border-radius: 180px;
-    padding: 10px;
-    height: 30px;
-    width: 30px;
+    padding: 20px;
+    height: 100px;
+    width: 100px;
     background-color: white;
 }
 

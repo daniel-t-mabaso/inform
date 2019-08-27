@@ -68,13 +68,10 @@
 }
 
 .profilePicture{
-    border: 2px grey;
-    box-shadow: 10px 10px 10px grey;
+    box-shadow: 5px 5px 5px grey;
     border-radius: 180px;
-    padding: 20px;
-    height: 100px;
-    width: 100px;
-    background-color: white;
+    height: 150px;
+    width: 150px;
 }
 
 .media{

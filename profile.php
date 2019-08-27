@@ -12,7 +12,10 @@
     <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
         <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
                 <!--This is where the picture goes-->
-                <img src="image.png" class="profilePicture" style="background-color: white" >
+                <?php
+                    $url = $user -> get_dp_url();
+                    echo "<img src='$url' class='profilePicture'/>"
+                ?>
                
         </div>
        

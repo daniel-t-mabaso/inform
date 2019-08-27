@@ -27,9 +27,9 @@ if($_SESSION['auth'] == true){
             <p class="book">Enter your credentials below<br>to sign in.</p>
             <form method="post" action="./" class="left-txt vertical-padding-10">
                 Email
-                <input class="inputField" type="email" name="emailAddress" required>
+                <input class="inputField" type="email" name="emailAddress">
                 Password
-                <input class="inputField" type="password" name="password" required>
+                <input class="inputField" type="password" name="password">
                 <div  class="center-txt">
                 <input class="button" type="submit" value="Login" name="login" />
                 <br>

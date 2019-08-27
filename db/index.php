@@ -1,75 +1,3 @@
-<?php
-$errors = array();
-if (isset($_POST['update-db'])){
-    
-    if(!isset($_POST['server']) || $_POST['server'] == ''){
-        $server = 'localhost';
-    }
-    else{
-        $server = $_POST['server'];
-    }
-
-    if(!isset($_POST['database']) || $_POST['database'] == ''){
-        array_push($errors, "* Database Name field can't be empty.");
-    }
-    else{
-        $database = $_POST['database'];
-    }
-
-    if(!isset($_POST['username']) || $_POST['username'] == ''){
-        array_push($errors, "* Username field can't be empty.");
-    }
-    else{
-        $username = $_POST['username'];
-    }
-
-        $password = $_POST['password'];
-
-    
-    if(count($errors)==0){
-        //no errors so continue with update
-        
-        try {
-            // Try Connect to the DB with mysqli_connect function - Params {hostname, userid, password, dbname}
-            $dbc = mysqli_connect($server, $username, $password, $database);
-            echo "connected!";
-            $connected = "true";
-        } catch (mysqli_sql_exception $e) { // Failed to connect? Lets see the exception details..
-            // echo "MySQLi Error Code: " . $e->getCode() . "<br />";
-            // echo "Exception Msg: " . $e->getMessage();
-            exit; // exit and close connection.
-        }
-        if($connected == "true"){
-            $file = ''. $database . '.sql';
-            echo $file;
-
-            $query = '';
-            $sqlScript = file($file);
-            foreach ($sqlScript as $line)	{
-                
-                $startWith = substr(trim($line), 0 ,2);
-                $endWith = substr(trim($line), -1 ,1);
-                
-                if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
-                    continue;
-                }
-                    
-                $query = $query . $line;
-                if ($endWith == ';') {
-                    mysqli_query($dbc,$query) or die('<div class="error-response sql-import-response">Problem in executing the SQL query <b>' . $query. '</b></div>');
-                    $query= '';		
-                }
-            }
-                header("Location: updated.php");
-            
-        }
-    }
-}
-else{
-    // array_push($errors, "Not submitted");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,9 +21,6 @@ html{
     }
     .left-txt{
         text-align: left;
-    }
-    .danger-txt{
-        color: red;
     }
     .form-input{
         width: calc(100% - 15px * 2 - 1px * 2);
@@ -121,6 +46,12 @@ html{
         border: none;
         cursor: pointer;
     }
+    .danger-txt{
+        color: red;
+    }
+    .danger-bg{
+        background-color: red;
+    }
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,11 +64,105 @@ html{
         <h1>INFORM<br>Database Update</h1>
         <p>Enter the database credentials below to update the database</p>  
         <form class='max-width' action="" method="post" name='database-update-form'>
+            <input class='form-button danger-bg' type='submit' name='clear-db' value='First Clear DB'/>
+                <br>
+            
+            <?php
+                $errors = array();
+                if (isset($_POST['clear-db'])){
+                    
+                    try {
+                        // Try Connect to the DB with mysqli_connect function - Params {hostname, userid, password, dbname}
+                        $dbc = mysqli_connect('localhost', 'root', '', 'inform');
+                        $connected = "true";
+                    } catch (mysqli_sql_exception $e) { // Failed to connect? Lets see the exception details..
+                        // echo "MySQLi Error Code: " . $e->getCode() . "<br />";
+                        // echo "Exception Msg: " . $e->getMessage();
+                        exit; // exit and close connection.
+                    }
+                    $query = "DROP DATABASE inform;";
+                    mysqli_query($dbc,$query);
+                    
+                    $query = "CREATE DATABASE inform;";
+                    mysqli_query($dbc,$query);
+
+                    echo "<div class='center-txt' style='color: green; font-weight: bold;'>Database successfully cleared</div>";
+                }
+                else if (isset($_POST['update-db'])){
+                    
+                    if(!isset($_POST['server']) || $_POST['server'] == ''){
+                        $server = 'localhost';
+                    }
+                    else{
+                        $server = $_POST['server'];
+                    }
+
+                    if(!isset($_POST['database']) || $_POST['database'] == ''){
+                        array_push($errors, "* Database Name field can't be empty.");
+                    }
+                    else{
+                        $database = $_POST['database'];
+                    }
+
+                    if(!isset($_POST['username']) || $_POST['username'] == ''){
+                        array_push($errors, "* Username field can't be empty.");
+                    }
+                    else{
+                        $username = $_POST['username'];
+                    }
+
+                        $password = $_POST['password'];
+
+                    
+                    if(count($errors)==0){
+                        //no errors so continue with update
+                        
+                        try {
+                            // Try Connect to the DB with mysqli_connect function - Params {hostname, userid, password, dbname}
+                            $dbc = mysqli_connect($server, $username, $password, $database);
+                            echo "connected!";
+                            $connected = "true";
+                        } catch (mysqli_sql_exception $e) { // Failed to connect? Lets see the exception details..
+                            // echo "MySQLi Error Code: " . $e->getCode() . "<br />";
+                            // echo "Exception Msg: " . $e->getMessage();
+                            exit; // exit and close connection.
+                        }
+                        if($connected == "true"){
+                            $file = ''. $database . '.sql';
+                            echo $file."<br>";
+
+                            $query = '';
+                            $sqlScript = file($file);
+                            foreach ($sqlScript as $line)	{
+                                
+                                $startWith = substr(trim($line), 0 ,2);
+                                $endWith = substr(trim($line), -1 ,1);
+                                
+                                if (empty($line) || $startWith == '--' || $startWith == '/*' || $startWith == '//') {
+                                    continue;
+                                }
+                                    
+                                $query = $query . $line;
+                                if ($endWith == ';') {
+                                    mysqli_query($dbc,$query) or die('<div class="error-response sql-import-response">Problem in executing the SQL query <b>' . $query. '</b></div>');
+                                    $query= '';		
+                                }
+                            }
+                                header("Location: updated.php");
+                            
+                        }
+                    }
+                }
+                else{
+                    // array_push($errors, "Not submitted");
+                }
+                ?>
+                <br>
             <input class='form-input' type='text' placeholder='Host (Blank if "localhost")' name='database'/>
             <input class='form-input' type='text' placeholder='Database Name' name='database'/>
             <input class='form-input' type='text' placeholder='Username' name='username'/>
             <input class='form-input' type='password' placeholder='Password' name='password'/>
-            <input class='form-button' type='submit' name='update-db' value='Update'/>
+            <input class='form-button' type='submit' name='update-db' value='Update'/><br>
         </form>
         <div style="color: red">
         <?php

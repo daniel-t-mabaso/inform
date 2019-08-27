@@ -24,13 +24,19 @@ if($_SESSION['auth'] == true){
             <p class="book">Enter your credentials below<br>to sign up.</p>
             <form method="post" action="./"  class="left-txt vertical-padding-10">
                 Full Name
-                <input class="inputField" type="text" name="fullName" required>
+                <input class="inputField" type="text" name="fullName">
                 Email
-                <input class="inputField" type="email" name="emailAddress" required>
+                <input class="inputField" type="email" name="emailAddress">
                 Password
+<<<<<<< HEAD
                 <input class="inputField" type="password" id="password" required>
                 Confirm Password
                 <input class="inputField" type="password" id="confirmPassword" required>
+=======
+                <input class="inputField" type="password" name="password">
+                Confirm Password
+                <input class="inputField" type="password" name="confirmPassword">
+>>>>>>> d06c5e847f60bc433f6a359f5b0935cf684a0e17
                 <input type="checkbox" name="organisation"> As Organisation
                 <div  class="center-txt">
                 <input class="button" type="submit" value="Login" name="login" />

@@ -1,9 +1,7 @@
 <?php
     class User{
 
-        var $name;
-
-        var $surname;
+        var $full_name;
 
         var $email;
 
@@ -17,9 +15,7 @@
 
         function __construct(){
 
-            $this->name = "";
-
-            $this->surname = "";
+            $this->full_name = "";
 
             $this->email = "";
 
@@ -33,11 +29,9 @@
 
         /*SETTERS*/
 
-        function set_details($user_name, $user_surname, $user_email, $user_type, $user_status, $dp_url){
+        function set_details($user_full_name, $user_email, $user_type, $user_status, $dp_url){
 
-            $this->name = $user_name;
-
-            $this->surname = $user_surname;
+            $this->full_name = $user_full_name;
 
             $this->email = $user_email;
 
@@ -49,18 +43,11 @@
 
         }
 
-        function set_name($name){
+        function set_full_name($name){
 
-            $this -> name = $name;
-
-        }
-
-        function set_surname($surname){
-
-            $this -> surname = $surname;
+            $this -> full_name = $name;
 
         }
-
 
 
         function set_email($email){
@@ -87,13 +74,6 @@
 
         }
 
-        function set_date($join_date){
-
-            $this -> date = $join_date;
-
-        }
-
-
 
         /*GETTERS*/        
 
@@ -104,18 +84,9 @@
         }
 
 
-
-        function get_surname(){
-
-            return $this -> surname;
-
-        }
-
         function get_full_name(){
 
-            $f = $name.' '.$surname;
-
-            return $f;
+            return $this->full_name;
 
         }
 
@@ -142,12 +113,11 @@
             return $this -> status;
 
         }
-
+        // Methods
     }
 
-    class Admin extends User{
 
-
+    class Organization extends User{
 
         /*CONSTRUCTOR*/
 
@@ -155,15 +125,15 @@
 
             parent::__construct();
 
-            parent::set_permission('admin');
+            parent::set_type('organization');
 
         }
 
         /*SETTERS*/
 
-        function set_details($user_name, $user_surname, $user_email, $user_type, $user_status, $join_date){
+        function set_details($user_full_name, $user_email, $user_type, $user_status){
 
-            parent::set_details($user_name, $user_surname, $user_email, 'admin', 'active', $join_date);
+            parent::set_details($user_full_name, $user_email, 'organization', 'active');
 
         }
 
@@ -175,7 +145,8 @@
 
     }
 
-    class Admin extends User{
+    
+    class Leader extends User{
 
 
 
@@ -185,15 +156,15 @@
 
             parent::__construct();
 
-            parent::set_permission('admin');
+            parent::set_type('leader');
 
         }
 
         /*SETTERS*/
 
-        function set_details($user_name, $user_surname, $user_email, $user_type, $user_status, $join_date){
+        function set_details($user_full_name, $user_email, $user_type, $user_status){
 
-            parent::set_details($user_name, $user_surname, $user_email, 'admin', 'active', $join_date);
+            parent::set_details($user_full_name, $user_email, 'leader', 'active');
 
         }
 
@@ -205,6 +176,35 @@
 
     }
 
+    
+    class Admin extends User{
 
+
+
+        /*CONSTRUCTOR*/
+
+        function __construct(){
+
+            parent::__construct();
+
+            parent::set_type('admin');
+
+        }
+
+        /*SETTERS*/
+
+        function set_details($user_full_name, $user_email, $user_type, $user_status){
+
+            parent::set_details($user_full_name, $user_email, 'admin', 'active');
+
+        }
+
+        /*GETTERS*/
+
+
+
+        /*Methods*/
+
+    }
 
 ?>

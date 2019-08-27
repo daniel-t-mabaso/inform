@@ -1,0 +1,75 @@
+.button{
+    border-radius: 12px; 
+    width: 30%;  
+    justify-content: center;
+    padding: 15px 40px;
+}
+
+.button:hover {
+    background-color: rgba(90, 185, 223, 0.911);
+    box-shadow: 0 9px #999;
+}
+
+.button:active {
+    transform: translateY(4px);
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.inputFields {
+    border: 2px solid skyblue; 
+    width: 80%; 
+}
+
+.checkBox{
+    width: 12px;
+}
+
+.choiceButtons{
+    float: left;
+    border: 1px;
+}
+
+.choiceButtons:after {
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.choiceButtons:active:after{
+    transition: 0s;
+    opacity: 1;
+    padding: 5;
+    margin: 5;
+}
+
+.createButton{
+    border-radius:50%;
+    padding: 15px 40px;
+}
+
+.card{
+    padding: 25px;
+    box-shadow: 10px 10px 5px grey;
+    border-style: none;
+    border-radius: 5px;
+    margin: 50px;
+}
+
+.profilePicture{
+    border: 2px grey;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 180px;
+    padding: 50px;
+    height: 60px;
+    width: 60px;
+}
+
+.media{
+    display: flex;
+    height: 180px;
+    margin: 5px;
+    width: 260px
+}

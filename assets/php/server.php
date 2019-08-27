@@ -80,7 +80,7 @@
             $query = "SELECT * FROM users WHERE email = '$email'";
             $result = mysqli_query($dbc, $query);
             if (isset($result) && mysqli_fetch_array($result, MYSQLI_ASSOC)['email']==$email){
-                array_push($errors, "Email already in use");
+                array_push($errors, "* Email already in use");
             }
             
             mysqli_free_result($result);

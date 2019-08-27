@@ -58,7 +58,7 @@ html{
     
     <div class='small-width center-all center-txt'>
         <h1>INFORM<br>Database Successfully Updated</h1>
-        <p>The database has been successfully updated. To update it again click <a href='./'>here</a>.</p>
+        <p>The database has been successfully updated. To update it again click <a href='./'>here</a>.<br><br>To go to the home page, click <a href='../'>here</a></p>
     </div>
 </body>
 </html>

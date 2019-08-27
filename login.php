@@ -17,7 +17,7 @@ if($_SESSION['auth'] == true){
         ?>
     </head>
 
-    <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+    <body>
         <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
             <h1 class='title'>INFORM</h1>
             <h2 class='book'>Community Notice System</h2>

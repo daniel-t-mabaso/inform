@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2019 at 01:51 PM
+-- Generation Time: Aug 27, 2019 at 02:51 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -117,7 +117,8 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `base_cid` int(11) NOT NULL,
   `type` enum('com_mem','organ','local_admin','glob_admin') NOT NULL,
-  `filters` varchar(100) NOT NULL
+  `filters` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
 

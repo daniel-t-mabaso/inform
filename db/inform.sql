@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2019 at 02:51 PM
+-- Generation Time: Aug 27, 2019 at 04:52 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -73,11 +73,11 @@ CREATE TABLE `filters` (
 
 INSERT INTO `filters` (`filter_code`, `filter_name`) VALUES
 ('c', 'crime'),
-('t', 'traffic'),
+('g', 'general'),
 ('k', 'kids'),
 ('p', 'pets'),
 ('s', 'goods and services'),
-('g', 'general');
+('t', 'traffic');
 
 -- --------------------------------------------------------
 
@@ -120,6 +120,56 @@ CREATE TABLE `users` (
   `filters` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `communities`
+--
+ALTER TABLE `communities`
+  ADD PRIMARY KEY (`cid`);
+
+--
+-- Indexes for table `com_interest`
+--
+ALTER TABLE `com_interest`
+  ADD PRIMARY KEY (`email`,`interest_cid`);
+
+--
+-- Indexes for table `filters`
+--
+ALTER TABLE `filters`
+  ADD PRIMARY KEY (`filter_code`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

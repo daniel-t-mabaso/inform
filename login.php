@@ -31,10 +31,26 @@ if($_SESSION['auth'] == true){
                 Password
                 <input class="inputField" type="password" name="password" required>
                 <div  class="center-txt">
-                <input class="button" type="button" value="Login" name="login" />
+                <input class="button" type="submit" value="Login" name="login" />
                 <br>
                  <div style="text-align: center; color: skyblue">Not registered? <a href="registration.php">Sign up</a> now.</div></div>
             </form>
         </div>
     </body>
+    <script>
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+        function validatePassword()
+        {
+            if(password.value != confirm_password.value) 
+            {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } 
+            else 
+            {
+                confirm_password.setCustomValidity('Passwords Match.');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 </html>

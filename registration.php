@@ -28,15 +28,32 @@ if($_SESSION['auth'] == true){
                 Email
                 <input class="inputField" type="email" name="emailAddress" required>
                 Password
-                <input class="inputField" type="password" name="password" required>
+                <input class="inputField" type="password" id="password" required>
                 Confirm Password
-                <input class="inputField" type="password" name="confirmPassword" required>
+                <input class="inputField" type="password" id="confirmPassword" required>
                 <input type="checkbox" name="organisation"> As Organisation
                 <div  class="center-txt">
-                <input class="button" type="button" value="Login" name="login" />
+                <input class="button" type="submit" value="Login" name="login" />
                 <br>
                  <div style="text-align: center; color: skyblue">Already registered? <a href="login.php">Sign in</a> now.</div></div>
             </form>
         </div>
         </body>
+    <script>
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirmPassword");
+        //var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+        function validatePassword()
+        {
+            if(password.value != confirm_password.value) 
+            {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            }
+            else
+            {
+                confirm_password.setCustomValidity("Passwords Match")
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 </html>

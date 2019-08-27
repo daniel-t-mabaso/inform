@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
+        <?php
+            include 'assets/php/dependencies.php';
+        ?>
+
         <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
-                <div style="background-color: skyblue; text-align: center">
-                    <h1 style="color: white; font-size:400%">INFORM</h1>
-                    <h2 style="color: white; font-size: 250%">Community Notice System</h2>
-                </div>
-                <div style="text-align: center">
-                        <h1 style="color: grey; font-size: 300%">JOIN A COMMUNITY</h1>
-                        <p style="color: grey; font-size: 200%">Join a community to get started</p>
-                </div>
-                <div>
-                    <form style="color: skyblue; font-size:250%; ">
+            <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
+                <h1 class='title'>INFORM</h1>
+                <h2 class='book'>Community Notice System</h2>
+            </div>
+
+            <div class='center-txt padding-20 vertical-padding-30 max-width'>
+                <h1 class="heading">Join A Community</h1>
+                <p class="book">Join a community<br>to get started.</p>
+                <form method="post" action="./" class="left-txt vertical-padding-10">
                         Province:<br>
-                        <select name="provinces"style=" font-size:100%; width: 80%; border: 2px solid skyblue; background-color: lightgray;" required>
+                        <select class="inputField" name="provinces" required>
                             <option value="gp">Gauteng</option>
                             <option value="kzn">Kwa-Zulu Natal</option>
                             <option value="fs">Free State</option>
@@ -24,18 +27,19 @@
                             <option value="lp">Limpopo</option>
                         </select><br>
                         City:<br>
-                        <select name="city" style="font-size:100%; width: 80%; border: 2px solid skyblue; background-color: lightgray;" required>
+                        <select name="city" class="inputField" required>
                             
                         </select><br>
                         Community Zip Code:<br>
-                        <select name="zipCode" style="font-size:100%; width: 80%; border: 2px solid skyblue; background-color: lightgray;" required>
-                            
-                        </select>
-                    </form>
-                    <div style="font-size:x-large; color:skyblue">
-                        <input type="checkbox" name="newCommunity">New Community<br>
-                    </div>
-                    <button type="button" onclick="location.href = 'home.html';" style="background-color:skyblue; color: white; border-radius: 10px; width: 30%; font-size: xx-large; justify-content: center ">Done</button>
+                        <input type="text" class="inputField" style="width: 91%" name="zipCode" required>
+                        <datalist>
+
+                        </datalist>
+                </form>
+                <div class="book center-txt">
+                            <input type="checkbox" name="newCommunity">New Community<br>
                 </div>
+                <input class="button center-txt" type="submit" value="Done" name="done" />        
+            </div>
         </body>
 </html>

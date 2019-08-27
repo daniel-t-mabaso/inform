@@ -27,7 +27,7 @@
 /* Font size */
 .title{
     /* Title font size */
-    font-size: 24pt;
+    font-size: 32pt;
     font-style: bold;
 }
 .heading{
@@ -41,10 +41,25 @@
 }
 .book{
     /* normal font size */
-    font-size: 12pt;
+    font-size: 11pt;
 }
 .footnote{
     /* Footnote font size*/
     font-size: 9pt;
     font-style: italic;
+}
+
+.center-txt{
+    text-align: center;
+}
+.left-txt{
+    text-align: left;
+}
+.right-txt{
+    text-align: right;
+}
+
+h1, h2, h3, h4, h5, p{
+    padding: 0px;
+    margin: 0px;
 }

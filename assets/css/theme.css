@@ -1,4 +1,13 @@
 /* Backgrounds */
+*{
+    background-color: none;
+    color: inherit;
+    text-decoration: none;
+    font-style: none;
+}
+a{
+    text-decoration: underline;
+}
 .black-bg{
     background-color: #000;  
 }

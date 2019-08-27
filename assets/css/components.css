@@ -1,8 +1,12 @@
 .button{
-    border-radius: 12px; 
-    width: 30%;  
+    border-radius: 5px; 
+    width: 200px;  
     justify-content: center;
-    padding: 15px 40px;
+    text-align: center;
+    margin: 5px;
+    background-color: none;
+    border: none;
+    padding: 5px;
 }
 
 .button:hover {
@@ -19,26 +23,31 @@
     cursor: not-allowed;
 }
 
-.inputFields {
-    border: 2px solid skyblue; 
-    width: 80%; 
+.inputField {
+    border: 1px solid skyblue; 
+    width: calc(100% - 10px * 2); 
+    margin-top : 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom : 5px;
 }
 
 .checkBox{
     width: 12px;
 }
 
-.choiceButtons{
+.choiceButton{
     float: left;
     border: 1px;
 }
 
-.choiceButtons:after {
+.choiceButton:after {
     transition: all 0.5s;
     opacity: 0;
 }
 
-.choiceButtons:active:after{
+.choiceButton:active:after{
     transition: 0s;
     opacity: 1;
     padding: 5;

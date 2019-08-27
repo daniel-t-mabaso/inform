@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2019 at 02:23 PM
+-- Generation Time: Aug 27, 2019 at 01:51 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -25,19 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
---
-
-CREATE TABLE `account` (
-  `email` varchar(100) NOT NULL,
-  `CID` int(11) NOT NULL,
-  `type` enum('0','1') NOT NULL,
-  `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Key: email; type: 0 (members) 1 (organisations)';
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `cities`
 --
 
@@ -53,21 +40,85 @@ CREATE TABLE `cities` (
 --
 
 CREATE TABLE `communities` (
-  `CID` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL
+  `cid` int(11) NOT NULL,
+  `com_name` varchar(100) NOT NULL,
+  `city_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comofintert`
+-- Table structure for table `com_interest`
 --
 
-CREATE TABLE `comofintert` (
+CREATE TABLE `com_interest` (
   `email` varchar(100) NOT NULL,
-  `CID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Table detailing the communities of interest chosen by the us';
+  `interest_cid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `filters`
+--
+
+CREATE TABLE `filters` (
+  `filter_code` varchar(2) NOT NULL,
+  `filter_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `filters`
+--
+
+INSERT INTO `filters` (`filter_code`, `filter_name`) VALUES
+('c', 'crime'),
+('t', 'traffic'),
+('k', 'kids'),
+('p', 'pets'),
+('s', 'goods and services'),
+('g', 'general');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flags`
+--
+
+CREATE TABLE `flags` (
+  `email` varchar(100) NOT NULL,
+  `start` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `pid` int(11) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `media_url` varchar(300) NOT NULL,
+  `type` enum('alert','event') NOT NULL,
+  `cid` int(11) NOT NULL,
+  `filter_code` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `email` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `base_cid` int(11) NOT NULL,
+  `type` enum('com_mem','organ','local_admin','glob_admin') NOT NULL,
+  `filters` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,7 +9,7 @@
 
         var $status;
 
-        var $date;
+        var $type;
 
         var $dp_url;
 
@@ -24,6 +24,8 @@
             $this->email = "";
 
             $this->status = '';
+
+            $this->type = '';
 
             $this->dp_url = '';
 
@@ -42,6 +44,8 @@
             $this->status = $user_status;
 
             $this->dp_url = $dp_url;
+
+            $this->user_type = $user_type;
 
         }
 
@@ -139,13 +143,35 @@
 
         }
 
-        function get_date(){
+    }
 
-            return $this ->date;
+    class Admin extends User{
+
+
+
+        /*CONSTRUCTOR*/
+
+        function __construct(){
+
+            parent::__construct();
+
+            parent::set_permission('admin');
 
         }
 
+        /*SETTERS*/
 
+        function set_details($user_name, $user_surname, $user_email, $user_type, $user_status, $join_date){
+
+            parent::set_details($user_name, $user_surname, $user_email, 'admin', 'active', $join_date);
+
+        }
+
+        /*GETTERS*/
+
+
+
+        /*Methods*/
 
     }
 

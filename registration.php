@@ -22,7 +22,7 @@ if($_SESSION['auth'] == true){
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <h1 class="heading">SIGN UP</h1>
             <p class="book">Enter your credentials below<br>to sign up.</p>
-            <form class="left-txt vertical-padding-10">
+            <form method="post" action="./"  class="left-txt vertical-padding-10">
                 Full Name
                 <input class="inputField" type="text" name="fullName" required>
                 Email

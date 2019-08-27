@@ -11,7 +11,7 @@
 
 .button:hover {
     background-color: rgba(90, 185, 223, 0.911);
-    box-shadow: 0 9px #999;
+    box-shadow: 0 2px #999;
 }
 
 .button:active {

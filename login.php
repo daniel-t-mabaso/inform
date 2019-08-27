@@ -1,4 +1,6 @@
-<?php include("assets/php/session.php");
+<?php
+    include("assets/php/session.php");
+    include("assets/php/server.php");
 
 if($_SESSION['auth'] == true){
     //user is logged in. Redirect to home
@@ -23,7 +25,7 @@ if($_SESSION['auth'] == true){
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <h1 class="heading">SIGN IN</h1>
             <p class="book">Enter your credentials below<br>to sign in.</p>
-            <form class="left-txt vertical-padding-10">
+            <form method="post" action="./" class="left-txt vertical-padding-10">
                 Email
                 <input class="inputField" type="email" name="emailAddress" required>
                 Password

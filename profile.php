@@ -9,6 +9,8 @@
             include 'assets/php/dependencies.php';
             $user = unserialize($_SESSION['user']);
         ?>
+    <title>Profile</title>
+</head>
     <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
         <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
                 <!--This is where the picture goes-->
@@ -47,9 +49,10 @@
             </div>
             <div class="center-txt">
             <input class="button" type="submit" value="Save" name="save" />   
-            <input class="button" style="background-color: grey;" type="submit" value="Deactivate Account" name="deleteProfile" />
+            <input class="button" type="submit" value="Deactivate Account" name="deleteProfile" /><br>
+            
+            <a href='index.php'>Go to Home</a>
         </div>
-                    
         </form>
             
         </div>

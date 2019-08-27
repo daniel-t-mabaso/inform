@@ -4,7 +4,7 @@ include("assets/php/server.php");
 
 if($_SESSION['auth'] == true){
     //user is logged in. Redirect to home
-    header("Location: index.php");
+    header("Location: preferences.php");
 }
 ?>
 <!DOCTYPE html>

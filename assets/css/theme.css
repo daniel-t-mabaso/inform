@@ -15,25 +15,25 @@ a{
     background-color: #fff;  
 }
 .primary-bg{
-    background-color: #000000;  
+    background-color: #358cd3;  
 }
 .secondary-bg{
-    background-color: #000000;  
+    background-color: #8d8d8d;  
 }
 .tertiary-bg{
-    background-color: #000000;  
+    background-color: #59aef3;  
 }
 .alt-bg{
-    background-color: #000000;  
+    background-color: #d8d8d8;
 }
 .success-bg{
-    background-color: #000000;  
+    background-color: #8af359;  
 }
 .caution-bg{
-    background-color: #000000;  
+    background-color: #f3dc59;  
 }
 .danger-bg{
-    background-color: #000000;  
+    background-color: #f35959;  
 }
 .neutral-bg{
     background-color: #000000;  

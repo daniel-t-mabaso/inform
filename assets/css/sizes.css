@@ -31,8 +31,14 @@
 .large-height{
     height: 600px;
 }
+.large-medium-height{
+    height: 500px;
+}
 .medium-height{
     height:400px;
+}
+.medium-small-height{
+    height: 180px;
 }
 .small-height{
     height: 150px;

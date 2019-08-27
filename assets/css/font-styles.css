@@ -5,7 +5,7 @@
 }
 .bold{
     /* Bold font style */
-    font-style: bold;
+    font-weight: bold;
 }
 .italic{
     /* Italic font style */

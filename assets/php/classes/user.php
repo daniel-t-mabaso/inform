@@ -11,6 +11,8 @@
 
         var $dp_url;
 
+        var $preferences;
+
         /*CONSTRUCTOR*/
 
         function __construct(){
@@ -25,11 +27,13 @@
 
             $this->dp_url = '';
 
+            $this->preferences = '';
+
         }
 
         /*SETTERS*/
 
-        function set_details($user_full_name, $user_email, $user_type, $user_status, $dp_url){
+        function set_details($user_full_name, $user_email, $user_type, $user_status, $dp_url, $preferences){
 
             $this->full_name = $user_full_name;
 
@@ -40,6 +44,8 @@
             $this->dp_url = $dp_url;
 
             $this->user_type = $user_type;
+
+            $this->preferences = $preferences;
 
         }
 
@@ -71,6 +77,12 @@
         function set_status($status){
 
             $this -> status = $status;
+
+        }
+
+        function set_preferences($preferences){
+
+            $this -> preferences = $preferences;
 
         }
 
@@ -111,6 +123,11 @@
         function get_status(){
 
             return $this -> status;
+
+        }
+        function get_preferences(){
+
+            return $this -> preferences;
 
         }
         // Methods

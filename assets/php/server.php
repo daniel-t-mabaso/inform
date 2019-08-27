@@ -31,7 +31,7 @@
                     mysqli_free_result($result);
                     if (password_verify($password, $user_hash)){
                         $me = new User;
-                        $me-> set_details($array['name'], $array['email'], $array['type'], 'active', 'assets/media/images/user_placeholder.png');
+                        $me-> set_details($array['name'], $array['email'], $array['type'], 'active', 'assets/media/images/user_placeholder.png', $array['filters']);
                         $mes = serialize($me);
                         $_SESSION['auth'] = true;
                         $_SESSION['user'] = $mes;
@@ -94,13 +94,13 @@
                 mysqli_query($dbc, $sql);
 
                 $me = new User;
-                $me-> set_details($fullName, $email, $type, 'active', 'assets/media/images/user_placeholder.png');
+                $me-> set_details($fullName, $email, $type, 'active', 'assets/media/images/user_placeholder.png', '');
                 $mes = serialize($me);
                 $_SESSION['auth'] = true;
                 $_SESSION['user'] = $mes;
 
                 echo '<script>
-                window.location = "index.php";
+                window.location = "preferences.php";
                 </script>';
             }
         

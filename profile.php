@@ -9,8 +9,8 @@
             include 'assets/php/dependencies.php';
             $user = unserialize($_SESSION['user']);
         ?>
-    <body>
-        <div style="background-color: skyblue; text-align: center">
+    <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+        <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
                 <!--This is where the picture goes-->
                 <img src="image.png" class="profilePicture" style="background-color: white" >
                

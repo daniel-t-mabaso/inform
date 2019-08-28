@@ -1,9 +1,20 @@
-<?php 
+
+<?php
     include("assets/php/session.php");
     include("assets/php/local_class_lib.php");
     include("assets/php/connect.php");
-?>
+    if(!$_SESSION['auth']){
+        header("Location: login.php");
+    }
+    else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
+        $user = unserialize($_SESSION['user']);
+    }
 
+if($_SESSION['auth']!= true){
+    
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +23,10 @@
             include 'assets/php/dependencies.php';
         ?>
 </head>
-<body style="background-color: white;" >
-        <div class="vertical-padding-10 grey-txt bold-txt" style="text-align: center">
-            <h1 class='heading'>NEW Event</h1>
+<body class="white-bg">
+        <?php include("assets/php/header.php");?>
+        <div class="vertical-padding-40 grey-txt bold-txt alt-bg" style="text-align: center">
+            <h1 class='heading'>New Event</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
         <form method="post" action="" name="createEvent" class="left-txt vertical-padding-10">

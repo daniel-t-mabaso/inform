@@ -24,7 +24,7 @@
 }
 
 .inputField {
-    border: 2px solid skyblue; 
+    border: 1px solid skyblue; 
     width: calc(100% - 10px * 2); 
     margin-top : 5px;
     padding: 5px;
@@ -97,11 +97,11 @@
     position: absolute;
     top: calc(50% - 50px / 2);
     border-radius: 0px 50px 50px 0px;
-    box-shadow: 2px 2px 2px grey;
     z-index: 10;
+    margin-left: -10px;
 }
 .shift-menu-button{
-    margin-left: 310px;
+    margin-left: 295px !important;
 }
 
 .media{

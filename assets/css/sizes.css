@@ -32,6 +32,30 @@
 .minute-width{
     width: 20px;
 }
+.large-line-height{
+    line-height: 600px;
+}
+.large-medium-line-height{
+    line-height:500px;
+}
+.medium-line-height{
+    line-height:400px;
+}
+.small-medium-line-height{
+    line-height: 250px;
+}
+.medium-small-line-height{
+    line-height: 180px;
+}
+.small-line-height{
+    line-height: 150px;
+}
+.extra-small-line-height{
+    line-height: 50px;
+}
+.minute-line-height{
+    line-height: 20px;
+}
 
 /* heights */
 .uninterupted-max-height{

@@ -13,5 +13,5 @@
         <a href="settings.php"><div class="max-width padding-20">Settings</div></a>
         <a href="logout.php"><div class="max-width padding-20">Logout</div></a>
     </div>
-    <div id='menu-button' class="white-bg z-40 padding-15 primary-txt subheading float-left bold" onclick="toggleMenu();"> > </div>
+    <div id='menu-button' class="white-bg z-40 unselected shadow padding-5 hide-overflow extra-small-size primary-txt subheading float-left bold" onclick="toggleMenu();"><img class="unresticted-max-width" alt='Vertical menu icon' src="assets/media/images/vertical-menu-icon.png"></div>
 </div>

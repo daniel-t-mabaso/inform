@@ -24,13 +24,33 @@
 }
 
 .inputField {
-    border: 1px solid skyblue; 
+    border: 2px solid skyblue; 
     width: calc(100% - 10px * 2); 
     margin-top : 5px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom : 5px;
+}
+
+.imageBorder{
+    border: 2px solid skyblue;
+    width: 35%;
+    margin-top: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right : 10px;
+}
+.detailField{
+    border: 2px solid skyblue; 
+    width: calc(100% - 10px * 2);
+    margin-top: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    height: 100px;
+    padding-right : 10px;
+    
+    
 }
 
 .checkBox{

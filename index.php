@@ -20,13 +20,24 @@ if($_SESSION['auth']!= true){
 
     <body style="background-color: skyblue; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; ">
     <div class="sideMenu">
-    <a href="index.php">Home</a><br>
-    <a href="profile.php">Profile</a><br>
-    <a href="preferences.php">Preferences</a><br>
+    <a href="index.php">Home</a>
+    <br>
+    <br>
+    <a href="profile.php">Profile</a>
+    <br>
+    <br>
+    <a href="preferences.php">Preferences</a>
+    <br>
+    <br>
     <a href="logout.php">Logout</a>
+    <br>
+    <br>
     </div>
     <div class="bodyHome">
-        
+        <form method="post" action="" name="choice" class="right-txt vertical-padding-10">
+            <input class="button" type="submit" value="Events" name="events" />
+            <input class="button" type="submit" value="Alerts" name="alerts" />
+        </form>
     </div>
     </body>
 </html>

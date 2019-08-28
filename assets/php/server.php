@@ -26,9 +26,12 @@
                 $result = mysqli_query($dbc, $query);
                 if (isset($result)){
                     $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                    $email = $array['email'];
                     $user_hash = $array['password'];
                     $user_type = $array['type'];
                     mysqli_free_result($result);
+
+                    if($email){
                     if (password_verify($password, $user_hash)){
                         $me = new User;
                         $me-> set_details($array['name'], $array['email'], $array['type'], 'active', 'assets/media/images/user_placeholder.png', $array['filters']);
@@ -44,10 +47,13 @@
                     else{
                         $user_hash="";
                         
-                        array_push($errors, "Your email/password is incorrect.");
+                        array_push($errors, "* Your email/password is incorrect.");
                     }
 
-                }   
+                    }else{
+                        array_push($errors, "* Mmmmh... seems like you're not registered. <a href='registration.php'> now!</a>");
+                    } 
+                }
             } 
         }
 
@@ -89,12 +95,12 @@
                 
                 $hash = password_hash($password1, PASSWORD_BCRYPT, $options);
 
-                $sql = "INSERT INTO users (name, email, password, type, base_cid)
-                            VALUES ('$fullName', '$email','$hash','$type', 0)";
+                $sql = "INSERT INTO users (name, email, password, type, base_cid, filters)
+                            VALUES ('$fullName', '$email','$hash','$type', 0, '-')";
                 mysqli_query($dbc, $sql);
 
                 $me = new User;
-                $me-> set_details($fullName, $email, $type, 'active', 'assets/media/images/user_placeholder.png', '');
+                $me-> set_details($fullName, $email, $type, 'active', 'assets/media/images/user_placeholder.png', '-');
                 $mes = serialize($me);
                 $_SESSION['auth'] = true;
                 $_SESSION['user'] = $mes;

@@ -81,7 +81,6 @@
         }
 
         function set_preferences($preferences){
-
             $this -> preferences = $preferences;
 
         }
@@ -131,6 +130,7 @@
 
         }
         // Methods
+
     }
 
 

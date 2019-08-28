@@ -1,11 +1,11 @@
-<?php include("assets/php/session.php");
-include("assets/php/class_lib.php");
-include("assets/php/server.php");
-
-if($_SESSION['auth'] == true){
-    //user is logged in. Redirect to home
-    header("Location: index.php");
-}
+<?php
+    include("assets/php/session.php");
+    if(!$_SESSION['auth']){
+        header("Location: login.php");
+    }
+    else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
+        $user = unserialize($_SESSION['user']);
+    }
 ?>
 <!DOCTYPE html>
 <html>

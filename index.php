@@ -1,7 +1,12 @@
-<?php include("assets/php/session.php");
-include("assets/php/class_lib.php");
+<?php
+    include("assets/php/session.php");
+    if(!$_SESSION['auth']){
+        header("Location: login.php");
+    }
+    else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
+        $user = unserialize($_SESSION['user']);
+    }
 ?>
-
 <?php
 if($_SESSION['auth']!= true){
     
@@ -19,6 +24,9 @@ if($_SESSION['auth']!= true){
 </head>
 
     <body style="background-color: skyblue; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; ">
+    
+    <?php include("assets/php/header.php");?>
+    
     <div class="sideMenu">
     <a href="index.php">Home</a>
     <br>

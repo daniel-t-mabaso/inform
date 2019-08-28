@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2019 at 04:52 PM
+-- Generation Time: Aug 28, 2019 at 06:55 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -98,8 +98,8 @@ CREATE TABLE `flags` (
 
 CREATE TABLE `posts` (
   `pid` int(11) NOT NULL,
-  `start` datetime NOT NULL,
-  `end` datetime NOT NULL,
+  `start` varchar(20) NOT NULL,
+  `end` varchar(20) NOT NULL,
   `media_url` varchar(300) NOT NULL,
   `type` enum('alert','event') NOT NULL,
   `cid` int(11) NOT NULL,

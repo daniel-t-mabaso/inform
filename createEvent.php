@@ -1,3 +1,9 @@
+<?php 
+    include("assets/php/session.php");
+    include("assets/php/local_class_lib.php");
+    include("assets/php/connect.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +50,64 @@
             <input class="button" type="submit" value="Post" name="post"> 
             <div>
         </form>
+
+        <?php // Putting the information into the data base
+        function typecheck($choices){
+            switch($choices){
+                case "Crime":
+                    return ($type = "c");
+                    break;
+                case "Traffic":
+                    return($type = "t");
+                    break;
+                case "Children":
+                    return($type = "k");
+                    break;
+                case "Pets":
+                    return($type = "p");
+                    break;
+                case "Local Goods & Services":
+                    return($type = "s");
+                    break;
+                case "General News":
+                    return($type = "g");
+                    break;
+            }
+        }
+        if (isset($_POST["post"])){
+            $title = $_POST['title'];
+            $details = $_POST['details'];
+            $startDate = $_POST['startDate'];
+            $endDate = $_POST['endDate'];
+            $choices = $_POST['eventTypes']; // A single string - only one option
+            $url;
+            if (isset($_POST["imageAlert"])){
+                $url = $_POST["imageAlert"];
+            }
+
+            $filter = typecheck($choices);
+            echo "Inserting... ";
+            $sql = "INSERT INTO posts(start, end, media_url, type, cid, filter_code ) VALUES ($startDate, $endDate, $url, 'event', 0000, $filter)";
+            $mybool = mysqli_query($dbc, $sql);
+
+            if ($mybool){
+                echo "Got it";
+            }
+            else{
+                echo "AnD i oOp: ".mysqli_error($dbc);
+                
+            }
+
+
+
+            $myEvent = new Event();
+
+
+
+        }
+
+        ?>
+
         </body>
 </div>
 

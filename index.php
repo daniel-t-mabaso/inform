@@ -26,7 +26,7 @@ if($_SESSION['auth']!= true){
     <a href="logout.php">Logout</a>
     </div>
     <div class="bodyHome">
-        <textarea>Hello what is going on here</textarea>
+        
     </div>
     </body>
 </html>

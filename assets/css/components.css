@@ -82,8 +82,8 @@
 }
 
 .sideMenu{
-    height:100%;
-    width: 160px;
+    height: 60%;
+    width: 190px;
     position: fixed;
     z-index:1;
     top:0;
@@ -107,7 +107,7 @@
 }
 
 .bodyHome{
-    margin-left: 40%; 
+    margin-left: 160px; 
     padding: 0px 10px;
     background-color: skyblue;
 }

@@ -22,7 +22,7 @@ if($_SESSION['auth']!= true){
 </head>
 <body class="white-bg">
         <?php include("assets/php/header.php");?>
-        <div class="vertical-padding-40 grey-txt bold-txt alt-bg" style="text-align: center">
+        <div class="vertical-padding-40 grey-txt bold-txt alt-bg center-txt">
             <h1 class='heading'>New Alert</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>

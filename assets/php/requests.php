@@ -61,7 +61,7 @@
                 $code = explode(",", $code);
                 $code = $code[3];
                 if (!is_numeric($code) || $code == '' || !$code ){
-                        $_SESSION['message'] = "danger~Hey, no cheating... Where do you really stay? $code";
+                        $_SESSION['message'] = "danger~No Such Community";
                         echo '<script>
                                 window.location = "../../communityRegister.php";
                                 </script>';
@@ -79,7 +79,7 @@
         
                         //update serialized user object
                         $_SESSION['user'] = serialize($user);
-                        $_SESSION['message'] = "success~Community successfully updated!";
+                        $_SESSION['message'] = "success~Community Updated";
                         echo '<script>
                                 window.location = "../../preferences.php";
                                 </script>';
@@ -104,7 +104,7 @@
 
                 $user->set_full_name($name);
                 $user->set_base_communities($code);
-                $_SESSION['message'] = "success~Profile successfully updated!";
+                $_SESSION['message'] = "success~Profile Updated";
                 echo '<script>
                         window.location = "../../profile.php";
                         </script>';

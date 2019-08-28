@@ -82,32 +82,28 @@
 }
 
 .sideMenu{
-    height: 60%;
-    width: 190px;
-    position: fixed;
+    width: 180px;
+    position: absolute;
     z-index:1;
     top:0;
     left:0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 150px;
 }
 
 .sideMenu a{
-    padding: 6px 8px 6px 16px;
-    font-size: 18pt;
-    font-style: bold;
-    color: lightgrey;
+    font-size: 20pt;
+    color: black;
     display: block;
+    padding: 25px;
 }
 
 .sideMenu a:hover{
-    font-size: 20pt;
+    font-size: 28pt;
     color: skyblue;
+    font-style: bold;
 }
 
 .bodyHome{
-    margin-left: 160px; 
-    padding: 0px 10px;
-    background-color: skyblue;
+    margin-left: 180px;
+
 }

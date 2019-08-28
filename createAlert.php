@@ -13,7 +13,7 @@
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <form method="post" action="" name="createAlert" class="left-txt vertical-padding-10">
             Alert Template:
-            <select class="inputField" id="alertTemplate" onclick="myFunction()" required>
+            <select class="inputField" id="alertTemplate" onchange="myFunction()" required>
                 <option value="crimeOccurence">Crime Occurence</option>
                 <option value="trafficIncident">Traffic Incident</option>
                 <option value="recommendations">Recommendations/Referrals</option>

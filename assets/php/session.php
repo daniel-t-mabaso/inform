@@ -5,7 +5,6 @@
 }
 
 
-
 if(!isset($_SESSION['auth']) || !isset($_SESSION['user'])){
     //User not logged in
     $_SESSION['auth'] = false;

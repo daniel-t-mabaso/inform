@@ -93,7 +93,6 @@
         }
 
         function set_preferences($preferences){
-
             $this -> preferences = $preferences;
 
         }
@@ -159,6 +158,7 @@
             return $this -> interest_communites;
         }
         // Methods
+
     }
 
 

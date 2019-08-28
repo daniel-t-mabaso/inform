@@ -89,17 +89,18 @@ if($_SESSION['auth']!= true){
         if (isset($_POST["post"])){
             $title = $_POST['title'];
             $details = $_POST['details'];
-            $startDate = $_POST['startDate'];
-            $endDate = $_POST['endDate'];
+            $startDate = "\"".$_POST['startDate']."\"";
+            $endDate = "\"".$_POST['endDate']."\"";
             $choices = $_POST['eventTypes']; // A single string - only one option
-            $url;
-            if (isset($_POST["imageAlert"])){
+            $url = "-";
+            $enum = "event";
+            /*if (isset($_POST["imageAlert"])){
                 $url = $_POST["imageAlert"];
-            }
+            }*/
 
             $filter = typecheck($choices);
             echo "Inserting... ";
-            $sql = "INSERT INTO posts(start, end, media_url, type, cid, filter_code ) VALUES ($startDate, $endDate, $url, 'event', 0000, $filter)";
+            $sql = "INSERT INTO posts(start, end, media_url, type, cid, filter_code ) VALUES ('$startDate','$endDate','$url','$enum',0000,'$filter')";
             $mybool = mysqli_query($dbc, $sql);
 
             if ($mybool){

@@ -6,9 +6,9 @@
 
         var $city;
 
-        var $province
+        var $province;
 
-        var $num_members
+        var $num_members;
 
         // Constructor
         function __construct(){
@@ -38,7 +38,7 @@
         }
 
         function set_city($city){
-            $this->$city = $city
+            $this->$city = $city;
         }
 
         function set_province($province){

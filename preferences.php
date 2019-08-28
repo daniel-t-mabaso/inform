@@ -124,10 +124,8 @@
                 </div>
            
         </div><div>
-            <input class="button" type="submit" value="Save" name="preferences" />
-            <br>
-            <input class="button" type="button" value="Discard" onclick="window.location.href='index.php'" name="discard" />
-            <br><div>
+            <input class="button" type="submit" value="Done" name="preferences" />
+        <div>
         </div>
         </form>
         </div>

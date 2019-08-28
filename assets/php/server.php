@@ -34,7 +34,7 @@
                     if($email){
                     if (password_verify($password, $user_hash)){
                         $me = new User;
-                        $me-> set_details($array['name'], $array['email'], $array['type'], 'active', 'assets/media/images/user_placeholder.png', $array['filters'], '', '');//to edit base com and prefered com
+                        $me-> set_details($array['name'], $array['email'], $array['type'], 'active', 'assets/media/images/user_placeholder.png', $array['filters'], $array['base_cid'], '');//to edit base com and prefered com
                         $mes = serialize($me);
                         $_SESSION['auth'] = true;
                         $_SESSION['user'] = $mes;
@@ -106,7 +106,7 @@
                 $_SESSION['user'] = $mes;
 
                 echo '<script>
-                window.location = "preferences.php";
+                window.location = "communityRegister.php";
                 </script>';
             }
         

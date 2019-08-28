@@ -35,8 +35,13 @@ if($_SESSION['auth']!= true){
     </div>
     <div class="bodyHome">
         <form method="post" action="" name="choice" class="right-txt vertical-padding-10">
+            <div class="small-width center hide-overflow">
+                <img class="max-width max-height" src='assets/media/images/event-icon.jpg'>
+            </div>
             <input class="button" type="submit" value="Events" name="events" />
-            
+            <div class="small-width center hide-overflow">
+                <img class="max-width max-height" src='assets/media/images/alert-icon.png'>
+            </div>
             <input class="button" type="submit" value="Alerts" name="alerts" />
         </form>
     </div>

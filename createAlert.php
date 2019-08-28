@@ -13,12 +13,12 @@
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <form method="post" action="" name="createAlert" class="left-txt vertical-padding-10">
             Alert Template:
-            <select class="inputField" name="alertTemplate" required>
-                <option name="crimeOccurence">Crime Occurence</option>
-                <option name="trafficIncident">Traffic Incident</option>
-                <option name="recommendations">Recommendations/Referrals</option>
-                <option name="lost">Lost Persons/Pets</option>
-                <option name="sales">Sales</option>
+            <select class="inputField" id="alertTemplate" onclick="myFunction()" required>
+                <option value="crimeOccurence">Crime Occurence</option>
+                <option value="trafficIncident">Traffic Incident</option>
+                <option value="recommendations">Recommendations/Referrals</option>
+                <option value="lost">Lost Persons/Pets</option>
+                <option value="sales">Sales</option>
             </select>
             
             <br><br>
@@ -28,8 +28,8 @@
             Details:
             <textarea class="detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
             <br><br>
-            <div class="output">
-                <div class="crimeO">
+            
+                <div id="crimeO" style="display: block">
                     <div class="book center-txt">
                     <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
                     <div class="hide  left-txt imageBorder" id="upload-image-panel">
@@ -41,7 +41,7 @@
                     <br><br>
                 </div>
 
-                <div class="trafficI">
+                <div id="trafficI" style="display: none">
                 Time of Occurence:
                     <input class="inputField" name="timeOfTraffic" type="datetime-local" required>
                     <br><br>
@@ -50,7 +50,7 @@
                     <br><br>
                 </div>
 
-                <div class="referrals">
+                <div id="referrals" style="display: none">
                     <div class="book center-txt">
                     <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
                     <div class="hide  left-txt imageBorder" id="upload-image-panel">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="lostObjs">
+                <div id="lostObjs" style="display: none">
                         <div class="book center-txt">
                         <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
                         <div class="hide  left-txt imageBorder" id="upload-image-panel">
@@ -70,30 +70,47 @@
                     <input class="inputField" name="lastSeen" type="datetime-local" required>
                     <br><br>
                 </div>
-
-                <div class="salesDivision">
-
-                </div>
-
-            </div>
-
-            <script>
-                $(function () {
-                $("#alertTemplate").change(function() {
-                    var val = $(this).val();
-                if(name === "crimeO") {
-                    $("crimeO").show();
-                    $("#lostObjs").hide();
-                    }
-                else if(name === "client_form") {
-                    $("#client_graph_form").show();
-                    $("#pilot_graph_form").hide();
-                }
-             });
-            }); 
-            </script>
-            </form>
+                <div class="center-txt">
+            <input class="button" type="submit" value="Post" name="post"> 
+            <div>
         </div>
+            </form>
+        <script>
+            function myFunction() {
+                
+                var x=document.getElementById("alertTemplate").value;
+                if(x==="crimeOccurence"){
+                    document.getElementById("crimeO").style.display="block";
+                    document.getElementById("trafficI").style.display="none";
+                    document.getElementById("referrals").style.display="none";
+                    document.getElementById("lostObjs").style.display="none";
+                }
+                else if(x==="trafficIncident"){
+                    document.getElementById("trafficI").style.display="block";
+                    document.getElementById("crimeO").style.display="none";
+                    document.getElementById("referrals").style.display="none";
+                    document.getElementById("lostObjs").style.display="none";
+                }
+                else if(x==="recommendations"){
+                    document.getElementById("referrals").style.display="block";
+                    document.getElementById("trafficI").style.display="none";
+                    document.getElementById("lostObjs").style.display="none";
+                    document.getElementById("crimeO").style.display="none";
+                }
+                else if(x==="lost"){
+                    document.getElementById("lostObjs").style.display="block";
+                    document.getElementById("referrals").style.display="none";
+                    document.getElementById("trafficI").style.display="none";
+                    document.getElementById("crimeO").style.display="none";
+                }
+                else{
+                    document.getElementById("lostObjs").style.display="none";
+                    document.getElementById("referrals").style.display="none";
+                    document.getElementById("trafficI").style.display="none";
+                    document.getElementById("crimeO").style.display="none";
+                }
+            }
+</script>
 </body>
 
 </html>

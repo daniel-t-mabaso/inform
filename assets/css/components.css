@@ -24,13 +24,33 @@
 }
 
 .inputField {
-    border: 1px solid skyblue; 
+    border: 2px solid skyblue; 
     width: calc(100% - 10px * 2); 
     margin-top : 5px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom : 5px;
+}
+
+.imageBorder{
+    border: 2px solid skyblue;
+    width: 35%;
+    margin-top: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right : 10px;
+}
+.detailField{
+    border: 2px solid skyblue; 
+    width: calc(100% - 10px * 2);
+    margin-top: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    height: 100px;
+    padding-right : 10px;
+    
+    
 }
 
 .checkBox{
@@ -81,32 +101,28 @@
 }
 
 .sideMenu{
-    height:100%;
-    width: 160px;
-    position: fixed;
+    width: 180px;
+    position: absolute;
     z-index:1;
     top:0;
     left:0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 150px;
 }
 
 .sideMenu a{
-    padding: 6px 8px 6px 16px;
-    font-size: 18pt;
-    font-style: bold;
-    color: lightgrey;
+    font-size: 20pt;
+    color: black;
     display: block;
+    padding: 25px;
 }
 
 .sideMenu a:hover{
-    font-size: 20pt;
+    font-size: 28pt;
     color: skyblue;
+    font-style: bold;
 }
 
 .bodyHome{
-    margin-left: 40%; 
-    padding: 0px 10px;
-    background-color: skyblue;
+    margin-left: 180px;
+
 }

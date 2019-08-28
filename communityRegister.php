@@ -16,15 +16,15 @@
                 <form method="post" action="./" class="left-txt vertical-padding-10">
                         Province:<br>
                         <select class="inputField" name="provinces" required>
-                            <option value="gp">Gauteng</option>
-                            <option value="kzn">Kwa-Zulu Natal</option>
-                            <option value="fs">Free State</option>
-                            <option value="nc">Northern Cape</option>
-                            <option value="wc">Western Cape</option>
-                            <option value="ec">Eastern Cape</option>
-                            <option value="nw">North West</option>
-                            <option value="mp">Mpumalanga</option>
-                            <option value="lp">Limpopo</option>
+                            <option name="gp">Gauteng</option>
+                            <option name="kzn">Kwa-Zulu Natal</option>
+                            <option name="fs">Free State</option>
+                            <option name="nc">Northern Cape</option>
+                            <option name="wc">Western Cape</option>
+                            <option name="ec">Eastern Cape</option>
+                            <option name="nw">North West</option>
+                            <option name="mp">Mpumalanga</option>
+                            <option name="lp">Limpopo</option>
                         </select><br>
                         City:<br>
                         <select name="city" class="inputField" required>

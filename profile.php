@@ -61,12 +61,12 @@
                     Full Name
                         <?php 
                         $name = $user->get_full_name(); 
-                        echo "<input type='text' class='inputField' name='fullName' placeholder='$name'/>";?>
+                        echo "<input type='text' class='inputField' name='fullName' value='$name'/>";?>
                         
                     Email
                         <?php
                         $email = $user->get_email(); 
-                        echo "<input type='email' class='inputField' name='fullName' placeholder='$email'/>";?>
+                        echo "<input type='email' class='inputField' name='fullName' value='$email'/>";?>
                         
                         Community
                             <input id="community-choices" type="text" class="inputField" value="Suburb, 0000" name="zipCode">

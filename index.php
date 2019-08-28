@@ -7,9 +7,22 @@ if($_SESSION['auth']!= true){
 ?>
 <!DOCTYPE html>
 <html>
-    <body style="background-color: skyblue; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; ">
-    <a href="preferences.php">Preferences</a><br>
+<head>
+    <?php
+        include 'assets/php/dependencies.php';
+    ?>
+    <title>HOME</title>
+</head>
+
+    <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; ">
+    <div class="sideMenu">
+    <a href="index.php">Home</a><br>
     <a href="profile.php">Profile</a><br>
-    <a href="logout.php">logout</a>
+    <a href="preferences.php">Preferences</a><br>
+    <a href="logout.php">Logout</a>
+    </div>
+    <div class="bodyHome">
+        
+    </div>
     </body>
 </html>

@@ -80,3 +80,32 @@
     margin: 5px;
     width: 260px
 }
+
+.sideMenu{
+    height:100%;
+    width: 150px;
+    position: fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color: white;
+    padding: 15px;
+}
+
+.sideMenu a{
+    font-size: 18pt;
+    font-style: bold;
+    color: lightgrey;
+    display: block;
+}
+
+.sideMenu a:hover{
+    font-size: 20pt;
+    color: skyblue;
+}
+
+.bodyHome{
+    margin-left: 150px; 
+    padding: 0px 10px;
+    background-color: skyblue;
+}

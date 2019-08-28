@@ -93,6 +93,17 @@
     width: 150px;
 }
 
+#menu-button{
+    position: absolute;
+    top: calc(50% - 50px / 2);
+    border-radius: 0px 50px 50px 0px;
+    box-shadow: 2px 2px 2px grey;
+    z-index: 10;
+}
+.shift-menu-button{
+    margin-left: 310px;
+}
+
 .media{
     display: flex;
     height: 180px;

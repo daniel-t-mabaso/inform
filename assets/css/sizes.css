@@ -1,4 +1,7 @@
 /* widths */
+.uninterupted-max-width{
+    width: 100%;
+}
 .max-width{
     width:  calc(100% - 20px * 2);
 }
@@ -8,8 +11,17 @@
 .large-width{
     width: 600px;
 }
+.large-medium-width{
+    width:500px;
+}
 .medium-width{
     width:400px;
+}
+.small-medium-width{
+    width: 250px;
+}
+.medium-small-width{
+    width: 180px;
 }
 .small-width{
     width: 150px;
@@ -22,6 +34,9 @@
 }
 
 /* heights */
+.uninterupted-max-height{
+    height: 100%;
+}
 .max-height{
     height: calc(100% - 20px * 2);
 }
@@ -36,6 +51,9 @@
 }
 .medium-height{
     height:400px;
+}
+.small-medium-height{
+    height: 250px;
 }
 .medium-small-height{
     height: 180px;
@@ -89,6 +107,18 @@
 .vertical-margin-20{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.vertical-margin-30{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.vertical-margin-40{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.vertical-margin-50{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 

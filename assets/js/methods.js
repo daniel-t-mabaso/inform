@@ -24,3 +24,9 @@ function hideThisMeShowThat(id1, id2){
         document.getElementById(id2).classList.remove('hide');
     }
 }
+
+function toggleMenu(){
+    document.getElementById('menu-overlay').classList.toggle('hide');
+    document.getElementById('navigation-panel').classList.toggle('hide');
+    document.getElementById('menu-button').classList.toggle('shift-menu-button');
+}

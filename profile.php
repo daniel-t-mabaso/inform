@@ -16,7 +16,10 @@
         ?>
     <title>Profile</title>
 </head>
-    <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+    <body>
+        
+    <?php include("assets/php/header.php");?>
+
         <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
                 <!--This is where the picture goes-->
                 <?php
@@ -53,8 +56,7 @@
                
             <br>
             <div class="book center-txt">
-                <input class="button" type="submit" value="Deactivate Account" name="deleteProfile" /><br>
-                <a href='index.php'><input class="button" type="button" value="Go Home"/></a><br>
+                <input class="button" type="submit" value="Deactivate Account" name="deleteProfile" />
             </div>
                 </div>
                 <div id='profile-edit-panel' class='hide'>

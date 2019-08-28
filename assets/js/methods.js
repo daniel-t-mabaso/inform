@@ -29,4 +29,5 @@ function toggleMenu(){
     document.getElementById('menu-overlay').classList.toggle('hide');
     document.getElementById('navigation-panel').classList.toggle('hide');
     document.getElementById('menu-button').classList.toggle('shift-menu-button');
+    document.getElementById('menu-button').classList.toggle('unselected');
 }

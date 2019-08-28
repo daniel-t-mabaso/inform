@@ -6,14 +6,12 @@
     else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
         $user = unserialize($_SESSION['user']);
     }
-?>
-<?php
+
 if($_SESSION['auth']!= true){
     
     header("Location: login.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>

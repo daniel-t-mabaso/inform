@@ -28,6 +28,12 @@ html, body{
 .center{
     margin: 0 auto;
 }
+.shadow{
+    box-shadow: 2px 2px 2px grey;
+}
+.circle{
+    border-radius: 100%;
+}
 @media only screen and (max-width: 300px){
     /*Applies only to small screen mobile phones*/
 

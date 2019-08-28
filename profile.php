@@ -20,7 +20,7 @@
         
     <?php include("assets/php/header.php");?>
 
-        <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
+        <div class="vertical-padding-40 white-txt primary-bg center-txt">
                 <!--This is where the picture goes-->
                 <?php
                     $url = $user -> get_dp_url();

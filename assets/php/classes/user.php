@@ -13,6 +13,10 @@
 
         var $preferences;
 
+        var $base_communities;
+
+        var $interest_communities;
+
         /*CONSTRUCTOR*/
 
         function __construct(){
@@ -29,11 +33,15 @@
 
             $this->preferences = '';
 
+            $this->base_communities = array();
+
+            $this->interest_communities = array();
+
         }
 
         /*SETTERS*/
 
-        function set_details($user_full_name, $user_email, $user_type, $user_status, $dp_url, $preferences){
+        function set_details($user_full_name, $user_email, $user_type, $user_status, $dp_url, $preferences, $base_com, $interest_comm){
 
             $this->full_name = $user_full_name;
 
@@ -46,6 +54,10 @@
             $this->user_type = $user_type;
 
             $this->preferences = $preferences;
+
+            $this->base_communities = $base_com; // Organiszations can have more than one base, holds Community objects
+
+            $this->interest_communities = $interest_comm;  // for the sake of toggling, holds Community objects
 
         }
 
@@ -81,9 +93,16 @@
         }
 
         function set_preferences($preferences){
-
             $this -> preferences = $preferences;
 
+        }
+
+        function set_base_communities($base_comm){
+            $this->base_communities = $base_comm;
+        }
+
+        function set_interest_communities($interest_comm){
+            $this->interest_communities = $interest_comm;
         }
 
 
@@ -130,7 +149,16 @@
             return $this -> preferences;
 
         }
+
+        function get_base_communities(){
+            return $this -> base_communities;
+        }
+
+        function get_interest_communites(){
+            return $this -> interest_communites;
+        }
         // Methods
+
     }
 
 

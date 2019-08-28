@@ -1,0 +1,79 @@
+body, html{
+    position: relative;
+}
+
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.fixed{
+    position: fixed;
+}
+
+.bottom-0{
+    bottom: 0px;
+}
+.bottom-5{
+    bottom: 5px;
+}
+.bottom-10{
+    
+    bottom: 10px;
+}
+.bottom-15{
+    
+    bottom: 15px;
+}
+.bottom-20{
+    
+    bottom: 20px;
+}
+.bottom-30{
+    
+    bottom: 30px;
+}
+.bottom-40{
+    
+    bottom: 40px;
+}
+.bottom-50{
+    
+    bottom: 50px;
+}
+
+.z-n20{
+    
+    z-index: -20;
+}
+
+.z-n10{
+    
+    z-index: -10;
+}
+
+.z-0{
+    
+    z-index: 0;
+}
+.z-10{
+    
+    z-index: 10;
+}
+.z-20{
+    
+    z-index: 20;
+}
+.z-30{
+    
+    z-index: 30;
+}
+.z-40{
+    
+    z-index: 40;
+}
+.z-50{
+    
+    z-index: 50;
+}

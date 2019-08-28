@@ -23,7 +23,7 @@ if($_SESSION['auth']!= true){
 <body class="white-bg">
         <?php include("assets/php/header.php");?>
         <div class="vertical-padding-40 grey-txt bold-txt alt-bg" style="text-align: center">
-            <h1 class='heading'>NEW Event</h1>
+            <h1 class='heading'>New Event</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
         <form method="post" action="" name="createEvent" class="left-txt vertical-padding-10">

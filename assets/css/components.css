@@ -98,9 +98,10 @@
     top: calc(50% - 50px / 2);
     border-radius: 0px 50px 50px 0px;
     z-index: 10;
+    margin-left: -10px;
 }
 .shift-menu-button{
-    margin-left: 310px;
+    margin-left: 295px !important;
 }
 
 .media{

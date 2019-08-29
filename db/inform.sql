@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2019 at 02:44 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Aug 29, 2019 at 03:58 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,9 +40,11 @@ CREATE TABLE `cities` (
 --
 
 CREATE TABLE `communities` (
-  `cid` int(11) NOT NULL,
-  `com_name` varchar(100) NOT NULL,
-  `city_name` varchar(100) NOT NULL
+  `code` int(11) NOT NULL,
+  `suburb` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `district` varchar(255) NOT NULL,
+  `province` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -145,7 +147,7 @@ ALTER TABLE `cities`
 -- Indexes for table `communities`
 --
 ALTER TABLE `communities`
-  ADD PRIMARY KEY (`cid`);
+  ADD PRIMARY KEY (`code`);
 
 --
 -- Indexes for table `com_interest`

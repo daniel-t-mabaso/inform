@@ -8,6 +8,19 @@ else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
     $user = unserialize($_SESSION['user']);
 }
 
+try {
+    $server = 'localhost';
+    $username = 'root';
+    $password = '';
+    $database = 'inform';
+    // Try Connect to the DB with mysqli_connect function - Params {hostname, userid, password, dbname}
+    $dbc = mysqli_connect($server, $username, $password, $database);
+    
+} catch (mysqli_sql_exception $e) { // Failed to connect? Lets see the exception details..
+    // echo "MySQLi Error Code: " . $e->getCode() . "<br />";
+    // echo "Exception Msg: " . $e->getMessage();
+    exit; // exit and close connection.
+}
 $target_dir = "../../uploads/";
 $target_dir_2 = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -21,7 +34,7 @@ if (file_exists($target_file)) {
     $uploadOk = 1;
 }
 
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
     echo "Sorry, your file is too large.";
     
     $uploadOk = 0;
@@ -35,11 +48,10 @@ if ($uploadOk == 0) {
 }
 else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) || $uploadOk == 1 ) {
-        // $t = $user->get_dp_url();
-        // echo $t.">";
         $user -> set_dp_url($target_file_2);
-        // $t = $user->get_dp_url();
-        // echo $t;
+        $email = $user->get_email();
+        $sql = "UPDATE `users` SET `media_url` = '$target_file_2' WHERE `email` = '$email'";
+        mysqli_query($dbc, $sql);
         $_SESSION['user'] = serialize($user);
         header("Location: ../../profile.php");
 

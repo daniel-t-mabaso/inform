@@ -96,7 +96,7 @@
                         $code = explode(",", $code);
                         $code = $code[3];
                 }
-        }
+
                 
                 $sql = "UPDATE users SET base_cid = '$code',   `name` = '$name' WHERE email = '$email';";
                 mysqli_query($dbc, $sql);

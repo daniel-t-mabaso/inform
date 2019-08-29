@@ -39,3 +39,7 @@ function changeValue(id, value){
 function hideElement(id){
     document.getElementById(id).classList.toggle('hide');
 }
+
+function changeImgSrc(id, obj){
+    document.getElementById(id).src = obj.value;
+}

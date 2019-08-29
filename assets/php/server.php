@@ -96,8 +96,8 @@
                 
                 $hash = password_hash($password1, PASSWORD_BCRYPT, $options);
 
-                $sql = "INSERT INTO users (name, email, password, type, base_cid, filters)
-                            VALUES ('$fullName', '$email','$hash','$type', 0, '-')";
+                $sql = "INSERT INTO users (name, email, password, type, base_cid, filters, media_url)
+                            VALUES ('$fullName', '$email','$hash','$type', 0, '-', 'assets/media/images/user_placeholder.png')";
                 mysqli_query($dbc, $sql);
 
                 $me = new User;

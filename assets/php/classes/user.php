@@ -76,7 +76,7 @@
 
         function set_dp_url($url){
 
-            $this -> dp_url = $dp_url;
+            $this -> dp_url = $url;
 
         }
 

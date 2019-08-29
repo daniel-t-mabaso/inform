@@ -16,7 +16,7 @@ if($_SESSION['auth'] == true){
         ?>
     </head>
         <body>
-        <div class="vertical-padding-40 white-txt" style="background-color: skyblue; text-align: center">
+        <div class="vertical-padding-40 white-txt center-txt primary-bg">
             <h1 class='title'>INFORM</h1>
             <h2 class='book'>Community Notice System</h2>
         </div>

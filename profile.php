@@ -33,8 +33,12 @@
         </div>
        
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
+<<<<<<< HEAD
             <form method="post" action="" class="left-txt bold vertical-padding-10">
             
+=======
+            <form method="post" action="./assets/php/requests.php" name="edit-profile" class="left-txt bold vertical-padding-10">
+>>>>>>> 68e486564469813424d405ec8318c81c5622152b
                 <div id="profile-details-panel">
                     <div class="vertical-margin-15">
                         Full Name
@@ -43,7 +47,7 @@
                             echo "<div class='book vertical-margin-5'>$name</div>";?>
                     </div>
                     <div class="vertical-margin-15">        
-                    Email
+                        Email
                             <?php
                             $email = $user->get_email(); 
                             echo "<div class='book vertical-margin-5'>$email</div>";?>
@@ -51,8 +55,8 @@
                     <div class="vertical-margin-15">
                         Community       
                         <?php
-                                $email = $user->get_email(); 
-                                echo "<div class='book'>Suburb, 0000</div>";?>
+                                $cid = $user->get_base_communities(); 
+                                echo "<div class='book vertical-margin-5'>$cid</div>";?>
                     </div>
                     <br>
                     <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="center-txt footnote">Edit Profile</div>
@@ -70,30 +74,16 @@
                         $name = $user->get_full_name(); 
                         echo "<input type='text' class='inputField' name='fullName' value='$name'/>";?>
                         
-                    Email
-                        <?php
-                        $email = $user->get_email(); 
-                        echo "<input type='email' class='inputField' name='fullName' value='$email'/>";?>
-                        
                         Community
-                            <input id="community-choices" type="text" class="inputField" value="Suburb, 0000" name="zipCode">
-                            <datalist>
-                            </datalist>
-                            <div class="hide  left-txt" id="new-community-panel"><br>
-                                Zip Code
-                                <input type="text" class="inputField" name="newCommunityZip" placeholder="0000"/>
-                                Suburb
-                                <input type="text" class="inputField" name="newCommunityName" placeholder="Suburb Name"/>
-                            </div>
-                        <div class="book center-txt">
-                    <br>
-                            <input class="book" type="checkbox" id='new-community-checkbox' onclick="document.getElementById('new-community-panel').classList.toggle('hide'); document.getElementById('community-choices').classList.toggle('hide');" name="newCommunity">New Community<br>
-
-                        </div>
+                                <?php 
+                                $code = $user-> get_base_communities();
+                                echo ' <input id="community-search-input" type="list" onkeyup="search(\'suburbs\', \'community-search-input\');" list="suburb-list" class="inputField" placeholder="'.$code.'" name="community"/>
+                                <div id="community-datalist"></div>';
+                                ?>
                         
                     <br>
                         <div class="center-txt">
-                        <input class="button" type="submit" value="Save" name="save" /> 
+                        <input class="button" type="submit" value="Save" name="edit-profile" /> 
                         <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button" type="button" value="Cancel" name="cancel" /> 
                     </div>
             </div> 

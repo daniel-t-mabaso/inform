@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2019 at 06:55 PM
+-- Generation Time: Aug 29, 2019 at 01:09 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -98,6 +98,8 @@ CREATE TABLE `flags` (
 
 CREATE TABLE `posts` (
   `pid` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `descrip` varchar(3000) NOT NULL,
   `start` varchar(20) NOT NULL,
   `end` varchar(20) NOT NULL,
   `media_url` varchar(300) NOT NULL,
@@ -105,6 +107,13 @@ CREATE TABLE `posts` (
   `cid` int(11) NOT NULL,
   `filter_code` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`pid`, `title`, `descrip`, `start`, `end`, `media_url`, `type`, `cid`, `filter_code`) VALUES
+(16, 'BWbda', 'Uh-huh honey', '2000-04-04T04:04', '2000-04-04T05:05', 'ffffbe37a8d8666df3d2e0d0310b8a4d.1000x1000x1.jpg', 'event', 0, '-tkpsg');
 
 -- --------------------------------------------------------
 
@@ -169,7 +178,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

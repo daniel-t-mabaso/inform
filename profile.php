@@ -25,20 +25,17 @@
                 <?php
                     $url = $user -> get_dp_url();
                     //echo "<img src='$url' class='profilePicture'/>"
-                    echo "<label for='fileField'><img src='$url' class='profilePicture'></label>";
+                    echo "<label for='fileField'><img src='$url' id='profilePicture' class='profilePicture'></label>";
 
                 ?>
-                
-               
+                <form action="./assets/php/upload.php" method="post" enctype="multipart/form-data">
+                 <input id='fileField' type='file' name='fileToUpload' accept='image/*' class='hide'>
+                 <input type="submit" class="button center-txt" value="Upload Image" name="submit">
+                </form>
         </div>
        
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
-<<<<<<< HEAD
-            <form method="post" action="" class="left-txt bold vertical-padding-10">
-            
-=======
-            <form method="post" action="./assets/php/requests.php" name="edit-profile" class="left-txt bold vertical-padding-10">
->>>>>>> 68e486564469813424d405ec8318c81c5622152b
+            <form method="post" action="./assets/php/requests.php" name="edit-profile" class="left-txt bold vertical-padding-10" enctype="multipart/form-data">
                 <div id="profile-details-panel">
                     <div class="vertical-margin-15">
                         Full Name
@@ -60,15 +57,13 @@
                     </div>
                     <br>
                     <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="center-txt footnote">Edit Profile</div>
-               
-               
+                    
             <br>
             <div class="book center-txt">
                 <input class="button" type="submit" value="Deactivate Account" name="deleteProfile" />
             </div>
                 </div>
                 <div id='profile-edit-panel' class='hide'>
-                <input id='fileField' type='file' name='newProfileImage' accept='image/*' class='hide'>
                     Full Name
                         <?php 
                         $name = $user->get_full_name(); 
@@ -89,7 +84,7 @@
             </div> 
             
         </form>
-            
+        
         </div>
     </body>
 </html>

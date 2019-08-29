@@ -90,6 +90,8 @@
                 $name = $_POST['fullName'];
                 $email = $user->get_email();
                 $code = $_POST['community'];
+                $url =$user->get_dp_url();
+                //echo "$url";
                 if(strpos($code, ',')){
                         $code = explode(" ", $code);
                         $code = join('', $code);
@@ -108,7 +110,6 @@
                         window.location = "../../profile.php";
                         </script>';
         }
-    }
     else{
         //else take user to login
         echo '<script>

@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+include("connect.php");
 include("local_class_lib.php");
 if(!$_SESSION['auth']){
     header("Location: login.php");
@@ -38,8 +39,10 @@ else {
         // $t = $user->get_dp_url();
         // echo $t.">";
         $user -> set_dp_url($target_file_2);
-        // $t = $user->get_dp_url();
-        // echo $t;
+        $url=$user->get_dp_url();
+        $email=$user->get_email();
+        $sql = "UPDATE users SET media_url ='$url' WHERE email = '$email';";
+        mysqli_query($dbc, $sql);
         $_SESSION['user'] = serialize($user);
         header("Location: ../../profile.php");
 

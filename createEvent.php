@@ -49,7 +49,13 @@ if($_SESSION['auth']!= true){
             <div class="book center-txt">
                 <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
                 <div class="hide  left-txt imageBorder" id="upload-image-panel">
+
+                   <form action="../../uploadEvent.php" method="POST" enctype="multipart/form-data">
                    <input type="file" name="imageAlert" accept="image/*" >
+                   <input type="submit" name="submit" value = "upload" class="button center-txt">
+                   </form>
+
+                   
                 </div>
             </div>
             <br>

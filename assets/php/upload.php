@@ -1,5 +1,6 @@
 <?php
 include("session.php");
+include("connect.php");
 include("local_class_lib.php");
 if(!$_SESSION['auth']){
     header("Location: login.php");

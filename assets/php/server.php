@@ -106,7 +106,7 @@
                 $_SESSION['user'] = $mes;
 
                 echo '<script>
-                window.location = "communityRegister.php";
+                    window.location = "communityRegister.php";
                 </script>';
             }
         

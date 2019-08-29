@@ -22,14 +22,14 @@
         $query = "SELECT * FROM `communities` WHERE suburb LIKE '$search_term%';";
         $result = mysqli_query($dbc, $query);
         $count = 0;
-        $output = "<datalist id='suburb-list'>";
-        while ($count < 5){
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        
+        while ($count < 3 && $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            
             $count++;
-            $tmp = $row['suburb'].", ".$row['city'].", ".$row['province'].", ".$row['code'];
-            $output .= "<option value='$tmp'><br>";
+            $tmp =trim(preg_replace('/\s\s+/', ' ', $row['suburb'].", ".$row['city'].", ".$row['province'].", ".$row['code']));
+            $output .= "<div onclick='changeValue(\"community-search-input\", \"$tmp\"); hideElement(\"community-datalist\");' class='max-width center-txt padding-20 vertical-padding-0'>$tmp</div>";
         }
-        $output.="</datalist>";
+        
         break;
     }
     

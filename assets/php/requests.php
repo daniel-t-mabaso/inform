@@ -105,6 +105,7 @@
                 $user->set_full_name($name);
                 $user->set_base_communities($code);
                 $_SESSION['message'] = "success~Profile Updated";
+                $_SESSION['user'] = serialize($user);
                 echo '<script>
                         window.location = "../../profile.php";
                         </script>';

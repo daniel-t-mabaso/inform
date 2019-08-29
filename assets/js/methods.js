@@ -31,3 +31,11 @@ function toggleMenu(){
     document.getElementById('menu-button').classList.toggle('shift-menu-button');
     document.getElementById('menu-button').classList.toggle('unselected');
 }
+
+function changeValue(id, value){
+    document.getElementById(id).value = value;
+}
+
+function hideElement(id){
+    document.getElementById(id).classList.toggle('hide');
+}

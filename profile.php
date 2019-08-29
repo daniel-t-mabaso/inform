@@ -24,13 +24,17 @@
                 <!--This is where the picture goes-->
                 <?php
                     $url = $user -> get_dp_url();
-                    echo "<img src='$url' class='profilePicture'/>"
+                    //echo "<img src='$url' class='profilePicture'/>"
+                    echo "<label for='fileField'><img src='$url' class='profilePicture'></label>";
+
                 ?>
+                
                
         </div>
        
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <form method="post" action="" class="left-txt bold vertical-padding-10">
+            
                 <div id="profile-details-panel">
                     <div class="vertical-margin-15">
                         Full Name
@@ -60,6 +64,7 @@
             </div>
                 </div>
                 <div id='profile-edit-panel' class='hide'>
+                <input id='fileField' type='file' name='newProfileImage' accept='image/*' class='hide'>
                     Full Name
                         <?php 
                         $name = $user->get_full_name(); 

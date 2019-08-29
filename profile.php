@@ -23,11 +23,17 @@
         <div class="vertical-padding-50 white-txt uninterupted-max-width extra-small-height primary-bg center-txt">
                 <!--This is where the picture goes-->
                <div class="absolute z-10  uninterupted-max-width center-txt">
-                   <div  class='small-size circle hide-overflow center white-bg shadow'>
+                    <div id='profile-upload-panel' class="hide uninterupted-max-width absolute z-20 small-height">
+                        <div class="center small-width minute-height">
+                            <div onclick='document.getElementById("upload-image-button").click();document.getElementById("profile-upload-panel").classList.add("hide");' class="float-left minute-size circle success-bg white-txt padding-5 shadow">&#10004;</div>
+                            <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height shadow" onclick='document.getElementById("profile-upload-panel").classList.add("hide");'>&#10006;</div>
+                        </div>
+                    </div>
+                    <div  class='small-size circle hide-overflow center white-bg shadow'>
                <?php
                     $url = $user -> get_dp_url();
                     //echo "<img src='$url' class='profilePicture'/>"
-                    echo "<img src='$url' id='profilePicture' onclick='document.getElementById(\"fileField\").click(); document.getElementById(\"upload-image-button\").classList.remove(\"hide\")' class='uninterupted-max-width'>";
+                    echo "<img src='$url' id='profilePicture' onclick='document.getElementById(\"fileField\").click(); document.getElementById(\"profile-upload-panel\").classList.remove(\"hide\")' class='uninterupted-max-width'>";
 
                 ?>
                 </div>

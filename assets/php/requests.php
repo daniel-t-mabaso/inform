@@ -111,6 +111,7 @@
                         window.location = "../../profile.php";
                         </script>';
         }
+}
     else{
         //else take user to login
         echo '<script>

@@ -7,6 +7,7 @@
         var $post_start_date;
         var $post_end_date;
         var $post_community;
+        var $post_filter;
         var $post_image_url;
 
         /*CONSTRUCTOR*/
@@ -19,6 +20,7 @@
             $this->post_start_date = "";
             $this->post_end_date = "";
             $this->post_image_url = "";
+            $this->post_filter = "";
             
         }
 
@@ -50,8 +52,24 @@
         function get_post_image(){
             return $this->post_image_url;
         }
+        function get_post_filter(){
+            return $this->post_filter;
+        }
 
         /* SETTERS */
+
+        function set_details($pid, $pname, $pdescrip, $pstart, $pend, $pfilter, $purl, $pemail){
+            $this->post_id = $pid;
+            $this->post_name = $pname;
+            $this->post_descrip = $pdescrip;
+            $this->post_start_date = $pstart;
+            $this->post_end_date = $pend;
+            $this->post_image_url = $purl;
+            $this->post_filter = $pfilter;
+            $this->user_email = $email;
+
+        }
+
         function set_user_email($email){
             $this->user_email = $email;
         }
@@ -83,6 +101,9 @@
         function set_post_image($url){
             $this->post_image_url = $url;
         }
+        function set_post_filter($pfilter){
+            $this->post_filter = $pfilter;
+        }
     }
 
     class Event extends Post{
@@ -90,6 +111,7 @@
         /* CONSTRUCTOR*/
         function __construct() {
             parent:: __construct();
+            
         }
 
         /* METHOD */

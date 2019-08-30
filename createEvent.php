@@ -50,9 +50,9 @@ if($_SESSION['auth']!= true){
                 <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
                 <div class="hide  left-txt imageBorder" id="upload-image-panel">
 
-                   <form action="../../uploadEvent.php" method="POST" enctype="multipart/form-data">
-                   <input type="file" name="imageAlert" accept="image/*" >
-                   <input type="submit" name="submit" value = "upload" class="button center-txt">
+                   <form action="" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="imageAlert" accept="image/*" >
+                         <input type="submit" name="submit" value = "upload" class="button center-txt">
                    </form>
 
                    
@@ -92,33 +92,52 @@ if($_SESSION['auth']!= true){
                     break;
             }
         }
+
+
+        // GENERAL
+
+        
+
         if (isset($_POST["post"])){
+            $user_email = $user->get_email();
             $title = mysqli_real_escape_string($dbc, $_POST['title']);
-            
+            $pid = mysqli_real_escape_string($dbc, time().$user_email);
             $details = mysqli_real_escape_string($dbc,$_POST['details']);
             $startDate = mysqli_real_escape_string($dbc,$_POST['startDate']);
             $endDate = mysqli_real_escape_string($dbc,$_POST['endDate']);
-            $choices = $_POST['eventTypes']; // PROBLEM: A single string - only one option
-            
-            $url = "-";
+            $community = 0000;
+            $choices = $_POST['eventTypes']; 
             $enum = "event";
+            $url = "-";
 
             // FIND A WAY TO DO THE IMAGE I/O to the assets folder
             if (isset($_POST["imageAlert"]) && $_POST["imageAlert"] !== ""){ // PROBLEM: Look over this again
-                $url =  mysqli_real_escape_string($dbc,$_POST["imageAlert"]);
-            }
+                //$url =  mysqli_real_escape_string($dbc,$_POST["imageAlert"]);
+                $target_dir = "../../event_uploads/";
+                $url = mysqli_real_escape_string($dbc,$target_dir.basename($_FILES["imageAlert"]["name"]));
+            } // NOT QUITE A URL YET!!!!
+            echo $url."\n";
+            echo $pid;
+
 
             // creating the list of filters
             $filter = "-";
-            foreach($choices as $filteradd){
-                
+            foreach($choices as $filteradd)
                 $filter = $filter.typecheck($filteradd);
-            }
             
             
-            $sql = "INSERT INTO posts(title, descrip, start, end, media_url, type, cid, filter_code ) VALUES ('$title', '$details','$startDate','$endDate','$url','$enum',0000,'$filter')";
-            $mybool = mysqli_query($dbc, $sql);
 
+
+            // WE NOW HAVE THE DATA TO MAKE AN EVENT OBJECT
+            $my_event = new Event();
+            $my_event->get_details($pid, $title, $details, $startDate, $endDate, $url, $community, $user_email);
+            //$_SESSION['event'] = serialize($my_event); // We'll see about this
+
+            /***
+            // DATABASE SHANDIS
+            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
+                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum',$community,'$filter','$user_email')";
+            $mybool = mysqli_query($dbc, $sql);
             if ($mybool){
                 echo "Got it";
             }
@@ -126,14 +145,14 @@ if($_SESSION['auth']!= true){
                 echo "AnD i oOp: ".mysqli_error($dbc);
                 
             }
-
+            */
             // TO-DO:
             // FIND A MEANS TO INCLUDE INFORMATION ABOUT THE CID AND PERSON POSTING (try the _SESSION superglobal)
             // I/O FOR IMAGE FILES
             // INCLUSION OF THE ERROR MESSAGES 
             // MOVING OF PHP CODE TO THE REQUEST FILE
 
-            $myEvent = new Event();
+            
 
             
 

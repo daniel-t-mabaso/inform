@@ -58,15 +58,16 @@
 
         /* SETTERS */
 
-        function set_details($pid, $pname, $pdescrip, $pstart, $pend, $pfilter, $purl, $pemail){
+        function set_details($pid, $pname, $pdescrip, $pstart, $pend, $purl, $pcommunity, $pfilter, $pemail){
             $this->post_id = $pid;
             $this->post_name = $pname;
             $this->post_descrip = $pdescrip;
             $this->post_start_date = $pstart;
             $this->post_end_date = $pend;
             $this->post_image_url = $purl;
+            $this->post_community_id = $pcommunity;
             $this->post_filter = $pfilter;
-            $this->user_email = $email;
+            $this->user_email = $pemail;
 
         }
 

@@ -137,21 +137,14 @@ if($_SESSION['auth']!= true){
                     }
                 } 
             }
-            
-            
-
-            
-            $sql = "INSERT INTO posts(title, descrip, start, end, media_url, type, cid, filter_code ) 
-            VALUES ('$title', '$details','$startDate','$endDate','$url','$enum',0000,'$filter')";
-            $mybool = mysqli_query($dbc, $sql);
 
 
             // WE NOW HAVE THE DATA TO MAKE AN EVENT OBJECT
             $my_event = new Event();
-            $my_event->get_details($pid, $title, $details, $startDate, $endDate, $url, $community, $user_email);
+            $my_event->get_details($pid, $title, $details, $startDate, $endDate, $url, $community, $filters, $user_email);
             //$_SESSION['event'] = serialize($my_event); // We'll see about this
 
-            /***
+
             // DATABASE SHANDIS
             $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
                     VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum',$community,'$filter','$user_email')";

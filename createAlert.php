@@ -1,5 +1,7 @@
 <?php
     include("assets/php/session.php");
+    include("assets/php/local_class_lib.php");
+    include("assets/php/connect.php");
     if(!$_SESSION['auth']){
         header("Location: login.php");
     }
@@ -12,6 +14,7 @@ if($_SESSION['auth']!= true){
     header("Location: login.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +29,9 @@ if($_SESSION['auth']!= true){
             <h1 class='heading'>New Alert</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
-            <form method="post" action="" name="createAlert" class="left-txt vertical-padding-10">
+            <form method="POST" action="" name="createAlert" class="left-txt vertical-padding-10" enctype="multipart/form-data">
             Alert Template:
-            <select class="inputField" id="alertTemplate" onchange="myFunction()" required>
+            <select class="inputField" id="alertTemplate" name="alertTemplate" onchange="myFunction()" required>
                 <option value="crimeOccurence">Crime Occurence</option>
                 <option value="trafficIncident">Traffic Incident</option>
                 <option value="recommendations">Recommendations/Referrals</option>
@@ -126,6 +129,15 @@ if($_SESSION['auth']!= true){
                 }
             }
 </script>
+        <?php
+            if (isset($_POST["post"])){
+                $title= mysqli_real_escape_string($dbc, $_POST['title']);
+                $details=mysqli_real_escape_string($dbc,$_POST['details']);
+                $alertTemplate=mysqli_real_escape_string($dbc,$_POST['alertTemplate']);
+                echo"$alertTemplate";
+            }
+        ?>
+        
 </body>
 
 </html>

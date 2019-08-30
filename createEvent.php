@@ -89,12 +89,21 @@ if($_SESSION['auth']!= true){
                     break;
             }
         }
+
+
+        // GENERAL
+
+        
+
         if (isset($_POST["post"])){
+            $user_email = $user->get_email();
+            $pid = mysqli_real_escape_string($dbc, time().$user_email);
             $title = mysqli_real_escape_string($dbc, $_POST['title']);
             $details = mysqli_real_escape_string($dbc,$_POST['details']);
             $startDate = mysqli_real_escape_string($dbc,$_POST['startDate']);
             $endDate = mysqli_real_escape_string($dbc,$_POST['endDate']);
             $enum = "event";
+            $community = 0000;
             $url="-";
             $filter = "-";
             foreach($_POST['eventTypes'] as $filteradd){
@@ -127,16 +136,22 @@ if($_SESSION['auth']!= true){
                         echo "Sorry, there was an error uploading your file.";
                     }
                 } 
-        }
-            
-            
-
-            //$myEvent = new Event();
-
-            
+            }
 
 
-
+            // WE NOW HAVE THE DATA TO MAKE AN EVENT OBJECT
+            $my_event = new Event();
+            $my_event->set_details($pid, $title, $details, $startDate, $endDate, $url, $community, $filter, $user_email);
+            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
+                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum',$community,'$filter','$user_email')";
+            $mybool = mysqli_query($dbc, $sql);
+            if ($mybool){
+                echo "Got it";
+            }
+            else{
+                echo "AnD i oOp: ".mysqli_error($dbc);
+                
+            }
         }
 
         ?>

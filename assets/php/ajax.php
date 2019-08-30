@@ -1,5 +1,6 @@
-<?php session_start();?>
-<?php
+<?php 
+    session_start();
+    include("local_class_lib.php");
    try {
     $server = 'localhost';
     $username = 'root';
@@ -16,9 +17,9 @@
 
     $output = '';
     $type = $_REQUEST["type"];
-    $search_term = $_REQUEST["term"];
     switch($type){
         case 'suburbs':
+            $search_term = $_REQUEST["term"];
             $query = "SELECT * FROM `communities` WHERE suburb LIKE '$search_term%';";
             $result = mysqli_query($dbc, $query);
             $count = 0;
@@ -35,14 +36,95 @@
         case 'events':
             $user = unserialize($_SESSION['user']);
             //get user email
+            $email = $user -> get_email();
             //get user preferences
-            //get user community
+            $preferences = str_split($user -> get_preferences());
+            $filters = '';
+            for($i=0; $i < count($preferences); $i++){
+                if($i==0){
+                    continue;
+                }
+                $x = $preferences[$i];
+                if ($i == 1){
+                    $filters .= "filter_code LIKE '%$x%' ";
+                }
+                else{
+                    $filters .= "OR filter_code LIKE '%$x%'";
+                }
+            }
+            if ($filters != ''){
+                //get user community
+                $cid = $user -> get_base_communities();
 
-            //search DB for posts with preferences belonging to community
+                //search DB for posts with preferences belonging to community
+                $query = "SELECT * FROM posts WHERE type = 'event' AND cid LIKE '%$cid%' AND ($filters) ORDER BY start ASC;";
+                $result = mysqli_query($dbc, $query);
+                $count = 0;
+                $displayed = 0;
+                //loop through results creating obj
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $displayed++;
+                    $event = new Event;
+                    
+                    $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                    //call display function for each post.
+                    $card = $event -> display();
+                    echo $card;
+                }
+                if($displayed==0){
+                    echo "<div class='card max-width vertical-padding-15 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>No events available</div>";
+                }
+            }
+            else{
+                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt'><b>We're not sure what you want to see.</b><br><br><a class='underline' href='preferences.php'>Set Sreferences</a></div>";
+            }
+            break;
 
-            //loop through results creating obj
+        case 'alerts':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            //get user preferences
+            $preferences = str_split($user -> get_preferences());
+            $filters = '';
+            for($i=0; $i < count($preferences); $i++){
+                if($i==0){
+                    continue;
+                }
+                $x = $preferences[$i];
+                if ($i == 1){
+                    $filters .= "filter_code LIKE '%$x%' ";
+                }
+                else{
+                    $filters .= "OR filter_code LIKE '%$x%'";
+                }
+            }
+            if ($filters != ''){
+                //get user community
+                $cid = $user -> get_base_communities();
 
-            //call display function for each post.
+                //search DB for posts with preferences belonging to community
+                $query = "SELECT * FROM posts WHERE type = 'alert' AND cid LIKE '%$cid%' AND ($filters) ORDER BY start ASC;";
+                $result = mysqli_query($dbc, $query);
+                $count = 0;
+                $displayed = 0;
+                //loop through results creating obj
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $displayed++;
+                    $event = new Alert;
+                    
+                    $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                    //call display function for each post.
+                    $card = $event -> display();
+                    echo $card;
+                }
+                if($displayed==0){
+                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>No events available</div>";
+                }
+            }
+            else{
+                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt'><b>We're not sure what you want to see.</b><br><br><a class='underline' href='preferences.php'>Set Sreferences</a></div>";
+            }
             break;
     }
     

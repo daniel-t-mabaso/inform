@@ -34,7 +34,7 @@
                 
             }
             if(isset($_POST['news'])){
-                    $preferences .= 'n';
+                    $preferences .= 'g';
                 
             }
         

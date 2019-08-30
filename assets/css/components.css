@@ -80,8 +80,6 @@
 }
 
 .card{
-    padding: 25px;
-    box-shadow: 10px 10px 5px grey;
     border-style: none;
     border-radius: 5px;
 }

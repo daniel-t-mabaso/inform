@@ -30,7 +30,7 @@
         }
 
         function get_post_name(){
-            return $this->posy_name;
+            return $this->post_name;
         }
 
         function get_user_email(){
@@ -39,6 +39,9 @@
 
         function get_post_date(){
             return $this->post_start_date;
+        }
+        function get_post_end(){
+            return $this->post_end_date;
         }
 
         function get_post_description(){
@@ -118,6 +121,51 @@
         /* METHOD */
         function send_reminders($reminder_time){
             // Write code to signal push notification
+        }
+
+        function display(){
+            date_default_timezone_set('Europe/Belgrade');
+            $id = $this -> get_post_id();
+            $title = $this -> get_post_name();
+            $desciption = $this -> get_post_description();
+            $start = explode('T', $this -> get_post_date());
+            $end = explode('T',$this -> get_post_end()); 
+            $date = '';
+            if($end[0]<= date("Y-m-d") && ($end[1] <= date("H:i"))){
+                $date = "danger-txt'>Finished";
+            }
+            if($date!="danger-txt'>Finished"){
+                if($start[0] == date("Y-m-d") && ($start[1] <= date("H:i"))){
+                    $start[0] = " caution-txt'> Now";
+                    $start[1] = '';
+                }
+                else if($start[0] == date("Y-m-d")){
+                    $start[0] = "success-txt'> Today,";
+                }
+                else{
+                    $start[0] = "'>".$start[0];
+                }
+                if($end[0]==date("Y-m-d")){
+                    $end[0] = '';
+                }
+                if($start[0]==$end[0]){
+                    $date = $start[0]." ".$start[1]." until ".$end[1]."";
+                }
+                else{
+                    $date = $start[0]." ".$start[1]." until ". $end[0]." ".$end[1]."";
+                }
+            }
+
+
+            $url = $this -> get_post_image();
+
+            $tmp = date("H:i");
+            return "<div class='card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+                <div class='bold max-width'>$title</div>
+                <div class='book max-width vertical-padding-5'>$desciption</div>
+                <div class='footnote bold $date</div>
+                <input type='hidden' class='post-id' value='$id'/>
+            </div>";
         }
     }
 

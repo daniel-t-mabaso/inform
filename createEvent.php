@@ -10,9 +10,18 @@
         $user = unserialize($_SESSION['user']);
     }
 
-if($_SESSION['auth']!= true){
-    
-    header("Location: login.php");
+    if($_SESSION['auth']!= true){
+        
+        header("Location: login.php");
+    }
+
+    if($user->get_type() != 'organ'){
+        
+        echo '<script>
+            window.location = "events.php";
+        </script>';
+
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -103,7 +112,7 @@ if($_SESSION['auth']!= true){
             $startDate = mysqli_real_escape_string($dbc,$_POST['startDate']);
             $endDate = mysqli_real_escape_string($dbc,$_POST['endDate']);
             $enum = "event";
-            $community = 0000;
+            $community = $user->get_base_communities();
             $url="-";
             $filter = "-";
             foreach($_POST['eventTypes'] as $filteradd){
@@ -163,7 +172,7 @@ if($_SESSION['auth']!= true){
             // INCLUSION OF THE ERROR MESSAGES 
             // MOVING OF PHP CODE TO THE REQUEST FILE
 
-             $_SESSION['message'] = 'success~Event successfully created';
+             $_SESSION['message'] = 'success~Event Created';
 
             
 

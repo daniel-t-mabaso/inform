@@ -138,12 +138,12 @@ if($_SESSION['auth']!= true){
                 } 
             }
 
-
+            /***
             // WE NOW HAVE THE DATA TO MAKE AN EVENT OBJECT
             $my_event = new Event();
             $my_event->set_details($pid, $title, $details, $startDate, $endDate, $url, $community, $filter, $user_email);
             //$_SESSION['event'] = serialize($my_event); // We'll see about this
-
+            */
 
             // DATABASE SHANDIS
             $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
@@ -167,7 +167,9 @@ if($_SESSION['auth']!= true){
 
             
 
-
+             echo '<script>
+             window.location = "events.php";
+         </script>';
 
         }
 

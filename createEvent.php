@@ -156,6 +156,8 @@ if($_SESSION['auth']!= true){
                 echo "AnD i oOp: ".mysqli_error($dbc);
                 
             }
+
+            $_SESSION['user'] = serialize($user);
             
             // TO-DO:
             // FIND A MEANS TO INCLUDE INFORMATION ABOUT THE CID AND PERSON POSTING (try the _SESSION superglobal)

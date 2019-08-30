@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2019 at 03:58 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Aug 30, 2019 at 12:39 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -99,7 +99,7 @@ CREATE TABLE `flags` (
 --
 
 CREATE TABLE `posts` (
-  `pid` int(11) NOT NULL,
+  `pid` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `descrip` varchar(3000) NOT NULL,
   `start` varchar(20) NOT NULL,
@@ -107,15 +107,16 @@ CREATE TABLE `posts` (
   `media_url` varchar(300) NOT NULL,
   `type` enum('alert','event') NOT NULL,
   `cid` int(11) NOT NULL,
-  `filter_code` varchar(100) NOT NULL
+  `filter_code` varchar(100) NOT NULL,
+  `user_email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`pid`, `title`, `descrip`, `start`, `end`, `media_url`, `type`, `cid`, `filter_code`) VALUES
-(16, 'BWbda', 'Uh-huh honey', '2000-04-04T04:04', '2000-04-04T05:05', 'ffffbe37a8d8666df3d2e0d0310b8a4d.1000x1000x1.jpg', 'event', 0, '-tkpsg');
+INSERT INTO `posts` (`pid`, `title`, `descrip`, `start`, `end`, `media_url`, `type`, `cid`, `filter_code`, `user_email`) VALUES
+('16', 'BWbda', 'Uh-huh honey', '2000-04-04T04:04', '2000-04-04T05:05', 'ffffbe37a8d8666df3d2e0d0310b8a4d.1000x1000x1.jpg', 'event', 0, '-tkpsg', '');
 
 -- --------------------------------------------------------
 
@@ -172,16 +173,6 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

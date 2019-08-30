@@ -115,6 +115,7 @@
             $community = $user->get_base_communities();
             $url="-";
             $filter = "-";
+            $template = "-";
             foreach($_POST['eventTypes'] as $filteradd){
                 $filter = $filter.typecheck($filteradd);
             }
@@ -155,8 +156,8 @@
             */
 
             // DATABASE SHANDIS
-            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
-                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum',$community,'$filter','$user_email')";
+            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, template, cid, filter_code, user_email) 
+                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum','$template'$community,'$filter','$user_email')";
             $mybool = mysqli_query($dbc, $sql);
             if ($mybool){
                 echo "Got it";

@@ -105,7 +105,7 @@ if($_SESSION['auth']!= true){
             if(isset($_POST["newImage"])){
                 $target_dir_2 = "assets\media\images";
                 $target_file= $target_dir_2 . basename($_FILES["imageAlert"]["name"]);
-                $url=$target_file;
+                //$url=$target_file;
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
                 if ($_FILES["imageAlert"]["size"] > 90000000) {
@@ -121,7 +121,7 @@ if($_SESSION['auth']!= true){
                 else {
                     if (move_uploaded_file($_FILES["imageAlert"]["tmp_name"], $target_file) || $uploadOk == 1 ) {
                         
-                        echo"event has been created";
+                        $url=$target_file;
                 
                     } else {
                         echo "Sorry, there was an error uploading your file.";
@@ -130,24 +130,6 @@ if($_SESSION['auth']!= true){
         }
             
             
-
-            
-            $sql = "INSERT INTO posts(title, descrip, start, end, media_url, type, cid, filter_code ) VALUES ('$title', '$details','$startDate','$endDate','$url','$enum',0000,'$filter')";
-            $mybool = mysqli_query($dbc, $sql);
-
-            if ($mybool){
-                echo "Got it";
-            }
-            else{
-                echo "AnD i oOp: ".mysqli_error($dbc);
-                
-            }
-            
-            // TO-DO:
-            // FIND A MEANS TO INCLUDE INFORMATION ABOUT THE CID AND PERSON POSTING (try the _SESSION superglobal)
-            // I/O FOR IMAGE FILES
-            // INCLUSION OF THE ERROR MESSAGES 
-            // MOVING OF PHP CODE TO THE REQUEST FILE
 
             //$myEvent = new Event();
 

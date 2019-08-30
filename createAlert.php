@@ -49,9 +49,9 @@ if($_SESSION['auth']!= true){
             
                 <div id="crimeO" style="display: block">
                     <div class="book center-txt">
-                    <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
-                    <div class="hide  left-txt imageBorder" id="upload-image-panel">
-                    <input type="file" name="imageAlert" accept="image/*" >
+                    <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('uploadCrimeImage').classList.toggle('hide');" name="newImage">Upload Image<br>
+                    <div class="hide  left-txt imageBorder" id="uploadCrimeImage">
+                    <input type="file" name="imageCrime" accept="image/*" >
                     </div>
                      </div>
                 Time of Occurence:
@@ -70,18 +70,18 @@ if($_SESSION['auth']!= true){
 
                 <div id="referrals" style="display: none">
                     <div class="book center-txt">
-                    <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
-                    <div class="hide  left-txt imageBorder" id="upload-image-panel">
-                    <input type="file" name="imageAlert" accept="image/*" >
+                    <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('uploadRefImage').classList.toggle('hide');" name="newImage">Upload Image<br>
+                    <div class="hide  left-txt imageBorder" id="uploadRefImage">
+                    <input type="file" name="imageRef" accept="image/*" >
                     </div>
                     </div>
                 </div>
 
                 <div id="lostObjs" style="display: none">
                         <div class="book center-txt">
-                        <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>
-                        <div class="hide  left-txt imageBorder" id="upload-image-panel">
-                        <input type="file" name="imageAlert" accept="image/*" >
+                        <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('uploadLostpanel').classList.toggle('hide');" name="newImage">Upload Image<br>
+                        <div class="hide  left-txt imageBorder" id="uploadLostpanel">
+                        <input type="file" name="imageLost" accept="image/*" >
                         </div>
                     </div>
                     Last Seen:
@@ -131,6 +131,7 @@ if($_SESSION['auth']!= true){
 </script>
         <?php
             if (isset($_POST["post"])){
+                echo "hello";
                 $title= mysqli_real_escape_string($dbc, $_POST['title']);
                 $details=mysqli_real_escape_string($dbc,$_POST['details']);
                 $alertTemplate=mysqli_real_escape_string($dbc,$_POST['alertTemplate']);

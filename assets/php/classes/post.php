@@ -126,8 +126,14 @@
         function display(){
             date_default_timezone_set('Europe/Belgrade');
             $id = $this -> get_post_id();
-            $title = $this -> get_post_name();
-            $desciption = $this -> get_post_description();
+            $title = substr($this -> get_post_name(), 0, 11);
+            if(strlen($this-> get_post_name())>11){
+                $title.="...";
+            }
+            $desciption = substr($this -> get_post_description(), 0, 50);
+            if(strlen($this-> get_post_description())>50){
+                $desciption.="...";
+            }
             $start = explode('T', $this -> get_post_date());
             $end = explode('T',$this -> get_post_end()); 
             $date = '';
@@ -160,7 +166,7 @@
             $url = $this -> get_post_image();
 
             $tmp = date("H:i");
-            return "<div class='card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+            return "<div class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
                 <div class='bold max-width'>$title</div>
                 <div class='book max-width vertical-padding-5'>$desciption</div>
                 <div class='footnote bold $date</div>
@@ -190,5 +196,26 @@
         }
 
         /*METHODS*/
+        function display(){
+            date_default_timezone_set('Europe/Belgrade');
+            $id = $this -> get_post_id();
+            $title = substr($this -> get_post_name(), 0, 11);
+            if(strlen($this-> get_post_name())>11){
+                $title.="...";
+            }
+            $desciption = substr($this -> get_post_description(), 0, 50);
+            if(strlen($this-> get_post_description())>50){
+                $desciption.="...";
+            }
+            $start = explode('T', $this -> get_post_date());
+            $url = $this -> get_post_image();
+
+            $tmp = date("H:i");
+            return "<div class='post-card card max-width padding-20 vertical-padding-30 center caution-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+                <div class='bold max-width'>$title</div>
+                <div class='book max-width vertical-padding-5'>$desciption</div>
+                <input type='hidden' class='post-id' value='$id'/>
+            </div>";
+        }
     }
 ?>

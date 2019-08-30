@@ -6,6 +6,7 @@
     }
     else if(isset($_SESSION['user']) && $_SESSION['auth'] ){
         $user = unserialize($_SESSION['user']);
+        $com = unserialize($_SESSION['community']);
     }
 ?>
 <!Doctype html>
@@ -20,7 +21,8 @@
         
     <?php include("assets/php/header.php");?>
 
-        <div class="vertical-padding-50 white-txt uninterupted-max-width extra-small-height primary-bg center-txt">
+        <div class="vertical-padding-40 white-txt uninterupted-max-width small-height primary-bg center-txt">
+            <div class="heading center-txt vertical-padding-20 bold">My Profile</div>
                 <!--This is where the picture goes-->
                <div class="absolute z-10  uninterupted-max-width center-txt">
                     <div id='profile-upload-panel' class="hide uninterupted-max-width absolute z-20 small-height">
@@ -29,7 +31,7 @@
                             <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height shadow" onclick='document.getElementById("profile-upload-panel").classList.add("hide"); restoreDp("profilePicture");'>&#10006;</div>
                         </div>
                     </div>
-                    <div  class='small-size circle hide-overflow center white-bg shadow'>
+                    <div  class='medium-small-size circle hide-overflow center white-bg shadow'>
                <?php
                     $url = $user -> get_dp_url();
                     //echo "<img src='$url' class='profilePicture'/>"
@@ -47,7 +49,7 @@
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
 
         <form method="post" action="./assets/php/requests.php" name="edit-profile" class="left-txt bold vertical-padding-10" enctype="multipart/form-data">
-                <div id="profile-details-panel">
+                <div id="profile-details-panel" class="center-txt">
                     <div class="vertical-margin-15">
                         Full Name
                             <?php 
@@ -63,7 +65,7 @@
                     <div class="vertical-margin-15">
                         Community       
                         <?php
-                                $cid = $user->get_base_communities(); 
+                                $cid = $com-> get_all();
                                 echo "<div class='book vertical-margin-5'>$cid</div>";?>
                     </div>
                     <br>
@@ -82,8 +84,8 @@
                         
                         Community
                                 <?php 
-                                $code = $user-> get_base_communities();
-                                echo '<input id="community-search-input" type="text" autocomplete="off" onkeyup="search(\'suburbs\', \'community-search-input\');" class="inputField" placeholder="'.$code.'" name="community"/>
+                                $code = $com-> get_all();
+                                echo '<input id="community-search-input" type="text" autocomplete="off" onkeyup="search(\'suburbs\', \'community-search-input\');" class="inputField" value="'.$code.'" name="community"/>
                                 <div id="community-datalist" class="unrestricted-max-width normal left-0 shadow absolute z-10 alt-bg footnote">
                                 </div>';
                                 ?>

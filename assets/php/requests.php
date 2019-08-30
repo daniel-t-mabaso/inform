@@ -76,6 +76,14 @@
                         
                         //update user's community in the user object
                         $user->set_base_communities($code);
+
+                        $query = "SELECT * FROM communities WHERE code = '$code';";
+                        $result = mysqli_query($dbc, $query);
+                        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $com = new Community;
+                        $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
+
+                        $_SESSION['community'] = serialize($com);
         
                         //update serialized user object
                         $_SESSION['user'] = serialize($user);
@@ -105,6 +113,14 @@
 
                 $user->set_full_name($name);
                 $user->set_base_communities($code);
+
+                $query = "SELECT * FROM communities WHERE code = '$code';";
+                $result = mysqli_query($dbc, $query);
+                $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $com = new Community;
+                $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
+
+                $_SESSION['community'] = serialize($com);
                 $_SESSION['message'] = "success~Profile Updated";
                 $_SESSION['user'] = serialize($user);
                 echo '<script>

@@ -72,11 +72,15 @@
                     echo $card;
                 }
                 if($displayed==0){
-                    echo "<div class='card max-width vertical-padding-15 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>No events available</div>";
+                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                        <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>Seems like there are no events for your community.</div></div>
+                    ";
                 }
             }
             else{
-                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt'><b>We're not sure what you want to see.</b><br><br><a class='underline' href='preferences.php'>Set Sreferences</a></div>";
+                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                <div class='center-txt uninterupted-max-width footnote vertical-padding-15 italic normal'>We're not sure what you want to see.<br><a class='underline' href='preferences.php'>Set your preferences</a></div></div>
+                ";
             }
             break;
 
@@ -111,19 +115,24 @@
                 //loop through results creating obj
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                     $displayed++;
-                    $event = new Alert;
+                    $alert = new Alert;
                     
-                    $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                    $alert->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
-                    $card = $event -> display();
+                    $card = $alert -> display();
                     echo $card;
                 }
                 if($displayed==0){
-                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>No events available</div>";
+                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                        <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>No alerts for your community. To add an alert <a href='createAlert.php' class='underline'>click here</a></div></div>
+                    ";
                 }
             }
             else{
-                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt'><b>We're not sure what you want to see.</b><br><br><a class='underline' href='preferences.php'>Set Sreferences</a></div>";
+                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                    <div class='center-txt uninterupted-max-width footnote vertical-padding-15 italic normal'>We're not sure what you want to see.<br><a class='underline' href='preferences.php'>Set your preferences</a></div></div>
+                ";
+                
             }
             break;
     }

@@ -112,7 +112,7 @@
                 <?php 
                     $preferences = $user->get_preferences();
                     echo '<div class="half-width  preference small-height center-txt float-left ';
-                    if(!strpos($preferences, 'n')){
+                    if(!strpos($preferences, 'g')){
                         echo "unselected";
                     }
                         echo '">';

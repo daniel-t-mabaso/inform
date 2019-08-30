@@ -39,7 +39,7 @@ if($_SESSION['auth']!= true){
     <div id="loaded-events" class="max-width center">
     </div>
 <?php 
-    if($user->get_type() == 'organ' || $user->get_type() == 'local_admin'){ 
+    if($user->get_type() != 'organ'){ 
         echo '<a href="createEvent.php"><div class="alt-bg title extra-small-size extra-small-line-height fixed z-10 padding-10 white-txt center-txt  shadow right-20 bottom-30 circle">+</div></a>';
         }
     ?>

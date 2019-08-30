@@ -15,14 +15,14 @@
         header("Location: login.php");
     }
 
-    if($user->get_type() != 'organ'){
+    // if($user->get_type() != 'organ'){
         
-        echo '<script>
-            window.location = "events.php";
-        </script>';
+    //     echo '<script>
+    //         window.location = "events.php";
+    //     </script>';
 
-    }
-}
+    // }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -157,13 +157,15 @@
 
             // DATABASE SHANDIS
             $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, template, cid, filter_code, user_email) 
-                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum','$template'$community,'$filter','$user_email')";
+                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum','$template',$community,'$filter','$user_email')";
             $mybool = mysqli_query($dbc, $sql);
             if ($mybool){
                 echo "Got it";
+                $_SESSION['message'] = 'success~Event Created';
             }
             else{
-                echo "AnD i oOp: ".mysqli_error($dbc);
+                $t = mysqli_error($dbc);
+                $_SESSION['message'] = 'danger~Couldn\'t create event because '.$t;
                 
             }
 
@@ -175,7 +177,6 @@
             // INCLUSION OF THE ERROR MESSAGES 
             // MOVING OF PHP CODE TO THE REQUEST FILE
 
-             $_SESSION['message'] = 'success~Event Created';
 
             
 

@@ -40,7 +40,15 @@
                         $_SESSION['auth'] = true;
                         $_SESSION['user'] = $mes;
                         $array="";
+                        $cid = $me->get_base_communities();
+                        
+                        $query = "SELECT * FROM communities WHERE code = '$cid';";
+                        $result = mysqli_query($dbc, $query);
+                        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $com = new Community;
+                        $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
 
+                        $_SESSION['community'] = serialize($com);
                         echo '<script>
                         window.location = "index.php";
                         </script>';

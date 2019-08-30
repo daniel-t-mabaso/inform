@@ -49,7 +49,6 @@
 
 <!--Scripts-->
 
-
 <script type="text/javascript" src="./assets/js/events.js"></script>
 
 <script type="text/javascript" src="./assets/js/methods.js"></script>

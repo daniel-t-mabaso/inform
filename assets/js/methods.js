@@ -43,3 +43,21 @@ function hideElement(id){
 function changeImgSrc(id, obj){
     document.getElementById(id).src = obj.value;
 }
+var oldDp = '';
+function showImage(input,target) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            oldDp = document.getElementById(target).src;
+            document.getElementById(target).src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function restoreDp(target){
+    document.getElementById(target).src = oldDp;
+    oldDp = '';
+}

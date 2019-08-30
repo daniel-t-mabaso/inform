@@ -15,22 +15,35 @@
 }
 
     $output = '';
-    $search_type = $_REQUEST["type"];
+    $type = $_REQUEST["type"];
     $search_term = $_REQUEST["term"];
-    switch($search_type){
-    case 'suburbs':
-        $query = "SELECT * FROM `communities` WHERE suburb LIKE '$search_term%';";
-        $result = mysqli_query($dbc, $query);
-        $count = 0;
-        
-        while ($count < 3 && $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+    switch($type){
+        case 'suburbs':
+            $query = "SELECT * FROM `communities` WHERE suburb LIKE '$search_term%';";
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
             
-            $count++;
-            $tmp =trim(preg_replace('/\s\s+/', ' ', $row['suburb'].", ".$row['city'].", ".$row['province'].", ".$row['code']));
-            $output .= "<div onclick='changeValue(\"community-search-input\", \"$tmp\"); hideElement(\"community-datalist\");' class='max-width center-txt padding-20 vertical-padding-0'>$tmp</div>";
-        }
-        
-        break;
+            while ($count < 3 && $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                
+                $count++;
+                $tmp =trim(preg_replace('/\s\s+/', ' ', $row['suburb'].", ".$row['city'].", ".$row['province'].", ".$row['code']));
+                $output .= "<div onclick='changeValue(\"community-search-input\", \"$tmp\"); hideElement(\"community-datalist\");' class='max-width center-txt padding-20 vertical-padding-0'>$tmp</div>";
+            }
+            
+            break;
+
+        case 'events':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            //get user preferences
+            //get user community
+
+            //search DB for posts with preferences belonging to community
+
+            //loop through results creating obj
+
+            //call display function for each post.
+            break;
     }
     
     echo $output;

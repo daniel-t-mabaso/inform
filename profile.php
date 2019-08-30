@@ -26,7 +26,7 @@
                     <div id='profile-upload-panel' class="hide uninterupted-max-width absolute z-20 small-height">
                         <div class="center small-width minute-height">
                             <div onclick='document.getElementById("upload-image-button").click();document.getElementById("profile-upload-panel").classList.add("hide");' class="float-left minute-size circle success-bg white-txt padding-5 shadow">&#10004;</div>
-                            <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height shadow" onclick='document.getElementById("profile-upload-panel").classList.add("hide");'>&#10006;</div>
+                            <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height shadow" onclick='document.getElementById("profile-upload-panel").classList.add("hide"); restoreDp("profilePicture");'>&#10006;</div>
                         </div>
                     </div>
                     <div  class='small-size circle hide-overflow center white-bg shadow'>
@@ -38,7 +38,7 @@
                 ?>
                 </div>
                 <form action="./assets/php/upload.php" method="post" enctype="multipart/form-data">
-                 <input id='fileField' type='file' name='fileToUpload' accept='image/*' class='hide'>
+                 <input id='fileField' type='file' name='fileToUpload' onchange="showImage(this, 'profilePicture');" accept='image/*' class='hide'>
                  <input type="submit" class="button center-txt hide" value="Upload Image" class="absolute z-20 top-50" name="submit" id="upload-image-button">
                 </form>
             </div>

@@ -90,12 +90,12 @@ if($_SESSION['auth']!= true){
                     <br><br>
                 </div>
         Filters:
-        <select class="inputField" name="eventTypes[]" multiple multiple size="6">
-                <option value="crime">Crime</option>
-                <option value="traffic">Traffic</option>
+        <select class="inputField" name="alertFilters[]" id="alertFilters" multiple multiple size="6">
+                <option value="crime" >Crime</option>
+                <option value="traffic" disabled>Traffic</option>
                 <option value="children">Children</option>
                 <option value="pets">Pets</option>
-                <option value="services">Local Goods & Services</option>
+                <option value="services" disabled>Local Goods & Services</option>
                 <option value="news">General News</option>
         </select>
         <div class="center-txt">
@@ -115,6 +115,11 @@ if($_SESSION['auth']!= true){
                     document.getElementById("trafficI").style.display="none";
                     document.getElementById("referrals").style.display="none";
                     document.getElementById("lostObjs").style.display="none";
+                    document.getElementById("alertFilters").options[0].disabled = false;
+                    document.getElementById("alertFilters").options[2].disabled = false;
+                    document.getElementById("alertFilters").options[3].disabled = false;
+                    document.getElementById("alertFilters").options[1].disabled = true;
+                    document.getElementById("alertFilters").options[4].disabled = true;
                     
                 }
                 else if(x==="trafficIncident"){
@@ -122,31 +127,95 @@ if($_SESSION['auth']!= true){
                     document.getElementById("crimeO").style.display="none";
                     document.getElementById("referrals").style.display="none";
                     document.getElementById("lostObjs").style.display="none";
+                    document.getElementById("alertFilters").options[0].disabled = true;
+                    document.getElementById("alertFilters").options[1].disabled = false;
+                    document.getElementById("alertFilters").options[2].disabled = true;
+                    document.getElementById("alertFilters").options[3].disabled = true;
+                    document.getElementById("alertFilters").options[4].disabled = true;
+                    document.getElementById("alertFilters").options[5].disabled = false;
+                    
                 }
                 else if(x==="recommendations"){
                     document.getElementById("referrals").style.display="block";
                     document.getElementById("trafficI").style.display="none";
                     document.getElementById("lostObjs").style.display="none";
                     document.getElementById("crimeO").style.display="none";
+                    document.getElementById("alertFilters").options[1].disabled = true;
+                    document.getElementById("alertFilters").options[0].disabled = true;
+
+                    document.getElementById("alertFilters").options[2].disabled = false;
+                    document.getElementById("alertFilters").options[3].disabled = false;
+                    document.getElementById("alertFilters").options[4].disabled = false;
+                    document.getElementById("alertFilters").options[5].disabled = false;
+
                 }
                 else if(x==="lost"){
                     document.getElementById("lostObjs").style.display="block";
                     document.getElementById("referrals").style.display="none";
                     document.getElementById("trafficI").style.display="none";
                     document.getElementById("crimeO").style.display="none";
+                    document.getElementById("alertFilters").options[1].disabled = true;
+                    document.getElementById("alertFilters").options[4].disabled = true;
+
+                    document.getElementById("alertFilters").options[0].disabled = false;
+                    document.getElementById("alertFilters").options[2].disabled = false;
+                    document.getElementById("alertFilters").options[3].disabled = false;
+                    document.getElementById("alertFilters").options[5].disabled = false;
                 }
                 else{
                     document.getElementById("lostObjs").style.display="none";
                     document.getElementById("referrals").style.display="none";
                     document.getElementById("trafficI").style.display="none";
                     document.getElementById("crimeO").style.display="none";
+                    if(x==="sales"){
+                        document.getElementById("alertFilters").options[1].disabled = true;
+                        document.getElementById("alertFilters").options[0].disabled = true;
+
+                        document.getElementById("alertFilters").options[2].disabled = false;
+                        document.getElementById("alertFilters").options[3].disabled = false;
+                        document.getElementById("alertFilters").options[4].disabled = false;
+                        document.getElementById("alertFilters").options[5].disabled = false;
+                    }
+                    else if(x==="general"){
+                        document.getElementById("alertFilters").options[1].disabled = false;
+                        document.getElementById("alertFilters").options[0].disabled = false;
+
+                        document.getElementById("alertFilters").options[2].disabled = false;
+                        document.getElementById("alertFilters").options[3].disabled = false;
+                        document.getElementById("alertFilters").options[4].disabled = false;
+                        document.getElementById("alertFilters").options[5].disabled = false;
+                    }
+                    
                 }
             }
 </script>
 
         <?php
+        function typecheck($choices){
+            switch($choices){
+                case "crime":
+                    return ($type = "c");
+                    break;
+                case "traffic":
+                    return($type = "t");
+                    break;
+                case "children":
+                    return($type = "k");
+                    break;
+                case "pets":
+                    return($type = "p");
+                    break;
+                case "services":
+                    return($type = "s");
+                    break;
+                case "news":
+                    return($type = "g");
+                    break;
+            }
+        }
             if (isset($_POST["post"])){
                 $user_email = $user->get_email();
+                $email =mysqli_real_escape_string($dbc, $user_email);
                 $pid = mysqli_real_escape_string($dbc, time().$user_email);
                 $title= mysqli_real_escape_string($dbc, $_POST['title']);
                 $details=mysqli_real_escape_string($dbc,$_POST['details']);
@@ -157,7 +226,14 @@ if($_SESSION['auth']!= true){
                 $timeOccurrence="-";
                 $estimatedDelay="-";
                 $lastSeen="-";
-                $choice="-";
+                $filter = "-";
+
+                foreach($_POST['alertFilters'] as $filteradd){
+                    $filter = $filter.typecheck($filteradd);
+                    
+                }
+                $filters=mysqli_real_escape_string($dbc,$filter);
+
                 if($alertTemplate=="crimeOccurence"){
                     $choice="alertImage";
                     $timeOccurrence=mysqli_real_escape_string($dbc,$_POST['time']);
@@ -175,7 +251,7 @@ if($_SESSION['auth']!= true){
                 }
                
             if(isset($_POST["newImage"])){
-                $target_dir_2 = "assets\media\images";
+                $target_dir_2 = "assets\media\images\\";
                 
                 $target_file= $target_dir_2 . basename($_FILES["$choice"]["name"]);
                 $uploadOk = 1;
@@ -200,13 +276,14 @@ if($_SESSION['auth']!= true){
                     }
                 } 
             }
-            /*// DATABASE SHANDIS
-            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, cid, filter_code, user_email) 
-                    VALUES ('$pid','$title', '$details','$startDate','$endDate','$url','$enum',$community,'$filter','$user_email')";
+            $community=$user->get_base_communities();
+            // DATABASE SHANDIS
+            $sql = "INSERT INTO posts(pid, title, descrip, start, end, media_url, type, template, cid, filter_code, user_email) 
+                    VALUES ('$pid','$title', '$details','$timeOccurrence','$estimatedDelay','$url','$enum','$alertTemplate','$community','$filters','$email')";
             
             $mybool = mysqli_query($dbc, $sql);
             if ($mybool){
-                echo "Got it";
+                echo "It works";
             }
             else{
                 echo "AnD i oOp: ".mysqli_error($dbc);
@@ -216,14 +293,14 @@ if($_SESSION['auth']!= true){
             $_SESSION['user'] = serialize($user);
             
             
-             $_SESSION['message'] = 'success~Alert successfully created';
+            $_SESSION['message'] = 'success~Alert successfully created';
 
             
 
-             echo '<script>
-             window.location = "alerts.php";
-         </script>';
-            */
+            echo '<script>
+            window.location = "alerts.php";
+        </script>';
+            
             }
         ?>
         

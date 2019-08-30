@@ -171,12 +171,24 @@
 
     class Alert extends Post{
 
-        var $alert_type;
+        var $alert_template;
 
         /* CONSTRUCTOR*/
         function __construct() {
             parent:: __construct();
-            $this->alert_type = "";
+            $this->alert_template = "";
         }
+
+        /*SETTERS*/
+        function set_alert_template($atemp){
+            $this->alert_template =  $atemp;
+        }
+
+        /*GETTERS*/
+        function get_alert_template(){
+            return $this->alert_template;
+        }
+
+        /*METHODS*/
     }
 ?>

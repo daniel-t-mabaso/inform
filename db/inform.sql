@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2019 at 12:39 PM
+-- Generation Time: Aug 30, 2019 at 04:42 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -106,6 +106,7 @@ CREATE TABLE `posts` (
   `end` varchar(20) NOT NULL,
   `media_url` varchar(300) NOT NULL,
   `type` enum('alert','event') NOT NULL,
+  `template` enum('-','crimeOccurrence','trafficIncident','recommendations','lost','sales','general') NOT NULL,
   `cid` int(11) NOT NULL,
   `filter_code` varchar(100) NOT NULL,
   `user_email` varchar(100) NOT NULL
@@ -115,8 +116,14 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`pid`, `title`, `descrip`, `start`, `end`, `media_url`, `type`, `cid`, `filter_code`, `user_email`) VALUES
-('16', 'BWbda', 'Uh-huh honey', '2000-04-04T04:04', '2000-04-04T05:05', 'ffffbe37a8d8666df3d2e0d0310b8a4d.1000x1000x1.jpg', 'event', 0, '-tkpsg', '');
+INSERT INTO `posts` (`pid`, `title`, `descrip`, `start`, `end`, `media_url`, `type`, `template`, `cid`, `filter_code`, `user_email`) VALUES
+('1567162525thami.mlotshwa@gmail.com', 'Secret Life of Pets', 'WHATEVER', '2020-04-01T14:00', '2020-04-01T15:00', '-', 'event', '-', 0, '-cps', 'thami.mlotshwa@gmail.com'),
+('1567162561thami.mlotshwa@gmail.com', 'Secret Life of Pets', 'WHATEVER', '2020-04-01T14:00', '2020-04-01T15:00', '-', 'event', '-', 0, '-cps', 'thami.mlotshwa@gmail.com'),
+('1567162648thami.mlotshwa@gmail.com', 'BWbda', 'dasdasd', '2010-05-05T05:05', '2010-06-06T06:06', '-', 'event', '-', 0, '-kpsg', 'thami.mlotshwa@gmail.com'),
+('1567162695thami.mlotshwa@gmail.com', 'New Born', 'Raise it up ', '2010-04-01T01:01', '2010-04-01T14:02', 'assetsmediaimages021_375.jpg', 'event', '-', 0, '-tk', 'thami.mlotshwa@gmail.com'),
+('1567162804thami.mlotshwa@gmail.com', 'New Born', 'Raise it up ', '2010-04-01T01:01', '2010-04-01T14:02', 'assets\\media\\images021_375.jpg', 'event', '-', 0, '-tk', 'thami.mlotshwa@gmail.com'),
+('1567162915thami.mlotshwa@gmail.com', 'New Born', 'Raise it up ', '2010-04-01T01:01', '2010-04-01T14:02', 'assets\\media\\images\\021_375.jpg', 'event', '-', 0, '-tk', 'thami.mlotshwa@gmail.com'),
+('1567164404thami.mlotshwa@gmail.com', 'Kids Self-Defence Classes', 'Uhhh', '2019-08-30T13:26', '2019-09-03T00:00', 'assets\\media\\images\\SamJackBackground.jpg', 'event', '-', 0, '-ck', 'thami.mlotshwa@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -128,7 +135,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `base_cid` int(11) NOT NULL,
-  `type` enum('com_mem','organ','local_admin','glob_admin') NOT NULL,
+  `type` enum('com_mem','organ','unveri_organ','local_admin','glob_admin') NOT NULL,
   `filters` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `media_url` varchar(150) NOT NULL

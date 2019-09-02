@@ -177,6 +177,60 @@
                 <input type='hidden' class='post-id' value='$id'/>
             </div>";
         }
+        function displayEditable(){
+            date_default_timezone_set('Europe/Belgrade');
+            $id = $this -> get_post_id();
+            $uTitle = str_replace("'", " ", $this -> get_post_name());
+            $title = substr($this -> get_post_name(), 0, 11);
+            if(strlen($this-> get_post_name())>11){
+                $title.="...";
+            }
+            $uDescription = str_replace("'", " ", $this -> get_post_description());
+            $description = substr($this -> get_post_description(), 0, 50);
+            if(strlen($this-> get_post_description())>50){
+                $description.="...";
+            }
+            $uStart = $this -> get_post_date();
+            $start = explode('T', $this -> get_post_date());
+            $uEnd = $this -> get_post_end(); 
+            $end = explode('T',$this -> get_post_end()); 
+            $date = '';
+            if($end[0]<= date("Y-m-d") && ($end[1] <= date("H:i"))){
+                $date = "danger-txt'>Finished";
+            }
+            if($date!="danger-txt'>Finished"){
+                if($start[0] == date("Y-m-d") && ($start[1] <= date("H:i"))){
+                    $start[0] = " caution-txt'> Now";
+                    $start[1] = '';
+                }
+                else if($start[0] == date("Y-m-d")){
+                    $start[0] = "success-txt'> Today,";
+                }
+                else{
+                    $start[0] = "'>".$start[0];
+                }
+                if($end[0]==date("Y-m-d")){
+                    $end[0] = '';
+                }
+                if($start[0]==$end[0]){
+                    $date = $start[0]." ".$start[1]." until ".$end[1]."";
+                }
+                else{
+                    $date = $start[0]." ".$start[1]." until ". $end[0]." ".$end[1]."";
+                }
+            }
+
+
+            $url = $this -> get_post_image();
+
+            $tmp = date("H:i");
+            return "<div  onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+                <div class='bold max-width'>$title</div>
+                <div class='book max-width vertical-padding-5'>$description</div>
+                <div class='footnote bold $date</div>
+                <input type='hidden' class='post-id' value='$id'/>
+            </div>";
+        }
     }
 
     class Alert extends Post{
@@ -219,6 +273,30 @@
 
             $tmp = date("H:i");
             return "<div onclick='viewPost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", null); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center caution-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+                <div class='bold max-width'>$title</div>
+                <div class='book max-width vertical-padding-5'>$description</div>
+                <input type='hidden' class='post-id' value='$id'/>
+            </div>";
+        }
+        function displayEditable(){
+            date_default_timezone_set('Europe/Belgrade');
+            $id = $this -> get_post_id();
+            $uTitle = str_replace("'", " ", $this -> get_post_name());
+            $title = substr($uTitle, 0, 11);
+            if(strlen($this-> get_post_name())>11){
+                $title.="...";
+            }
+            $uDescription = str_replace("'", " ", $this -> get_post_description());
+            $description = substr($uDescription, 0, 50);
+            if(strlen($this-> get_post_description())>50){
+                $description.="...";
+            }
+            $uStart = $this -> get_post_date();
+            $start = explode('T', $this -> get_post_date());
+            $url = $this -> get_post_image();
+
+            $tmp = date("H:i");
+            return "<div onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", null); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center caution-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
                 <div class='bold max-width'>$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <input type='hidden' class='post-id' value='$id'/>

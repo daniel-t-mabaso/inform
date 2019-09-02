@@ -135,6 +135,61 @@
                 
             }
             break;
+
+        case 'my-events':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+
+                //search DB for posts with preferences belonging to community
+                $query = "SELECT * FROM posts WHERE type = 'event' AND pid LIKE '%$email%' ORDER BY start ASC;";
+                $result = mysqli_query($dbc, $query);
+                $count = 0;
+                $displayed = 0;
+                //loop through results creating obj
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $displayed++;
+                    $event = new Event;
+                    
+                    $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                    //call display function for each post.
+                    $card = $event -> displayEditable();
+                    echo $card;
+                }
+                if($displayed==0){
+                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                        <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>Seems like there are no events for your community.</div></div>
+                    ";
+                }
+            break;
+
+        case 'my-alerts':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            $query = "SELECT * FROM posts WHERE type = 'alert' AND pid LIKE '%$email%' ORDER BY start ASC;";
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
+            $displayed = 0;
+            //loop through results creating obj
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $displayed++;
+                $alert = new Alert;
+                
+                $alert->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                //call display function for each post.
+                $card = $alert -> displayEditable();
+                echo $card;
+            }
+            if($displayed==0){
+                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                    <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>No alerts for your community. To add an alert <a href='createAlert.php' class='underline'>click here</a></div></div>
+                ";
+            }
+            break;
     }
     
     echo $output;

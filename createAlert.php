@@ -30,7 +30,7 @@ if($_SESSION['auth']!= true){
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
             <form method="POST" action="" name="createAlert" class="left-txt vertical-padding-10" enctype="multipart/form-data">
-            Alert Template:
+            Alert Template
             <select class="inputField" id="alertTemplate" name="alertTemplate" onchange="myFunction()" required>
                 <option value="crimeOccurence">Crime Occurence</option>
                 <option value="trafficIncident">Traffic Incident</option>
@@ -41,10 +41,10 @@ if($_SESSION['auth']!= true){
             </select>
             
             <br><br>
-            Title:
+            Title
             <input class="inputField" name="title" type="text" required>
             <br><br>
-            Details:
+            Details
             <textarea class="detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
             <br><br>
             
@@ -55,16 +55,16 @@ if($_SESSION['auth']!= true){
                     <input type="file" name="alertImage" accept="image/*" >
                     </div>
                      </div>
-                Time of Occurence:
+                Time of Occurence
                     <input class="inputField" name="time" type="datetime-local" >
                     <br><br>
                 </div>
 
                 <div id="trafficI" style="display: none">
-                Time of Occurence:
+                Time of Occurence
                     <input class="inputField" name="time" type="datetime-local" >
                     <br><br>
-                Estimated Delay:
+                Estimated Delay
                     <input class="inputField" name="estimatedDelay" type="time" >
                     <br><br>
                 </div>
@@ -85,11 +85,11 @@ if($_SESSION['auth']!= true){
                         <input type="file" name="lostAlertImage" accept="image/*" >
                         </div>
                     </div>
-                    Last Seen:
+                    Last Seen
                     <input class="inputField" name="lastSeen" type="datetime-local" >
                     <br><br>
                 </div>
-        Filters:
+        Filters
         <select class="inputField" name="alertFilters[]" id="alertFilters" multiple multiple size="6">
                 <option value="crime" >Crime</option>
                 <option value="traffic" disabled>Traffic</option>
@@ -251,7 +251,7 @@ if($_SESSION['auth']!= true){
                 }
                
             if(isset($_POST["newImage"])){
-                $target_dir_2 = "assets\media\images\\";
+                $target_dir_2 = "assets/media/images/";
                 
                 $target_file= $target_dir_2 . basename($_FILES["$choice"]["name"]);
                 $uploadOk = 1;

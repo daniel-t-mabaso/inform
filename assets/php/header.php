@@ -9,6 +9,7 @@
         <a href="index.php"><div class="max-width padding-20">Home</div></a>
         <a href="events.php"><div class="max-width padding-20">Events</div></a>
         <a href="alerts.php"><div class="max-width padding-20">Alerts</div></a>
+        <a href="myPosts.php"><div class="max-width padding-20">My Posts</div></a>
         <a href="preferences.php"><div class="max-width padding-20">My Preferences</div></a>
         <a href="profile.php"><div class="max-width padding-20">Profile</div></a>
         <a href="settings.php"><div class="max-width padding-20">Settings</div></a>

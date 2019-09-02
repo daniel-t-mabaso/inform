@@ -127,6 +127,76 @@
                         window.location = "../../profile.php";
                         </script>';
         }
+        else if(isset($_POST['edit-post'])){
+                $id = $_POST['post-id'];
+                $title = mysqli_real_escape_string($dbc, $_POST['post-title']);
+                $description = mysqli_real_escape_string($dbc, $_POST['post-description']);
+                if(getimagesize($_FILES["postUrl"]["tmp_name"])){
+                        //upload new file
+                        $target_dir = "../media/images/";
+                        $target_dir_2 = "assets/media/images/";
+                        $target_file = $target_dir . basename($_FILES["postUrl"]["name"]);
+                        $target_file_2 = $target_dir_2 . basename($_FILES["postUrl"]["name"]);
+                        $uploadOk = 1;
+                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                        echo $target_file;
+                        if (file_exists($target_file)) {
+                        echo "Sorry, file already exists.";
+                        $uploadOk = 1;
+                        }
+
+                        if ($_FILES["postUrl"]["size"] > 5000000) {
+                        echo "Sorry, your file is too large.";
+                        
+                        $uploadOk = 0;
+                        }
+
+
+
+                        if ($uploadOk == 0) {
+                        echo "Sorry, your file was not uploaded.";
+
+                        }
+                        else {
+                                if (move_uploaded_file($_FILES["postUrl"]["tmp_name"], $target_file) || $uploadOk == 1 ) {
+                                        $url = $target_file_2;
+
+                                } else {
+                                        $url = '-';
+                                        echo "Sorry, there was an error uploading your file.";
+                                }
+                        }
+                }else{
+                $url = $_POST['post-url-original'];
+                echo "Image not set";
+                }
+                $start = $_POST['post-start'];
+                $end = $_POST['post-end'];
+                //echo "$url";
+        
+                $sql = "UPDATE posts SET title = '$title', descrip = '$description', media_url = '$url', start = '$start', end = '$end' WHERE pid = '$id';";
+                mysqli_query($dbc, $sql);
+
+                $_SESSION['message'] = "success~Post Updated";
+                $_SESSION['user'] = serialize($user);
+                echo '<script>
+                        window.location = "../../myPosts.php";
+                        </script>';
+        
+        }
+        else if(isset($_POST['delete-post'])){
+                $id = $_POST['post-id'];
+        
+                $sql = "DELETE FROM posts WHERE pid = '$id';";
+                mysqli_query($dbc, $sql);
+
+                $_SESSION['message'] = "success~Post Deleted";
+                $_SESSION['user'] = serialize($user);
+                echo '<script>
+                        window.location = "../../myPosts.php";
+                        </script>';
+        }
 }
     else{
         //else take user to login

@@ -39,7 +39,7 @@
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
         <form method="post" action="" name="createEvent" class="left-txt vertical-padding-10" enctype="multipart/form-data">
-            Event Type:
+            Event Type
             <select class="inputField" name="eventTypes[]" multiple multiple size="6">
                 <option value="crime">Crime</option>
                 <option value="traffic">Traffic</option>
@@ -49,10 +49,10 @@
                 <option value="news">General News</option>
             </select>
             <br><br>
-            Title:
+            Title
             <input class="inputField" name="title" type="text" required >
             <br><br>
-            Details:
+            Details
             <textarea class="detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
             <br><br>
             <div class="book center-txt">
@@ -65,10 +65,10 @@
                 </div>
             </div>
             <br>
-            From:
+            From
             <input class="inputField" name="startDate" type="datetime-local" required >
             <br>
-            To:
+            To
             <input class="inputField" name="endDate" type="datetime-local" required >
             <div class="center-txt">
             <input class="button" type="submit" value="Post" name="post"> 

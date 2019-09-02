@@ -122,7 +122,7 @@
           
             //uploading an image
             if(isset($_POST["newImage"])){
-                $target_dir_2 = "assets\media\images\\";
+                $target_dir_2 = "assets/media/images/";
                 $target_file= $target_dir_2 . basename($_FILES["imageAlert"]["name"]);
                 
                 $uploadOk = 1;

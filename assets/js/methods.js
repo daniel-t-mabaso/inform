@@ -61,3 +61,28 @@ function restoreDp(target){
     document.getElementById(target).src = oldDp;
     oldDp = '';
 }
+
+function toggleThis(id){
+    document.getElementById(id).classList.toggle('hide');
+}
+
+function viewPost(id, title, description, url, start, end){
+    var div = document.getElementById('pop-up-details-panel');
+    var output = '';
+    output += "<input type='hidden' name='post-id' value='"+id+"'/>";
+    output += "<div class='subheading bold center-txt'>"+title+"</div>";
+    if(url != "-"){
+        output += "<div class=' vertical-margin-15 uninterupted-max-width medium-small-height hide-overflow alt-bg'><img class='uninterupted-max-width' src='"+url+"'/></div>";
+    }else{
+        output += "<div class=' vertical-margin-15 uninterupted-max-width medium-small-height medium-small-line-height hide-overflow alt-bg white-txt heading center-txt bold'>No Image</div>";
+    }
+    output += "<div class='normal vertical-padding-10'>"+description+"</div>";
+    if(!(!start || start == "-")){
+        output += "<div class='footnote'>Posted on <b>"+start+"</b></div>";
+    }
+    if(end){
+        output += "<div class='footnote'><b> until "+end+"</b></div>";
+    }
+    div.innerHTML = output;
+    
+}

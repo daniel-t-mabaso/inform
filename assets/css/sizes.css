@@ -151,40 +151,68 @@
 
 
 .vertical-padding-5{
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 .vertical-padding-10{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 .vertical-padding-15{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
 }
 
 .vertical-padding-20{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
 }
 
 .vertical-padding-30{
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
 }
 
 .vertical-padding-40{
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
 }
 
 .vertical-padding-50{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
 }
 
+
+.margin-5{
+    margin: 5px;
+}
+
+.margin-10{
+    margin: 10px;
+}
+
+.margin-15{
+    margin: 15px;
+}
+
+.margin-20{
+    margin: 20px;
+}
+
+.margin-30{
+    margin: 30px;
+}
+
+.margin-40{
+    margin: 40px;
+}
+
+.margin-50{
+    margin: 50px;
+}
 
 .padding-5{
     padding: 5px;

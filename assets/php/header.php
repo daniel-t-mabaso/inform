@@ -1,6 +1,7 @@
 <?php
 //header here
     include('assets/php/message.php');
+    include('assets/php/pop-up.php');
 ?>
 <div id="menu-overlay" class="uninterupted-max-height hide uninterupted-max-width black-bg z-30 fixed unselected" onclick="toggleMenu();"></div>
 <div class="fixed z-50 uninterupted-max-height minute-width">
@@ -15,3 +16,4 @@
     </div>
     <div id='menu-button' class="white-bg z-40 unselected shadow padding-5 hide-overflow vertical-padding-30 extra-small-size primary-txt subheading float-left bold" onclick="toggleMenu();"><img class="unresticted-max-width" alt='Vertical menu icon' src="assets/media/images/vertical-menu-icon.png"></div>
 </div>
+

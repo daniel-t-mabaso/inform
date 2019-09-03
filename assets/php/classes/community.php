@@ -68,6 +68,13 @@
         }
 
         /* METHODS */
-
+        function displayAll(){
+            $code = $this->get_zip();
+            $suburb = $this->get_name();
+            $city = $this->get_city();
+            $province = $this->get_province();
+            $output = "<div class='card padding-20 max-width white-bg vertical-margin-10 shadow'><b>$suburb ($code)</b><br>$city<br>$province</div>";
+            return $output;
+        }
     }
 ?>

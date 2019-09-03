@@ -12,8 +12,10 @@
         <a href="myPosts.php"><div class="max-width padding-20">My Posts</div></a>
         <a href="preferences.php"><div class="max-width padding-20">My Preferences</div></a>
         <a href="profile.php"><div class="max-width padding-20">Profile</div></a>
-        <a href="settings.php"><div class="max-width padding-20">Settings</div></a>
+        <?php if($user->get_type()=='local admin' || $user->get_type()=='global admin'){
+            echo '<a href="dashboard.php"><div class="max-width padding-20">Dashboard</div></a>';}?>
         <a href="logout.php"><div class="max-width padding-20">Logout</div></a>
+        
     </div>
     <div id='menu-button' class="white-bg z-40 unselected shadow padding-5 hide-overflow vertical-padding-30 extra-small-size primary-txt subheading float-left bold" onclick="toggleMenu();"><img class="unresticted-max-width" alt='Vertical menu icon' src="assets/media/images/vertical-menu-icon.png"></div>
 </div>

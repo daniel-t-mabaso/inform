@@ -125,7 +125,7 @@
                 </div>
            
         </div><div>
-            <input class="button" type="submit" value="Done" name="preferences" />
+            <input class="button" type="submit" value="Save" name="preferences" />
         <div>
         </div>
         </form>

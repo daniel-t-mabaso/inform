@@ -8,6 +8,12 @@ function search(str, id) {
         output = document.getElementById('community-datalist');
 
     }
+    else{
+        
+        value = str.value;
+        str = 'suburbs';
+        output = document.getElementById(id);
+    }
     if (value.length==0) { 
         output.innerHTML="";
         return;
@@ -79,4 +85,68 @@ function fetchPosts(type, target){
         }
     }
 }
+
+function getStats(obj, type){
+    var output = obj;
+    var str = type;
+
+    if (window.XMLHttpRequest)
+    {// Code For IE7+, Firefox, Chrome, Opera, Safari
+    Xmlhttp= new XMLHttpRequest();
+    }
+    else
+    {// Code For IE6, IE5
+    Xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+     var Par =  "type=" + str;
+        Xmlhttp.open("POST",'assets/php/ajax.php/',true);
+        Xmlhttp.setRequestHeader("Content-Type","Application/X-Www-Form-Urlencoded");
+        Xmlhttp.send(Par);
+          
+    Xmlhttp.onreadystatechange = function()
+    {
+        console.log('ready state changed');
+        console.log(Xmlhttp.readyState);
+        if (Xmlhttp.readyState == 4 ){
+            if(Xmlhttp.status == 200)
+                {
+                    
+                    console.log('Got an Ajax result');
+                    output.innerHTML =  Xmlhttp.responseText;
+                }
+        }
+    }
+}
+
+function changeType(email, type){
+    var str =type;
+    var output = document.getElementById('null');
+    if (window.XMLHttpRequest)
+    {// Code For IE7+, Firefox, Chrome, Opera, Safari
+    Xmlhttp= new XMLHttpRequest();
+    }
+    else
+    {// Code For IE6, IE5
+    Xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+     var Par =  "type=" + str + "&email=" + email;
+        Xmlhttp.open("POST",'assets/php/ajax.php/',true);
+        Xmlhttp.setRequestHeader("Content-Type","Application/X-Www-Form-Urlencoded");
+        Xmlhttp.send(Par);
+          
+    Xmlhttp.onreadystatechange = function()
+    {
+        console.log('ready state changed');
+        console.log(Xmlhttp.readyState);
+        if (Xmlhttp.readyState == 4 ){
+            if(Xmlhttp.status == 200)
+                {
+                    document.getElementById('view-users-button').click();
+                }
+        }
+    }
+}
+
 

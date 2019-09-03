@@ -15,13 +15,13 @@
         header("Location: login.php");
     }
 
-    // if($user->get_type() != 'organ'){
+    if($user->get_type() != 'local admin' || $user->get_type() != 'global admin' || $user->get_type() != 'organisation'){
         
-    //     echo '<script>
-    //         window.location = "events.php";
-    //     </script>';
+        echo '<script>
+            window.location = "events.php";
+        </script>';
 
-    // }
+    }
 
 ?>
 <!DOCTYPE html>

@@ -71,9 +71,9 @@
             $email = mysqli_real_escape_string($dbc, $_POST['email']);   
             $password1 = mysqli_real_escape_string($dbc, $_POST['password']);   
             $password2 = mysqli_real_escape_string($dbc, $_POST['confirmPassword']);   
-            $type = 'com_mem';
+            $type = 'community member';
             if(isset($_POST['organisation'])){
-                $type = 'organ';
+                $type = 'unverified organisation';
             }
             if (empty($fullName)){
                 array_push($errors, "* Full name is required");

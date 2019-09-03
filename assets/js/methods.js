@@ -64,6 +64,7 @@ function restoreDp(target){
 
 function toggleThis(id){
     document.getElementById(id).classList.toggle('hide');
+    
 }
 
 function viewPost(id, title, description, url, start, end){
@@ -132,4 +133,25 @@ function enableThisDisableThat(id1, id2){
     if(disable.classList.contains('primary-bg')){
         disable.classList.remove(' primary-bg' );
     }
+}
+
+function hideAll(id){
+    var preferences = document.getElementsByClassName(id);
+        
+    for (var i = 0, l = preferences.length; i<l; i++){
+        if(!preferences[i].classList.contains('hide')){
+            preferences[i].classList.add('hide');
+        }
+    }
+}
+
+function selectThisOverOther(obj, id){
+    var preferences = document.getElementsByClassName(id);
+        
+    for (var i = 0, l = preferences.length; i<l; i++){
+        if(preferences[i].classList.contains('primary-bg')){
+            preferences[i].classList.remove('primary-bg');
+        }
+    }
+    obj.classList.add('primary-bg');
 }

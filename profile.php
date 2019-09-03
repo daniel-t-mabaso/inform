@@ -68,6 +68,12 @@
                                 $cid = $com-> get_all();
                                 echo "<div class='book vertical-margin-5'>$cid</div>";?>
                     </div>
+                    <div class="vertical-margin-15">
+                        User Type       
+                        <?php
+                                $type = $user-> get_type();
+                                echo "<div class='book vertical-margin-5'>$type</div>";?>
+                    </div>
                     <br>
                     <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="center-txt footnote">Edit Profile</div>
                     

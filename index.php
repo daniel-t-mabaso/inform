@@ -1,5 +1,6 @@
 <?php
     include("assets/php/session.php");
+    include("assets/php/class_lib.php");
     if(!$_SESSION['auth']){
         header("Location: login.php");
     }
@@ -38,7 +39,6 @@ if($_SESSION['auth']!= true){
                 <img class="max-width" src='assets/media/images/event-icon.jpg'>
                 Events
             </div></a>
-
             <a href="alerts.php"><div class="max-width vertical-margin-40 small-height small-width center small-height">
                 <img class="max-width" src='assets/media/images/alert-icon.png'>
                 Alerts

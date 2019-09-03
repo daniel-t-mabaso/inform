@@ -16,7 +16,7 @@
 }
 
     $output = '';
-    $type = $_REQUEST["type"];
+    $type = strtolower($_REQUEST["type"]);
     switch($type){
         case 'suburbs':
             $search_term = $_REQUEST["term"];
@@ -69,16 +69,16 @@
                     $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
                     $card = $event -> display();
-                    echo $card;
+                    $output = $card;
                 }
                 if($displayed==0){
-                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                    $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                         <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>Seems like there are no events for your community.</div></div>
                     ";
                 }
             }
             else{
-                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                 <div class='center-txt uninterupted-max-width footnote vertical-padding-15 italic normal'>We're not sure what you want to see.<br><a class='underline' href='preferences.php'>Set your preferences</a></div></div>
                 ";
             }
@@ -120,16 +120,16 @@
                     $alert->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
                     $card = $alert -> display();
-                    echo $card;
+                    $output = $card;
                 }
                 if($displayed==0){
-                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                    $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                         <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>No alerts for your community. To add an alert <a href='createAlert.php' class='underline'>click here</a></div></div>
                     ";
                 }
             }
             else{
-                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                     <div class='center-txt uninterupted-max-width footnote vertical-padding-15 italic normal'>We're not sure what you want to see.<br><a class='underline' href='preferences.php'>Set your preferences</a></div></div>
                 ";
                 
@@ -154,10 +154,10 @@
                     $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
                     $card = $event -> displayEditable();
-                    echo $card;
+                    $output = $card;
                 }
                 if($displayed==0){
-                    echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                    $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                         <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>Seems like there are no events for your community.</div></div>
                     ";
                 }
@@ -182,16 +182,217 @@
                 $alert->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                 //call display function for each post.
                 $card = $alert -> displayEditable();
-                echo $card;
+                $output = $card;
             }
             if($displayed==0){
-                echo "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
+                $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
                     <div class='center-txt uninterupted-max-width footnote vertical-padding-5 italic normal'>No alerts for your community. To add an alert <a href='createAlert.php' class='underline'>click here</a></div></div>
                 ";
             }
             break;
+        case 'post-stats':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            $query = "SELECT * FROM posts WHERE cid = '$cid';";
+            $result = mysqli_query($dbc, $query);
+            $events = 0;
+            $alerts = 0;
+            //loop through results creating obj
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                if($row['type']=='event'){
+                    $events++;
+                }
+                else if($row['type']=='alert'){
+                    $alerts++;
+                }
+                //call display function for each post.
+            }
+            $output = "<div class'bold max-width center-txt float-left'><b>Post Statistics</b></div><div class='extra-small-height'><div class='half-width float-left'>Events<br>$events</div><div class='half-width float-left'>Alerts<br>$alerts</div></div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
+            break;
+        case 'user-stats':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            
+            $query = "SELECT * FROM users";
+            if($type=='local admin'){
+                $query = "SELECT * FROM users WHERE base_cid = '$cid';";
+            }
+            $result = mysqli_query($dbc, $query);
+            $users = 0;
+            $unv_org = 0;
+            $org = 0;
+            $admins = 0;
+            //loop through results creating obj
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                if($row['type']=='community member'){
+                    $users++;
+                }
+                else if($row['type']=='unverified organisation'){
+                    $unv_org++;
+                }
+                else if($row['type']=='organisation'){
+                    $org++;
+                }
+                else if($row['type']=='local admin'){
+                    $admins++;
+                }
+                //call display function for each post.
+            }
+            $output = "<div class'max-width center-txt float-left'><b>User Statistics</b></div><div>Community Members: $users<br>Unverified Organisations: $unv_org<br>Verified Organisations: $org<br>Community(Local) Admins: $admins</div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"user-stats-panel\"), \"user-stats\");'>Refresh</div>";
+            break;
+        case 'community-stats':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            if($type=="local admin"){
+            $query = "SELECT * FROM communities WHERE code = '$cid';";}
+            else{
+                $query = "SELECT * FROM communities;";
+            }
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
+            //loop through results creating obj
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $count++;
+                //call display function for each post.
+            }
+            $output = "<div class'bold max-width center-txt'><b>My Community Statistics</b></div><div class='uninterupted-max-width'>Total Communities: $count</div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
+            break;
+        case 'load-posts':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            if($type=="local admin"){
+            $query = "SELECT * FROM posts WHERE cid = '$cid';";}
+            else{
+                $query = "SELECT * FROM posts;";
+            }
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
+            $output ="";
+            //loop through results creating obj
+            while ($count< 50 && $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $count++;
+                //call display function for each post.
+                if($row['type']=='event'){
+                    $post = new Event;
+                    $post->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                }
+                else if($row['type']=='alert'){
+                    $post = new Alert;
+                    $post->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
+                }
+                $output .= $post->display();
+            }
+            break;
+        case 'load-users':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            if($type=="local admin"){
+            $query = "SELECT * FROM users WHERE base_cid = '$cid';";}
+            else{
+                $query = "SELECT * FROM users;";
+            }
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
+            //loop through results creating obj
+            while ($count< 50 && $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $count++;
+                //call display function for each post.
+                $user = new User;
+                $user->set_details($row['name'], $row['email'], $row['type'], 'active', $row['media_url'], $row['filters'], $row['base_cid'], '');
+                $output .= $user->displayAll();
+            }
+            break;
+        case 'load-communities':
+            $user = unserialize($_SESSION['user']);
+            //get user email
+            $email = $user -> get_email();
+            $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
+            //get user preferences
+            
+            //search DB for posts with preferences belonging to community
+            if($type=="local admin"){
+            $query = "SELECT * FROM communities WHERE code = '$cid';";}
+            else{
+                $query = "SELECT * FROM communities;";
+            }
+            $result = mysqli_query($dbc, $query);
+            $count = 0;
+            //loop through results creating obj
+            while ( $row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $count++;
+                //call display function for each post.
+                $com = new Community;
+                $com->set_details($row['suburb'], $row['code'], $row['city'], $row['province']);
+                $output .= $com->displayAll();
+            }
+            break;
+        case 'verify':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'organisation' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            
+            break;
+        case 'unverify':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'unverified organisation' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            
+            break;
+        case 'make admin':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'local admin' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            
+            break;
+        case 'make member':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'community member' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<script>document.getElementById('view-users-button').click();</script>";
+            
+            break;
     }
     
     echo $output;
-    
 ?>

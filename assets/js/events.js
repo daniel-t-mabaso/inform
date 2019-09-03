@@ -10,6 +10,9 @@ window.addEventListener('load', function(){
         };
     }
 }, false);
+
+
+
 window.addEventListener('load', function(){ 
     var notificationPopUp = document.getElementsByClassName('pop-up-notification');
     for (var i = 0, l = notificationPopUp.length; i<l; i++){

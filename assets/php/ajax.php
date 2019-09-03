@@ -362,7 +362,7 @@
             
             $query = "UPDATE `users` SET `type` = 'organisation' WHERE `email` = '$email'";
             $result = mysqli_query($dbc, $query);
-            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            $output = "<div class='padding-20 vertical-padding-50 max-width max-height padding-20 vertical-padding-50 success-bg'>User Verified</div>";
             
             break;
         case 'unverify':
@@ -371,7 +371,7 @@
             
             $query = "UPDATE `users` SET `type` = 'unverified organisation' WHERE `email` = '$email'";
             $result = mysqli_query($dbc, $query);
-            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            $output = "<div class='max-width max-height padding-20 vertical-padding-50 success-bg'>User Unverified</div>";
             
             break;
         case 'make admin':
@@ -380,17 +380,22 @@
             
             $query = "UPDATE `users` SET `type` = 'local admin' WHERE `email` = '$email'";
             $result = mysqli_query($dbc, $query);
-            $output = "<script>document.getElementById('view-users-button').clicked()</script>";
+            $output = "<div class='max-width max-height padding-20 vertical-padding-50 success-bg'>User Now Admin</div>";
             
             break;
         case 'make member':
+        $user = unserialize($_SESSION['user']);
             $email = $_REQUEST["email"];
             //get user email
-            
-            $query = "UPDATE `users` SET `type` = 'community member' WHERE `email` = '$email'";
-            $result = mysqli_query($dbc, $query);
-            $output = "<script>document.getElementById('view-users-button').click();</script>";
-            
+            $my_email = $user->get_email();
+            if($email != $my_email){
+                $query = "UPDATE `users` SET `type` = 'community member' WHERE `email` = '$email'";
+                $result = mysqli_query($dbc, $query);
+                $output = "<div class='max-width padding-20 vertical-padding-50 max-height success-bg'>User Now Member</div>";
+            }
+            else{
+                $output = "<div class='max-width padding-20 vertical-padding-50 max-height danger-bg'>Can't update own type</div>";
+            }   
             break;
     }
     

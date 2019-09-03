@@ -121,7 +121,7 @@ function getStats(obj, type){
 
 function changeType(email, type){
     var str =type;
-    var output = document.getElementById('null');
+    var output = document.getElementById('message-panel');
     if (window.XMLHttpRequest)
     {// Code For IE7+, Firefox, Chrome, Opera, Safari
     Xmlhttp= new XMLHttpRequest();
@@ -143,10 +143,30 @@ function changeType(email, type){
         if (Xmlhttp.readyState == 4 ){
             if(Xmlhttp.status == 200)
                 {
+                    
+                    output.innerHTML =  Xmlhttp.responseText;
                     document.getElementById('view-users-button').click();
+                    showMessage();
                 }
         }
     }
+}
+function showMessage(){
+    var panel = document.getElementById('message-panel');
+    if (panel.classList.contains("success-bg")){
+        panel.classList.remove("success-bg");
+    }
+    if (panel.classList.contains("danger-bg")){
+        panel.classList.remove("danger-bg");
+    }
+    if (!panel.classList.contains("alt-bg")){
+        panel.classList.add("alt-bg");
+    }
+    if (panel.classList.contains("hide")){
+        panel.classList.remove("hide");
+    }
+
+    setTimeout(function(){panel.classList.add("hide");  }, 3000);
 }
 
 

@@ -15,7 +15,7 @@
         header("Location: login.php");
     }
 
-    if($user->get_type() != 'local admin' || $user->get_type() != 'global admin' || $user->get_type() != 'organisation'){
+    if(!($user->get_type() == 'local admin' || $user->get_type() == 'global admin' || $user->get_type() == 'organisation')){
         
         echo '<script>
             window.location = "events.php";
@@ -34,7 +34,7 @@
 </head>
 <body class="white-bg">
         <?php include("assets/php/header.php");?>
-        <div class="vertical-padding-40 grey-txt bold-txt alt-bg center-txt">
+        <div class="vertical-padding-40 grey-txt bold-txt primary-bg white-txt center-txt">
             <h1 class='heading'>New Event</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
@@ -71,7 +71,7 @@
             To
             <input class="inputField" name="endDate" type="datetime-local" required >
             <div class="center-txt">
-            <input class="button" type="submit" value="Post" name="post"> 
+            <input class="button secondary-bg white-txt" type="submit" value="Post" name="post"> 
             <div>
         </form>
 

@@ -12,25 +12,25 @@
     background-color: #fff;  
 }
 .primary-bg{
-    background-color: #8DE0F2;  
+    background-color: #22497D;  
 }
 .secondary-bg{
-    background-color: rgb(71, 71, 71);  
+    background-color: #97A8F4;  
 }
 .tertiary-bg{
-    background-color: #6DA7F2;  
+    background-color: #B3B178;  
 }
 .alt-bg{
-    background-color: #d8d8d8;
+    background-color: #8AADBF;
 }
 .success-bg{
-    background-color: #8af359;  
+    background-color: #A6BF34;  
 }
 .caution-bg{
     background-color: #f3dc59;  
 }
 .danger-bg{
-    background-color: #f35959;  
+    background-color: #8C2318;  
 }
 .neutral-bg{
     background-color: #000000;  
@@ -45,25 +45,25 @@
     color: #ffffff;  
 }
 .primary-txt{
-    color: #8DE0F2;  
+    color: #3472BF;  
 }
 .secondary-txt{
-    color: rgb(71, 71, 71);  
+    color: #97A8F4;  
 }
 .tertiary-txt{
-    color: #6DA7F2;  
+    color: #868C6C;  
 }
 .alt-txt{
     color: #d8d8d8;  
 }
 .success-txt{
-    color: #8af359;  
+    color: #A6BF34;  
 }
 .caution-txt{
     color: #f3dc59;  
 }
 .danger-txt{
-    color: #f35959;  
+    color: #8C2318;  
 }
 .neutral-txt{
     color: #000000;  

@@ -27,11 +27,11 @@
                <div class="absolute z-10  uninterupted-max-width center-txt">
                     <div id='profile-upload-panel' class="hide uninterupted-max-width absolute z-20 small-height">
                         <div class="center small-width minute-height">
-                            <div onclick='document.getElementById("upload-image-button").click();document.getElementById("profile-upload-panel").classList.add("hide");' class="float-left minute-size circle success-bg white-txt padding-5 shadow">&#10004;</div>
-                            <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height shadow" onclick='document.getElementById("profile-upload-panel").classList.add("hide"); restoreDp("profilePicture");'>&#10006;</div>
+                            <div onclick='document.getElementById("upload-image-button").click();document.getElementById("profile-upload-panel").classList.add("hide");' class="float-left minute-size circle success-bg white-txt padding-5">&#10004;</div>
+                            <div class="float-right minute-size circle danger-bg white-txt padding-5 minute-line-height" onclick='document.getElementById("profile-upload-panel").classList.add("hide"); restoreDp("profilePicture");'>&#10006;</div>
                         </div>
                     </div>
-                    <div  class='medium-small-size circle hide-overflow center white-bg shadow'>
+                    <div  class='medium-small-size circle hide-overflow center white-bg'>
                <?php
                     $url = $user -> get_dp_url();
                     //echo "<img src='$url' class='profilePicture'/>"
@@ -51,36 +51,35 @@
         <form method="post" action="./assets/php/requests.php" name="edit-profile" class="left-txt bold vertical-padding-10" enctype="multipart/form-data">
                 <div id="profile-details-panel" class="center-txt">
                     <div class="vertical-margin-15">
-                        Full Name
+                    <div class="subheading">Full Name</div>
                             <?php 
                             $name = $user->get_full_name(); 
                             echo "<div class='book vertical-margin-5'>$name</div>";?>
                     </div>
                     <div class="vertical-margin-15">        
-                        Email
+                    <div class="subheading">Email</div>
                             <?php
                             $email = $user->get_email(); 
                             echo "<div class='book vertical-margin-5'>$email</div>";?>
                     </div>
                     <div class="vertical-margin-15">
-                        Community       
+                    <div class="subheading">Community</div>
                         <?php
                                 $cid = $com-> get_all();
                                 echo "<div class='book vertical-margin-5'>$cid</div>";?>
                     </div>
                     <div class="vertical-margin-15">
-                        User Type       
+                        <div class="subheading">User Type</div>       
                         <?php
                                 $type = $user-> get_type();
                                 echo "<div class='book vertical-margin-5'>$type</div>";?>
                     </div>
                     <br>
-                    <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="center-txt footnote">Edit Profile</div>
+                    <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="button secondary-bg white-txt">Edit Profile</div>
+                    <div onclick="document.getElementById('delete-profile-button').click();" class="button tertiary-bg white-txt">Delete Profile</div>
                     
-            <br>
-            <div class="book center-txt">
-                <input class="button" type="submit" value="Deactivate Account" name="deleteProfile" />
-            </div>
+                <input class="button hide white-txt" type="submit" value="Deactivate Account" id='delete-profile-button' name="deleteProfile" />
+            
                 </div>
                 <div id='profile-edit-panel' class='hide left-txt'>
                     Full Name
@@ -98,8 +97,8 @@
                         
                     <br>
                         <div class="center-txt">
-                        <input class="button" type="submit" value="Save" name="edit-profile" /> 
-                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button" type="button" value="Cancel" name="cancel" /> 
+                        <input class="button success-bg white-txt" type="submit" value="Save" name="edit-profile" /> 
+                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button tertiary-bg white-txt" type="button" value="Cancel" name="cancel" /> 
                     </div>
             </div> 
             

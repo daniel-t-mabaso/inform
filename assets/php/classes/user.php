@@ -167,10 +167,10 @@
             $url = $this->get_dp_url();
             
             $output = "<div class='card max-width padding-20 shadow white-bg vertical-margin-10'><div class='extra-small-size circle margin-5 float-left hide-overflow'><img class='uninterupted-max-width' src='$url'/></div><b>$name</b><div class='footnote italic'>$email, $status<br>Community: $cid</br><b>$type</b></div>";
-            if($type =="community member"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button alt-bg center'>Make Admin</div>";}
-            else if($type =="local admin"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button alt-bg center'>Make Member</div>";}
-            else if($type =="unverified organisation"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button alt-bg center'>Verify</div>";}
-            else if($type =="organisation"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button alt-bg center'>Unverify</div>";}
+            if($type =="community member"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button caution-bg white-txt center'>Make Admin</div>";}
+            else if($type =="local admin"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button button secondary-bg white-txt center'>Make Member</div>";}
+            else if($type =="unverified organisation"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button secondary-bg white-txt button center'>Verify</div>";}
+            else if($type =="organisation"){$output .= "<div onclick='changeType(\"$email\", this.innerHTML);' class='admin-button danger-bg white-txt button center'>Unverify</div>";}
             $output .= "</div>";
             return $output;
         }

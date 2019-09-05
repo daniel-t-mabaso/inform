@@ -195,10 +195,14 @@
             //get user email
             $email = $user -> get_email();
             $cid = $user -> get_base_communities();
+            $type = $user -> get_type();
             //get user preferences
             
             //search DB for posts with preferences belonging to community
-            $query = "SELECT * FROM posts WHERE cid = '$cid';";
+            $query = "SELECT * FROM posts;";
+            if(!$type=='global admin'){
+                $query = "SELECT * FROM posts WHERE cid = '$cid';";
+            }
             $result = mysqli_query($dbc, $query);
             $events = 0;
             $alerts = 0;
@@ -212,7 +216,7 @@
                 }
                 //call display function for each post.
             }
-            $output = "<div class'bold max-width center-txt float-left'><b>Post Statistics</b></div><div class='extra-small-height'><div class='half-width float-left'>Events<br>$events</div><div class='half-width float-left'>Alerts<br>$alerts</div></div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
+            $output = "<div class'bold max-width center-txt float-left'><div class='subheading bold vertical-padding-10'>Post Statistics</div></div><div class='extra-small-height'><div class='half-width float-left'>Events<br>$events</div><div class='half-width float-left'>Alerts<br>$alerts</div></div><div class='button secondary-bg white-txt' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
             break;
         case 'user-stats':
             $user = unserialize($_SESSION['user']);
@@ -249,7 +253,7 @@
                 }
                 //call display function for each post.
             }
-            $output = "<div class'max-width center-txt float-left'><b>User Statistics</b></div><div>Community Members: $users<br>Unverified Organisations: $unv_org<br>Verified Organisations: $org<br>Community(Local) Admins: $admins</div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"user-stats-panel\"), \"user-stats\");'>Refresh</div>";
+            $output = "<div class'max-width center-txt float-left'><div class='subheading bold vertical-padding-10'>User Statistics</div></div><div>Community Members: $users<br>Unverified Organisations: $unv_org<br>Verified Organisations: $org<br>Community(Local) Admins: $admins</div><div class='button secondary-bg white-txt' onclick='getStats(document.getElementById(\"user-stats-panel\"), \"user-stats\");'>Refresh</div>";
             break;
         case 'community-stats':
             $user = unserialize($_SESSION['user']);
@@ -260,10 +264,9 @@
             //get user preferences
             
             //search DB for posts with preferences belonging to community
+            $query = "SELECT * FROM communities;";
             if($type=="local admin"){
-            $query = "SELECT * FROM communities WHERE code = '$cid';";}
-            else{
-                $query = "SELECT * FROM communities;";
+                $query = "SELECT * FROM communities WHERE code = '$cid';";
             }
             $result = mysqli_query($dbc, $query);
             $count = 0;
@@ -272,7 +275,7 @@
                     $count++;
                 //call display function for each post.
             }
-            $output = "<div class'bold max-width center-txt'><b>My Community Statistics</b></div><div class='uninterupted-max-width'>Total Communities: $count</div><div class='italic bold footnote vertical-padding-10' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
+            $output = "<div class'bold max-width center-txt'><div class='subheading bold vertical-padding-10'>My Community Statistics</div></div><div class='uninterupted-max-width'>Total Communities: $count</div><div class='button secondary-bg white-txt' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
             break;
         case 'load-posts':
             $user = unserialize($_SESSION['user']);

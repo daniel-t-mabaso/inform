@@ -21,11 +21,11 @@
         
         <?php include("assets/php/header.php");?>
         
-        <div class="vertical-padding-20 white-txt primary-bg">
+        <div class="vertical-padding-30 white-txt primary-bg">
         <h1 class="heading center-txt bold vertical-padding-15">PREFERENCES</h1>
         <h2 class="book white-txt bold center-txt">What are your interests?</h2>
         </div>
-        <div class='center-txt padding-20 vertical-padding-5 max-width'>
+        <div class='center-txt padding-20 max-width'>
             <!-- <div class="subheading vertical-margin-10">Edit your preferences below</div> -->
         <form name="preferences" method="POST" action="assets/php/requests.php"  class="left-txt vertical-padding-10">
         <div  class="center-txt">
@@ -125,7 +125,7 @@
                 </div>
            
         </div><div>
-            <input class="button" type="submit" value="Save" name="preferences" />
+            <input class="button success-bg white-txt" type="submit" value="Save" name="preferences" />
         <div>
         </div>
         </form>

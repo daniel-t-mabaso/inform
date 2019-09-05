@@ -25,7 +25,7 @@ if($_SESSION['auth']!= true){
 </head>
 <body class="white-bg">
         <?php include("assets/php/header.php");?>
-        <div class="vertical-padding-40 grey-txt bold-txt alt-bg center-txt">
+        <div class="vertical-padding-40 grey-txt bold-txt primary-bg white-txt center-txt">
             <h1 class='heading'>New Alert</h1>
         </div>
         <div class='center-txt padding-20 vertical-padding-30 max-width'>
@@ -100,7 +100,7 @@ if($_SESSION['auth']!= true){
         </select>
         <div class="center-txt">
 
-            <input class="button" type="submit" value="Post" name="post"> 
+            <input class="button secondary-bg white-txt" type="submit" value="Post" name="post"> 
             
             
             <br><br>

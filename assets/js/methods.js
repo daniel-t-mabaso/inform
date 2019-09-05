@@ -131,7 +131,7 @@ function enableThisDisableThat(id1, id2){
         disable.classList.add('alt-bg');
     }
     if(disable.classList.contains('primary-bg')){
-        disable.classList.remove(' primary-bg' );
+        disable.classList.remove('primary-bg' );
     }
 }
 

@@ -171,7 +171,7 @@
 
             $tmp = date("H:i");
             return "<div  onclick='viewPost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
-                <div class='bold max-width'>$title</div>
+            <img class='minute-size float-left' src='./assets/media/images/events-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <div class='footnote bold $date</div>
                 <input type='hidden' class='post-id' value='$id'/>
@@ -225,7 +225,7 @@
 
             $tmp = date("H:i");
             return "<div  onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
-                <div class='bold max-width'>$title</div>
+            <img class='minute-size float-left' src='./assets/media/images/events-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <div class='footnote bold $date</div>
                 <input type='hidden' class='post-id' value='$id'/>
@@ -273,7 +273,7 @@
 
             $tmp = date("H:i");
             return "<div onclick='viewPost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", null); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center caution-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
-                <div class='bold max-width'>$title</div>
+            <img class='minute-size float-left' src='./assets/media/images/alerts-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <input type='hidden' class='post-id' value='$id'/>
             </div>";
@@ -297,7 +297,7 @@
 
             $tmp = date("H:i");
             return "<div onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", null); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center caution-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
-                <div class='bold max-width'>$title</div>
+            <img class='minute-size float-left' src='./assets/media/images/alerts-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <input type='hidden' class='post-id' value='$id'/>
             </div>";

@@ -71,7 +71,7 @@
     height: 600px;
 }
 .large-medium-height{
-    height: 500px;
+    height: 470px;
 }
 .medium-height{
     height:400px;
@@ -107,6 +107,10 @@
 .small-size{
     height: 150px;
     width: 150px;
+}
+.small-small-size{
+    height: 120px;
+    width: 120px;
 }
 .extra-small-size{
     height: 50px;

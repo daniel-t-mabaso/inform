@@ -28,12 +28,12 @@
 .title{
     /* Title font size */
     font-size: 32pt;
-    font-style: bold;
+    font-weight: bold;
 }
 .heading{
     /* Heading font size */
     font-size: 18pt;
-    font-style: bold;
+    font-weight: bold;
 }
 .subheading{
     /* Subheading font size */
@@ -46,7 +46,6 @@
 .footnote{
     /* Footnote font size*/
     font-size: 9pt;
-    font-style: italic;
 }
 
 .center-txt{

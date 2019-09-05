@@ -42,7 +42,7 @@ if(!($user->get_type() === 'local admin' || $user->get_type() === 'global admin'
     <div class="white-bg large-medium-height">
     <div class='padding-20 vertical-padding-10 max-width'>
         <!-- Local Admin Dashboard -->
-    <div id="dashboard-navigation-panel" class="extra-small-width vertical-margin-50 fixed  z-30 right-0">
+    <div id="dashboard-navigation-panel" class="extra-small-width vertical-margin-50 fixed  z-20 right-0">
         <div class="uninterupted-max-width uninterupted-max-height black-bg unselected absolute z-n10"></div>
         <div id="view-posts-button" onclick="selectThisOverOther(this, 'dashboard-navigation-item'); hideAll('dashboard-panel');toggleThis('posts-panel'); getStats(document.getElementById('list-posts-panel'), 'load-posts');" class="dashboard-navigation-item extra-small-size center vertical-padding-15 center-txt"><img class="uninterupted-max-height" src='./assets/media/images/posts-icon.png'/></div>
         <div id="view-users-button" onclick="selectThisOverOther(this, 'dashboard-navigation-item'); hideAll('dashboard-panel');toggleThis('users-panel'); getStats(document.getElementById('list-users-panel'), 'load-users');" class="dashboard-navigation-item extra-small-size center vertical-padding-15 center-txt"><img class="uninterupted-max-height" src='./assets/media/images/users-icon.png'/></div>
@@ -74,10 +74,10 @@ if(!($user->get_type() === 'local admin' || $user->get_type() === 'global admin'
     echo "for your community $name";
 }
 ?></div><br>
-        <div id='post-stats-panel' class="vertical-padding-10 vertical-margin-10" onclick="getStats(this, 'post-stats');"><b>View Post Statistics</b></div>
+        <div id='post-stats-panel' class="vertical-padding-10 vertical-margin-10 max-width  padding-20 card shadow" onclick="getStats(this, 'post-stats');"><b>View Post Statistics</b></div>
 
-        <div id='user-stats-panel' class="vertical-padding-10 vertical-margin-10" onclick="getStats(this, 'user-stats');"><b>View User Statistics</b></div>
-        <div id='community-stats-panel' class="vertical-padding-10 vertical-margin-10" onclick="getStats(this, 'community-stats');"><b>View Community Statistics</b></div>
+        <div id='user-stats-panel' class="vertical-padding-10 vertical-margin-10 max-width  padding-20 card shadow" onclick="getStats(this, 'user-stats');"><b>View User Statistics</b></div>
+        <div id='community-stats-panel' class="vertical-padding-10 vertical-margin-10 max-width  padding-20 card shadow" onclick="getStats(this, 'community-stats');"><b>View Community Statistics</b></div>
     </div>
     <!-- Global Admin Dashboard -->
 <?php if($user->get_type() === 'global admin'){?>

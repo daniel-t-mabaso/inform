@@ -303,7 +303,7 @@
                     $post = new Alert;
                     $post->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                 }
-                $output .= $post->display();
+                $output .= $post->displayEditable();
             }
             break;
         case 'load-users':

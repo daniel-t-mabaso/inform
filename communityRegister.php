@@ -16,7 +16,7 @@
             include 'assets/php/dependencies.php';
         ?>
 </head>
-        <body>
+        <body class='alt-bg'>
             <?php
                 include('assets/php/message.php');
             ?>

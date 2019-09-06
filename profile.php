@@ -17,7 +17,7 @@
         ?>
     <title>Profile</title>
 </head>
-    <body>
+    <body class='alt-bg'>
         
     <?php include("assets/php/header.php");?>
 
@@ -75,8 +75,8 @@
                                 echo "<div class='book vertical-margin-5'>$type</div>";?>
                     </div>
                     <br>
-                    <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="button secondary-bg white-txt">Edit Profile</div>
-                    <div onclick="document.getElementById('delete-profile-button').click();" class="button tertiary-bg white-txt">Delete Profile</div>
+                    <div onclick="hideThisMeShowThat('profile-details-panel','profile-edit-panel');" class="button primary-bg white-txt">Edit Profile</div>
+                    <div onclick="document.getElementById('delete-profile-button').click();" class="button tertiary-bg white-txt">Deactivate Profile</div>
                     
                 <input class="button hide white-txt" type="submit" value="Deactivate Account" id='delete-profile-button' name="deleteProfile" />
             
@@ -98,7 +98,7 @@
                     <br>
                         <div class="center-txt">
                         <input class="button success-bg white-txt" type="submit" value="Save" name="edit-profile" /> 
-                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button tertiary-bg white-txt" type="button" value="Cancel" name="cancel" /> 
+                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button caution-bg white-txt" type="button" value="Cancel" name="cancel" /> 
                     </div>
             </div> 
             

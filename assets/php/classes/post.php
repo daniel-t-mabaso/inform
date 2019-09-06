@@ -170,7 +170,7 @@
             $url = $this -> get_post_image();
 
             $tmp = date("H:i");
-            return "<div  onclick='viewPost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+            return "<div  onclick='viewPost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center white-bg vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
             <img class='minute-size float-left' src='./assets/media/images/events-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <div class='footnote bold $date</div>
@@ -224,7 +224,7 @@
             $url = $this -> get_post_image();
 
             $tmp = date("H:i");
-            return "<div  onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 exta-small-height shadow black-txt left-txt bold'>
+            return "<div  onclick='viewEditablePost(\"$id\", \"$uTitle\", \"$uDescription\", \"$url\", \"$uStart\", \"$uEnd\"); toggleThis(\"pop-up-card-panel\");' class='post-card card max-width padding-20 vertical-padding-30 center vertical-margin-10 white-bg exta-small-height shadow black-txt left-txt bold'>
             <img class='minute-size float-left' src='./assets/media/images/events-icon.png'/><div class='bold subheading max-width'>&nbsp;&nbsp;$title</div>
                 <div class='book max-width vertical-padding-5'>$description</div>
                 <div class='footnote bold $date</div>

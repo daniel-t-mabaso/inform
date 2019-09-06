@@ -15,7 +15,7 @@ if($_SESSION['auth'] == true){
             include 'assets/php/dependencies.php';
         ?>
     </head>
-        <body>
+        <body class='alt-bg'>
         <div class="vertical-padding-40 white-txt center-txt primary-bg">
             <h1 class='title'>INFORM</h1>
             <h2 class='book'>Community Notice System</h2>

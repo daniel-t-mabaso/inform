@@ -123,12 +123,12 @@ function enableThisDisableThat(id1, id2){
     if(!enable.classList.contains('primary-bg')){
         enable.classList.add('primary-bg');
     }
-    if(enable.classList.contains('alt-bg')){
-        enable.classList.remove('alt-bg');
+    if(enable.classList.contains('neutral-bg')){
+        enable.classList.remove('neutral-bg');
     }
 
-    if(!disable.classList.contains('alt-bg')){
-        disable.classList.add('alt-bg');
+    if(!disable.classList.contains('neutral-bg')){
+        disable.classList.add('neutral-bg');
     }
     if(disable.classList.contains('primary-bg')){
         disable.classList.remove('primary-bg' );

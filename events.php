@@ -24,7 +24,7 @@ if($_SESSION['auth']!= true){
     <title>Events</title>
 </head>
 
-<body class="" onload="fetchPosts('events', 'loaded-events');">
+<body class="alt-bg" onload="fetchPosts('events', 'loaded-events');">
     
     <?php include("assets/php/header.php");?>
     
@@ -40,7 +40,7 @@ if($_SESSION['auth']!= true){
     </div>
 <?php 
     if($user->get_type() == 'organisation' || $user->get_type() == 'local admin' || $user->get_type() == 'global admin'){ 
-        echo '<a href="createEvent.php"><div class="secondary-bg white-txt title clickable extra-small-size extra-small-line-height fixed z-10 padding-10 center-txt  shadow right-20 bottom-30 circle">+</div></a>';
+        echo '<a href="createEvent.php"><div class="primary-bg white-txt title clickable extra-small-size extra-small-line-height fixed z-10 padding-10 center-txt  shadow right-20 bottom-30 circle">+</div></a>';
         }
     ?>
 </body>

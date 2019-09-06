@@ -17,7 +17,7 @@
             ?>
         <title>Profile</title>
     </head>
-    <body>
+    <body class='alt-bg'>
             
         <?php include("assets/php/header.php");?>
         <div class="vertical-padding-50 fixed uninterupted-max-width shadow top-0 z-10 white-txt primary-bg center-txt">
@@ -45,10 +45,10 @@
 
 
         <div class="uninterupted-max-width fixed bottom-0 left-0 z-10">
-            <div id="my-events-button" onclick="fetchPosts('my-events', 'my-posts-panel'); enableThisDisableThat('my-events-button','my-alerts-button');" class="half-width  alt-bg white-txt center-txt vertical-padding-15 float-left">
+            <div id="my-events-button" onclick="fetchPosts('my-events', 'my-posts-panel'); enableThisDisableThat('my-events-button','my-alerts-button');" class="half-width  neutral-bg white-txt center-txt vertical-padding-15 float-left">
                 My Events
             </div>
-            <div id="my-alerts-button" onclick="fetchPosts('my-alerts', 'my-posts-panel'); enableThisDisableThat('my-alerts-button','my-events-button');" class="half-width center-txt vertical-padding-15 alt-bg white-txt float-left">
+            <div id="my-alerts-button" onclick="fetchPosts('my-alerts', 'my-posts-panel'); enableThisDisableThat('my-alerts-button','my-events-button');" class="half-width center-txt vertical-padding-15 neutral-bg white-txt float-left">
                 My Alerts
             </div>
         </div>

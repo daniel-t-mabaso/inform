@@ -17,7 +17,7 @@
     <title>Preferences</title>
 </head>
 
-<body>
+<body class='alt-bg'>
         
         <?php include("assets/php/header.php");?>
         

@@ -23,7 +23,7 @@ if($_SESSION['auth']!= true){
     <title>Settings</title>
 </head>
 
-<body class="white-bg">
+<body class='alt-bg'>
     
     <?php include("assets/php/header.php");?>
     

@@ -24,7 +24,7 @@ if($_SESSION['auth']!= true){
     <title>Alerts</title>
 </head>
 
-<body class="white-bg" onload="fetchPosts('alerts', 'loaded-events');">
+<body class="alt-bg" onload="fetchPosts('alerts', 'loaded-events');">
     
     <?php include("assets/php/header.php");?>
     
@@ -38,7 +38,7 @@ if($_SESSION['auth']!= true){
 
     <div id="loaded-events" class="max-width center">
     </div>
-    <a href="createAlert.php"><div class="secondary-bg white-txt title clickable extra-small-size extra-small-line-height fixed z-10 padding-10 center-txt  shadow right-20 bottom-30 circle">+</div></a>
+    <a href="createAlert.php"><div class="primary-bg white-txt title clickable extra-small-size extra-small-line-height fixed z-10 padding-10 center-txt  shadow right-20 bottom-30 circle">+</div></a>
     
 </body>
 </html>

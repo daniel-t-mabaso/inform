@@ -21,7 +21,7 @@
     background-color: #B3B178;  
 }
 .alt-bg{
-    background-color: #8AADBF;
+    background-color: #f4f4f4;
 }
 .success-bg{
     background-color: #A6BF34;  
@@ -33,7 +33,7 @@
     background-color: #8C2318;  
 }
 .neutral-bg{
-    background-color: #000000;  
+    background-color: #8AADBF;  
 }
 
 /* Font Colours */
@@ -54,7 +54,7 @@
     color: #868C6C;  
 }
 .alt-txt{
-    color: #d8d8d8;  
+    color: #f4f4f4;  
 }
 .success-txt{
     color: #A6BF34;  
@@ -66,5 +66,5 @@
     color: #8C2318;  
 }
 .neutral-txt{
-    color: #000000;  
+    color: #8AADBF;  
 }

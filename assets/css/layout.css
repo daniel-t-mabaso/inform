@@ -5,7 +5,12 @@ html, body{
     height: 100%;
     width: 100%;
 }
-
+input, select{
+    padding: none;
+    margin: none;
+    width: inherit;
+    height: inherit;
+}
 .hide{
     display: none;
 }

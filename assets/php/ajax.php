@@ -216,7 +216,7 @@
                 }
                 //call display function for each post.
             }
-            $output = "<div class'bold max-width center-txt float-left'><div class='subheading bold vertical-padding-10'>Post Statistics</div></div><div class='extra-small-height'><div class='half-width float-left'>Events<br>$events</div><div class='half-width float-left'>Alerts<br>$alerts</div></div><div class='button secondary-bg white-txt' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
+            $output = "<div class'bold max-width center-txt float-left'><div class='subheading bold vertical-padding-10'>Post Statistics</div></div><div class='extra-small-height vertical-padding-10'><div class='half-width center-txt float-left'><img class='minute-size' src='./assets/media/images/events-icon.png'/><br><b>Events</b><br>$events</div><div class='half-width center-txt float-left'><img class='minute-size' src='./assets/media/images/alerts-icon.png'/><br><b>Alerts</b><br>$alerts</div></div><div class='button secondary-bg white-txt' onclick='getStats(document.getElementById(\"community-stats-panel\"), \"community-stats\");'>Refresh</div>";
             break;
         case 'user-stats':
             $user = unserialize($_SESSION['user']);

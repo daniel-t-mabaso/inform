@@ -32,7 +32,7 @@
             
     <div class="max-height center max-width margin-20 center-txt">
             <div onclick="fetchPosts('my-events', 'my-posts-panel'); enableThisDisableThat('my-events-button','my-alerts-button');" class="max-width vertical-margin-50 small-height small-width center small-height">
-                <img class="max-width" src='assets/media/images/event-icon.jpg'>
+                <img class="max-width" src='assets/media/images/event-icon.png'>
                 <br>My Events
             </div>
 

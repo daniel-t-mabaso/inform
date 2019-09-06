@@ -53,7 +53,7 @@
             <input class="inputField" name="title" type="text" required >
             <br><br>
             Details
-            <textarea class="detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
+            <textarea class="inputField detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
             <br><br>
             <div class="book center-txt">
                 <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('upload-image-panel').classList.toggle('hide');" name="newImage">Upload Image<br>

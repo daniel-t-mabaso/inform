@@ -48,7 +48,7 @@ if($_SESSION['auth']!= true){
             <textarea class="detailField" name="details" type="text"  placeholder="Fill in details regarding alert here" required></textarea>
             <br><br>
             
-                <div id="crimeO" style="display: block">
+                <div id="crimeO">
                     <div class="book center-txt">
                     <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('uploadCrimeImage').classList.toggle('hide');" name="newImage">Upload Image<br>
                     <div class="hide  left-txt imageBorder" id="uploadCrimeImage" >
@@ -78,7 +78,7 @@ if($_SESSION['auth']!= true){
                     </div>
                 </div>
 
-                <div id="lostObjs" style="display: none">
+                <div id="lostObjs">
                         <div class="book center-txt">
                         <input class="book" type="checkbox" id='upload-image-checkbox' onclick="document.getElementById('uploadLostpanel').classList.toggle('hide');" name="newImage">Upload Image<br>
                         <div class="hide  left-txt imageBorder" id="uploadLostpanel" >

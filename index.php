@@ -36,7 +36,7 @@ if($_SESSION['auth']!= true){
    
     <div class="max-height center max-width margin-20 center-txt">
             <a href="events.php"><div class="max-width vertical-margin-50 small-height small-width center small-height">
-                <img class="max-width" src='assets/media/images/event-icon.jpg'>
+                <img class="max-width" src='assets/media/images/event-icon.png'>
                 Events
             </div></a>
             <a href="alerts.php"><div class="max-width vertical-margin-40 small-height small-width center small-height">

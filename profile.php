@@ -98,7 +98,7 @@
                     <br>
                         <div class="center-txt">
                         <input class="button success-bg white-txt" type="submit" value="Save" name="edit-profile" /> 
-                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button caution-bg white-txt" type="button" value="Cancel" name="cancel" /> 
+                        <input onclick="hideThisMeShowThat('profile-edit-panel', 'profile-details-panel');" class="button tertiary-bg white-txt" type="button" value="Cancel" name="cancel" /> 
                     </div>
             </div> 
             

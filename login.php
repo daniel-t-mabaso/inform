@@ -32,9 +32,9 @@ if($_SESSION['auth'] == true){
                 Password
                 <input class="inputField" type="password" name="password">
                 <div  class="center-txt">
-                <input class="button" type="submit" value="Login" name="login" />
+                <input class="button primary-bg white-txt" type="submit" value="Login" name="login" />
                 <br>
-                 <div style="text-align: center; color: skyblue">Not registered? <a href="registration.php">Sign up</a> now.</div></div>
+                 <div class='primary-txt'>Not registered? <a href="registration.php" class="underline">Sign up</a> now.</div></div>
             </form>
             <div class=" center-txt danger-txt footnote">
                     <?php

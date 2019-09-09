@@ -35,9 +35,9 @@ if($_SESSION['auth'] == true){
                 <input class="inputField" type="password" name="confirmPassword">
                 <input type="checkbox" name="organisation"> As Organisation
                 <div  class="center-txt">
-                <input class="button" type="submit" value="Register" name="register" />
+                <input class="button primary-bg white-txt" type="submit" value="Register" name="register" />
                 <br>
-                 <div style="text-align: center; color: skyblue">Already registered? <a href="login.php">Sign in</a> now.</div></div>
+                 <div class='primary-txt'>Already registered? <a href="login.php" class='underline'>Sign in</a> now.</div></div>
             </form>
             <div class=" center-txt danger-txt footnote">
                     <?php

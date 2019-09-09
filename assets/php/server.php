@@ -37,6 +37,7 @@
                         $me = new User;
                         $me-> set_details($array['name'], $array['email'], $array['type'], 'active', $array['media_url'], $array['filters'], $array['base_cid'], '');//to edit base com and prefered com
                         $mes = serialize($me);
+                        $name = $array['name'];
                         $_SESSION['auth'] = true;
                         $_SESSION['user'] = $mes;
                         $array="";
@@ -49,6 +50,8 @@
                         $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
 
                         $_SESSION['community'] = serialize($com);
+                        
+                        $_SESSION['message'] = "success~Welcome back";
                         echo '<script>
                         window.location = "index.php";
                         </script>';

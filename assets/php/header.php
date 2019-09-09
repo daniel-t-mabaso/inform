@@ -30,6 +30,7 @@
         <a href="profile.php"><div class="max-width padding-20 minute-line-height vertical-padding-15"><img class="minute-size float-left" src="./assets/media/images/users-icon.png"/> &nbsp;&nbsp;&nbsp;Profile</div></a>
         <?php if($user->get_type()=='local admin' || $user->get_type()=='global admin'){
             echo '<a href="dashboard.php"><div class="max-width padding-20 vertical-padding-15"><img class="minute-size float-left" src="./assets/media/images/dashboard-icon.png"/>  &nbsp;&nbsp;&nbsp;Dashboard</div></a>';}?>
+        <a href="about.php"><div class="max-width padding-20 vertical-padding-15"><img class="minute-size float-left" src="./assets/media/images/about-icon.png"/>  &nbsp;&nbsp;&nbsp;About</div></a>
         <a href="logout.php"><div class="max-width padding-20 vertical-padding-15"><img class="minute-size float-left" src="./assets/media/images/logout-icon.png"/>  &nbsp;&nbsp;&nbsp;Logout</div></a>
         
     </div>

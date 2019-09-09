@@ -51,6 +51,10 @@ if(!($user->get_type() === 'local admin' || $user->get_type() === 'global admin'
     </div>
 
 
+    <div class="dashboard-panel padding-20 max-width">
+        <div class="heading bold center-txt">Welcome to the admin Dashboard</div>
+        <div class="list-posts-panel center-txt vertical-padding-20">To get started, select an action on the panel to the right.</div>
+    </div>
     <div id="posts-panel" class="hide dashboard-panel padding-20 max-width">
         <div class="heading bold center-txt">Posts</div>
         <div id="list-posts-panel"></div>

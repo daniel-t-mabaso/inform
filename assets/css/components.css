@@ -4,6 +4,7 @@
 a:active, a:hover, a:focus{
     outline: none;
     background-color: inherit;
+    cursor: pointer;
 }
 .button{
     border-radius: 2px; 

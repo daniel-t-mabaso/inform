@@ -18,6 +18,9 @@ if($_SESSION['auth'] == true){
     </head>
 
     <body class='alt-bg'>
+    <?php 
+        include('assets/php/message.php');
+    ?>
         <div class="vertical-padding-40 center-txt white-txt primary-bg">
             <h1 class='title'>INFORM</h1>
             <h2 class='book'>Community Notice System</h2>

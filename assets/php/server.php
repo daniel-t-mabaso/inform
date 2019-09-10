@@ -29,42 +29,50 @@
                     $email = $array['email'];
                     $user_hash = $array['password'];
                     $user_type = $array['type'];
-                    
-                    mysqli_free_result($result);
+                    if($user_type == "deactivated"){
+                       
+                        array_push($errors, "* Your account has been banned.");
 
-                    if($email){
-                    if (password_verify($password, $user_hash)){
-                        $me = new User;
-                        $me-> set_details($array['name'], $array['email'], $array['type'], 'active', $array['media_url'], $array['filters'], $array['base_cid'], '');//to edit base com and prefered com
-                        $mes = serialize($me);
-                        $name = $array['name'];
-                        $_SESSION['auth'] = true;
-                        $_SESSION['user'] = $mes;
-                        $array="";
-                        $cid = $me->get_base_communities();
-                        
-                        $query = "SELECT * FROM communities WHERE code = '$cid';";
-                        $result = mysqli_query($dbc, $query);
-                        $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                        $com = new Community;
-                        $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
-
-                        $_SESSION['community'] = serialize($com);
-                        
-                        $_SESSION['message'] = "success~Welcome back";
-                        echo '<script>
-                        window.location = "index.php";
-                        </script>';
                     }
                     else{
-                        $user_hash="";
-                        
-                        array_push($errors, "* Your email/password is incorrect.");
-                    }
+                        mysqli_free_result($result);
 
-                    }else{
-                        array_push($errors, "* Mmmmh... seems like you're not registered. <a href='registration.php'> now!</a>");
-                    } 
+                        if($email){
+                        if (password_verify($password, $user_hash)){
+                            $me = new User;
+                            $me-> set_details($array['name'], $array['email'], $array['type'], 'active', $array['media_url'], $array['filters'], $array['base_cid'], '');//to edit base com and prefered com
+                            
+                            $mes = serialize($me);
+                            $name = $array['name'];
+                            $_SESSION['auth'] = true;
+                            $_SESSION['user'] = $mes;
+                            $array="";
+                            $cid = $me->get_base_communities();
+                            
+                            $query = "SELECT * FROM communities WHERE code = '$cid';";
+                            $result = mysqli_query($dbc, $query);
+                            $array = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                            $com = new Community;
+                            $com -> set_details($array['suburb'], $array['code'], $array['city'], $array['province']);
+
+                            $_SESSION['community'] = serialize($com);
+                            
+                            $_SESSION['message'] = "success~Welcome back";
+                            echo '<script>
+                            window.location = "index.php";
+                            </script>';
+                        }
+                        else{
+                            $user_hash="";
+                            
+                            array_push($errors, "* Your email/password is incorrect.");
+                        }
+
+                        }else{
+                            array_push($errors, "* Mmmmh... seems like you're not registered. <a href='registration.php'> now!</a>");
+                        }
+                        
+                    }
                 }
             } 
         }

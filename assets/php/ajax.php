@@ -377,6 +377,24 @@
             $output = "<div class='max-width max-height padding-20 vertical-padding-50 success-bg'>User Unverified</div>";
             
             break;
+        case 'activate':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'community member' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<div class='max-width max-height padding-20 vertical-padding-50 success-bg'>User Reactivated</div>";
+            
+            break;
+        case 'deactivate':
+            $email = $_REQUEST["email"];
+            //get user email
+            
+            $query = "UPDATE `users` SET `type` = 'deactivated' WHERE `email` = '$email'";
+            $result = mysqli_query($dbc, $query);
+            $output = "<div class='max-width max-height padding-20 vertical-padding-50 success-bg'>User Deactivated</div>";
+            
+            break;
         case 'make admin':
             $email = $_REQUEST["email"];
             //get user email

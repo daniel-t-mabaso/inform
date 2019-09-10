@@ -197,6 +197,29 @@
                         window.location = "../../myPosts.php";
                         </script>';
         }
+        else if(isset($_POST['deleteProfile'])){
+                $type = $user->get_type();
+                if($type === "global admin")
+                        {
+                                $_SESSION['message'] = "danger~Cannot deactivate Global Admin";
+                                echo '<script>
+                                        window.location = "../../profile.php";
+                                        </script>';
+                                
+                        }
+                else{
+                        $email = $user->get_email();
+                
+                        $sql = "UPDATE `users` SET `type` = 'deactivated' WHERE `email` = '$email'";
+                        mysqli_query($dbc, $sql);
+                        echo $type;
+                        $_SESSION['message'] = "success~Account Deactivated - $type";
+                        $_SESSION['user'] = serialize($user);
+                        echo '<script>
+                                window.location = "../../logout.php";
+                                </script>';
+                }
+        }
 }
     else{
         //else take user to login

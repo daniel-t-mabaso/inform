@@ -59,7 +59,6 @@
                 //search DB for posts with preferences belonging to community
                 $query = "SELECT * FROM posts WHERE type = 'event' AND cid LIKE '%$cid%' AND ($filters) ORDER BY start ASC;";
                 $result = mysqli_query($dbc, $query);
-                $count = 0;
                 $displayed = 0;
                 //loop through results creating obj
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -69,7 +68,7 @@
                     $event->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
                     $card = $event -> display();
-                    $output = $card;
+                    $output .= $card;
                 }
                 if($displayed==0){
                     $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you
@@ -120,7 +119,7 @@
                     $alert->set_details($row['pid'], $row['title'], $row['descrip'], $row['start'], $row['end'], $row['media_url'], $row['cid'], $row['filter_code'], $row['user_email']);
                     //call display function for each post.
                     $card = $alert -> display();
-                    $output = $card;
+                    $output .= $card;
                 }
                 if($displayed==0){
                     $output = "<div class='card max-width padding-20 center vertical-margin-20 exta-small-height shadow danger-bg white-txt center-txt bold'>Mmm... There's nothing for you

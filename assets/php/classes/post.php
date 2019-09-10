@@ -131,8 +131,8 @@
             if(strlen($this-> get_post_name())>11){
                 $title.="...";
             }
-            $uDescription = str_replace("'", " ", $this -> get_post_description());
-            $description = substr($this -> get_post_description(), 0, 50);
+            $uDescription = nl2br(str_replace("'", " ", $this -> get_post_description()));
+            $description = nl2br(substr($this -> get_post_description(), 0, 50));
             if(strlen($this-> get_post_description())>50){
                 $description.="...";
             }
